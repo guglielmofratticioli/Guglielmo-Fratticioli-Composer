@@ -48,6 +48,11 @@
     padding: 1rem 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
+.nav-link.active {
+  color: #64ffda;
+  font-weight: bold;
+  border-bottom: 2px solid #64ffda;
+}
 
 .top-nav ul {
     display: flex;
@@ -441,55 +446,60 @@
 
 <nav class="top-nav">
     <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#project-grid-main">Projects</a></li>
-        <li><a href="#portfolio-covers">Live Covers</a></li>
-        <li><a href="#portfolio-commissions">Fiverr</a></li>
+        <li><a href="#herosec"class="nav-link">About</a></li>
+        <li><a href="#project-grid-main" class="nav-link">Projects</a></li>
+        <li><a href="#portfolio-covers" class="nav-link">Live Covers</a></li>
+        <li><a href="#portfolio-commissions" class="nav-link">Fiverr</a></li>
     </ul>
 </nav>
 
 <body>
     <!-- Updated Hero Section -->
     <header class="hero">
-        <div class="hero-container">
-            <!-- Right Column: Profile Image & Decorative Letters -->
-            <div class="hero-image">
-                <div class="letters">
-                    <span class="letter-G1">🔊</span>
-                    <span class="letter-U">🎶</span>
-                    <span class="letter-G2">🕹️</span>
-                    <span class="letter-L">🎬</span>
-                    <span class="letter-I">💻</span>
-                    <span class="letter-E">🎷</span>
-                    <span class="letter-L2">🎺</span>
-                    <span class="letter-M">🎹</span>
-                    <span class="letter-O">🎸</span>
+        <section id="herosec">
+            <div class="hero-container">
+                <!-- Right Column: Profile Image & Decorative Letters -->
+                <div class="hero-image">
+                    <div class="letters">
+                        <span class="letter-G1">🔊</span>
+                        <span class="letter-U">🎶</span>
+                        <span class="letter-G2">🕹️</span>
+                        <span class="letter-L">🎬</span>
+                        <span class="letter-I">💻</span>
+                        <span class="letter-E">🎷</span>
+                        <span class="letter-L2">🎺</span>
+                        <span class="letter-M">🎹</span>
+                        <span class="letter-O">🎸</span>
+                    </div>
+                    <img src="profile.jpg" alt="Guglielmo Fratticioli">
                 </div>
-                <img src="profile.jpg" alt="Guglielmo Fratticioli">
+                <!-- Left Column: Text Content -->
+                <div class="hero-text">
+                    <h1>
+                        Guglielmo Fratticioli <span class="emoji-set"></span>
+                    </h1>
+                    <!-- Button Group for Roles -->
+                    <div class="button-group">
+                        <a href="#composer" class="role-button">Composer</a>
+                        <a href="#producer" class="role-button">Producer</a>
+                        <a href="#sound-designer" class="role-button">Sound Designer</a>
+                        <a href="#sound-designer" class="role-button">FMOD/Wise</a>
+                    </div>
+                    <div class="bio">
+                        <p>
+                            Classically trained pianist from age 7, with a background in Jazz composition and songwriting.
+                            Passionate about scoring for animation and videogames, producing EDM, and mastering the art
+                            of audio production and mixing.
+                        </p>
+                    </div>
+                </div>
+    
             </div>
-            <!-- Left Column: Text Content -->
-            <div class="hero-text">
-                <h1>
-                    Guglielmo Fratticioli <span class="emoji-set"></span>
-                </h1>
-                <!-- Button Group for Roles -->
-                <div class="button-group">
-                    <a href="#composer" class="role-button">Composer</a>
-                    <a href="#producer" class="role-button">Producer</a>
-                    <a href="#sound-designer" class="role-button">Sound Designer</a>
-                    <a href="#sound-designer" class="role-button">FMOD/Wise</a>
-                </div>
-                <div class="bio">
-                    <p>
-                        Classically trained pianist from age 7, with a background in Jazz composition and songwriting.
-                        Passionate about scoring for animation and videogames, producing EDM, and mastering the art
-                        of audio production and mixing.
-                    </p>
-                </div>
-            </div>
+        </section>
 
-        </div>
     </header>
+
+
 
     <main>
         <!-- Portfolio sections remain structurally the same -->
@@ -640,6 +650,33 @@
 
         });
     </script>
+
+<script>
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+  
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          const id = entry.target.getAttribute('id');
+          const link = document.querySelector(`.nav-link[href="#${id}"]`);
+  
+          if (entry.isIntersecting) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      },
+      {
+        rootMargin: '50% 0px -50% 0px',
+        threshold: 0
+      }
+    );
+  
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 
 </html>

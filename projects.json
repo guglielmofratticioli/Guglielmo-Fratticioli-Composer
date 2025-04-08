@@ -116,7 +116,7 @@
   {
     "id": "super-mario-odissey",
     "category": "main",
-    "folder": "projects/Mario-Odyssey/",
+    "folder": "projects/Mario-Odissey/",
     "title": "Super Mario Odissey - reactive music scoring",
     "showVideo": true,
     "thumbnails": [
@@ -126,6 +126,41 @@
     "short_description": "Re Scoring a Mario Odyssey intro sequence with a reactive soundtrack.",
     "audioFiles": [
       ]
+  },
+  {
+    "id": "tic-tac",
+    "category": "main",
+    "folder": "projects/tic-tac/",
+    "title": "Tic Tac Advertisement - Sound Design",
+    "showVideo": true,
+    "thumbnails": [
+      "projects/tic-tac/thumbnail.jpg"
+    ],
+    "imageFiles": [
+      {
+        "filename": "thumbnail.jpg",
+        "alt": "Tic Tac Advertisement - Sound Design Image 1"
+      }
+    ],
+    "tags": [
+      "Sound Design",
+      "Advertisement",
+      "Foley",
+      "Audioreactive",
+      "Groupwork",
+      "Music"
+    ],
+    "short_description": "Creative sound design using Tic Tac sounds and foley, combined with funky music for an ad concept.",
+    "audioFiles": [
+      {
+        "title": "Tic Tac Foley Rhythm",
+        "filename": "TicTac.mp3"
+      },
+      {
+        "title": "Tic Tac Full Mix (Foley + Music)",
+        "filename": "TicTacMIXED.mp3"
+      }
+    ]
   },
   {
     "id": "cuphead",
@@ -173,6 +208,7 @@
       }
     ]
   },
+
   {
     "id": "paulettes-chair",
     "category": "main",
@@ -227,41 +263,7 @@
     "short_description": "Action scene rescore inspired by intense cinematic soundtracks like The Dark Knight.",
     "audioFiles": []
   },
-  {
-    "id": "tic-tac",
-    "category": "main",
-    "folder": "projects/tic-tac/",
-    "title": "Tic Tac Advertisement - Sound Design",
-    "showVideo": true,
-    "thumbnails": [
-      "projects/tic-tac/thumbnail.jpg"
-    ],
-    "imageFiles": [
-      {
-        "filename": "thumbnail.jpg",
-        "alt": "Tic Tac Advertisement - Sound Design Image 1"
-      }
-    ],
-    "tags": [
-      "Sound Design",
-      "Advertisement",
-      "Foley",
-      "Audioreactive",
-      "Groupwork",
-      "Music"
-    ],
-    "short_description": "Creative sound design using Tic Tac sounds and foley, combined with funky music for an ad concept.",
-    "audioFiles": [
-      {
-        "title": "Tic Tac Foley Rhythm",
-        "filename": "TicTac.mp3"
-      },
-      {
-        "title": "Tic Tac Full Mix (Foley + Music)",
-        "filename": "TicTacMIXED.mp3"
-      }
-    ]
-  },
+
   {
     "id": "documentary-demo",
     "category": "main",
@@ -289,6 +291,9 @@
     "short_description": "Atmospheric and acoustic scoring combined with subtle sound design for a documentary clip.",
     "audioFiles": []
   },
+  
+  
+  
   {
     "id": "fiver-commissions",
     "category": "commission",

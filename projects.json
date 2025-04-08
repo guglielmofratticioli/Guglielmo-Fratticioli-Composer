@@ -1,0 +1,221 @@
+[
+    {
+      "id": "dying-light",
+      "category": "main",
+      "folder": "projects/dying-light/",
+      "title": "Dying Light 2 - Sound Redesign",
+      "showVideo": true,
+      "thumbnails": [
+          "projects/dying-light/thumbnail.jpg",
+          "projects/dying-light/image2.jpg"
+      ],
+      "imageFiles": [
+        {"filename": "thumbnail.jpg", "alt": "Dying Light 2 - Sound Redesign Image 1"},
+        {"filename": "image2.jpg", "alt": "Dying Light 2 - Sound Redesign Image 2"}
+      ],
+      "tags": ["Sound Design", "Videogame", "Cinematic", "Action", "Voiceover", "Instrumental"],
+      "short_description": "Full sound redesign including foley, voiceover, ambience, and cinematic music for a game trailer.",
+      "audioFiles": [
+        {"title": "Intro Synth Arpeggio", "filename": "Intro-Arp.mp3"},
+        {"title": "Hospital Trap Beat", "filename": "HospitalTrap.mp3"},
+        {"title": "Action Orchestra Cue", "filename": "FightForHerrand.mp3"},
+        {"title": "Telling Apocalypse Music", "filename": "LabOutbreak.mp3"},
+        {"title": "Zombie Vocals (My Voice!)", "filename": "BadZombie.mp3"},
+        {"title": "Metallic Key Sounds", "filename": "Chain.mp3"},
+        {"title": "Card Shuffle Foley", "filename": "Cards.mp3"},
+        {"title": "Synthesized Sci-Fi FX", "filename": "Swooshes.mp3"},
+        {"title": "Fire Sound Design", "filename": "Fire.mp3"},
+        {"title": "Horror Transition Metals", "filename": "HorrorTransition.mp3"}
+      ]
+    },
+    {
+      "id": "cuphead",
+      "category": "main",
+      "folder": "projects/cuphead/",
+      "title": "CupHead - Soundtrack Recreation",
+      "showVideo": true,
+      "thumbnails": [
+          "projects/cuphead/thumbnail.webp",
+          "projects/cuphead/cuphead_gameplay.jpg"
+      ],
+      "imageFiles": [
+        {"filename": "thumbnail.webp", "alt": "CupHead - Soundtrack Recreation Image 1"},
+        {"filename": "cuphead_gameplay.jpg", "alt": "CupHead - Soundtrack Recreation Image 2"}
+      ],
+      "tags": ["Composition", "Videogame", "Jazz", "Swing", "Vintage", "Big Band", "Retro", "Soundtrack"],
+      "short_description": "Recreating the iconic Big Band Swing style for a gameplay sequence and results screen.",
+      "audioFiles": [
+          {"title": "Battle Scene BigBand Swing!", "filename": "CupCaravan!.mp3"},
+          {"title": "Results Screen Dixieland Jazz", "filename": "RagTrapperTime.mp3"},
+          {"title": "Big Band Demo (Learning)", "filename": "AnotherBand.mp3"}
+        ]
+    },
+    {
+      "id": "paulettes-chair",
+      "category": "main",
+      "folder": "projects/paulettes-chair/",
+      "title": "Paulette’s Chair - Orchestral Score",
+      "showVideo": true,
+      "thumbnails": ["projects/paulettes-chair/thumbnail.webp"],
+      "imageFiles": [
+         {"filename": "thumbnail.webp", "alt": "Paulette’s Chair - Orchestral Score Image 1"}
+      ],
+      "tags": ["Composition", "Animation", "Orchestral", "Classical", "Emotive Scoring", "Mickeymousing", "Storytelling", "Symphonic"],
+      "short_description": "Emotional orchestral scoring for an animated short, utilizing mickey-mousing techniques.",
+      "audioFiles": []
+    },
+    {
+      "id": "lo-chiamavano-jeeg-robot",
+      "category": "main",
+      "folder": "projects/lo-chiamavano-jeeg-robot/",
+      "title": "Lo Chiamavano Jeeg Robot - Action Rescore",
+      "showVideo": true,
+      "thumbnails": ["projects/lo-chiamavano-jeeg-robot/thumbnail.jpg"],
+      "imageFiles": [
+         {"filename": "thumbnail.jpg", "alt": "Lo Chiamavano Jeeg Robot - Action Rescore Image 1"}
+      ],
+      "tags": ["Sound Design", "Soundtrack", "Cinematic", "Action", "Rescore", "Film"],
+      "short_description": "Action scene rescore inspired by intense cinematic soundtracks like The Dark Knight.",
+      "audioFiles": []
+    },
+    {
+      "id": "tic-tac",
+      "category": "main",
+      "folder": "projects/tic-tac/",
+      "title": "Tic Tac Advertisement - Sound Design",
+      "showVideo": true,
+      "thumbnails": ["projects/tic-tac/thumbnail.jpg"],
+      "imageFiles": [
+         {"filename": "thumbnail.jpg", "alt": "Tic Tac Advertisement - Sound Design Image 1"}
+      ],
+      "tags": ["Sound Design", "Advertisement", "Foley", "Audioreactive", "Groupwork", "Music"],
+      "short_description": "Creative sound design using Tic Tac sounds and foley, combined with funky music for an ad concept.",
+       "audioFiles": [
+          {"title": "Tic Tac Foley Rhythm", "filename": "TicTac.mp3"},
+          {"title": "Tic Tac Full Mix (Foley + Music)", "filename": "TicTacMIXED.mp3"}
+        ]
+    },
+    {
+      "id": "documentary-demo",
+      "category": "main",
+      "folder": "projects/documentary-demo/",
+      "title": "Documentary Demo - Scoring & Sound Design",
+      "showVideo": true,
+      "thumbnails": ["projects/documentary-demo/thumbnail.jpg"],
+      "imageFiles": [
+         {"filename": "thumbnail.jpg", "alt": "Documentary Demo - Scoring & Sound Design Image 1"}
+      ],
+      "tags": ["Composition", "Sound Design", "Documentary", "Ambience", "Acoustic", "Atmosphere", "Music"],
+      "short_description": "Atmospheric and acoustic scoring combined with subtle sound design for a documentary clip.",
+      "audioFiles": []
+    },
+    {
+      "id": "gamejam-pandemonium",
+      "category": "main",
+      "folder": "projects/gamejam-pandemonium/",
+      "title": "Game Jam: Pandemonium - Soundtrack & SFX",
+      "showVideo": false,
+      "thumbnails": [
+          "projects/gamejam-pandemonium/thumbnail.jpg"
+      ],
+      "imageFiles": [
+          {"filename": "working.jpg", "alt": "Game Jam: Pandemonium - Soundtrack & SFX Image 1"},
+          {"filename": "team_photo.jpg", "alt": "Game Jam: Pandemonium - Soundtrack & SFX Image 2"},
+          {"filename": "award.jpg", "alt": "Game Jam: Pandemonium - Soundtrack & SFX Image 3"}
+      ],
+      "tags": ["Composition", "Sound Design", "Videogame", "Game Jam", "Drum & Bass", "Cartoon", "Groupwork", "Soundtrack", "Award Winner"],
+      "short_description": "Award-winning Game Jam project featuring a Drum & Bass track with cartoonish sound effects.",
+      "audioFiles": [
+          {"title": "Pandemonium! Full Track", "filename": "Pandemonio.mp3"}
+        ]
+    },
+    {
+      "id": "fiver-commissions",
+      "category": "commission",
+      "folder": "projects/fiver-commissions/",
+      "title": "Fiverr Commissions Showcase",
+      "showVideo": false, 
+       "thumbnails": [
+          "projects/fiver-commissions/thumbnail.jpg"
+      ],
+      "imageFiles": [
+          {"filename": "R1.jpg", "alt": "Fiverr Commissions Showcase Image 1"},
+          {"filename": "R2.jpg", "alt": "Fiverr Commissions Showcase Image 2"},
+          {"filename": "R3.jpg", "alt": "Fiverr Commissions Showcase Image 3"},
+          {"filename": "R4.jpg", "alt": "Fiverr Commissions Showcase Image 3"},
+          {"filename": "F1.jpg", "alt": "Fiverr Commissions Showcase Image 3"},
+          {"filename": "F2.jpg", "alt": "Fiverr Commissions Showcase Image 3"},
+          {"filename": "F3.jpg", "alt": "Fiverr Commissions Showcase Image 3"},
+          {"filename": "F4.jpg", "alt": "Fiverr Commissions Showcase Image 3"}
+      ],
+      "tags": ["Client Work", "Fiverr", "Production", "Composition", "Jazz", "Swing", "Big Band", "Salsa", "Latin", "Cover", "Disco", "Funk", "Podcast", "Advertisement"],
+      "short_description": "Selection of diverse music production and composition projects delivered for Fiverr clients.",
+       "audioFiles": [
+          {"title": "Podcast Intro - BigBand Swing (Backing Track)", "filename": "Travis Theatre.mp3"},
+          {"title": "Client Song - Jazz Production (Unmixed)", "filename": "Jazz Song Backing.mp3"},
+          {"title": "Client Backing Track - Salsa 1", "filename": "Salsa.mp3"},
+          {"title": "Client Backing Track - Salsa 2", "filename": "Salsa 2.mp3"},
+          {"title": "Client Cover Song - La Llorona", "filename": "La llorona Spanish Song Cover.mp3"},
+          {"title": "Podcast Loop - Disco Funk 1", "filename": "Pop Funk Short.mp3"},
+          {"title": "Podcast Loop - Disco Funk 2", "filename": "Tananaka Style Funk.mp3"},
+          {"title": "Podcast Loop - City Pop/Funk", "filename": "CityPop Like.mp3"},
+          {"title": "Advertisement Music - Swing/Jazz", "filename": "Swing For Advertisment.mp3"}
+        ]
+    },
+     {
+      "id": "jujutsu-kaisen-piano",
+      "category": "cover",
+      "folder": "projects/jujutsu-kaisen-piano/",
+      "title": "Jujutsu Kaisen II - Piano Cover",
+      "showVideo": true,
+      "thumbnails": ["projects/jujutsu-kaisen-piano/thumbnail.jpg"],
+      "imageFiles": [
+         {"filename": "thumbnail.jpg", "alt": "Jujutsu Kaisen II - Piano Cover Image 1"}
+      ],
+      "tags": ["Cover", "Piano", "Anime", "Soundtrack", "Live Performance"],
+      "short_description": "Live piano cover of a poignant soundtrack piece from Jujutsu Kaisen Season II.",
+      "audioFiles": []
+    },
+     {
+      "id": "kizumonogatari-bad-bully",
+      "category": "cover",
+      "folder": "projects/kizumonogatari-bad-bully/",
+      "title": "Kizumonogatari - Bad Bully Cover",
+      "showVideo": true,
+      "thumbnails": ["projects/kizumonogatari-bad-bully/thumbnail.jpg"],
+      "imageFiles": [
+         {"filename": "thumbnail.jpg", "alt": "Kizumonogatari - Bad Bully Cover Image 1"}
+      ],
+      "tags": ["Cover", "Piano", "Keyboard", "Anime", "Soundtrack", "Live Performance"],
+      "short_description": "Live keyboard and piano cover of the 'Bad Bully' theme from Kizumonogatari.",
+      "audioFiles": []
+    },
+    {
+      "id": "tatsuya-kitani-scar",
+      "category": "cover",
+      "folder": "projects/tatsuya-kitani-scar/",
+      "title": "Tatsuya Kitani - Scar (Piano Cover)",
+      "showVideo": true,
+      "thumbnails": ["projects/tatsuya-kitani-scar/thumbnail.jpg"],
+      "imageFiles": [
+         {"filename": "thumbnail.jpg", "alt": "Tatsuya Kitani - Scar (Piano Cover) Image 1"}
+      ],
+      "tags": ["Cover", "Piano", "J-Pop", "Anime", "Live Performance"],
+      "short_description": "Live piano cover arrangement of Tatsuya Kitani's song 'Scar'.",
+      "audioFiles": []
+    },
+    {
+      "id": "kk-slider-piranha",
+      "category": "cover",
+      "folder": "projects/kk-slider-piranha/",
+      "title": "KK Slider - Piranha Plant Lullaby Cover",
+      "showVideo": true,
+      "thumbnails": ["projects/kk-slider-piranha/thumbnail.jpg"],
+      "imageFiles": [
+         {"filename": "thumbnail.jpg", "alt": "KK Slider - Piranha Plant Lullaby Cover Image 1"}
+      ],
+      "tags": ["Cover", "Piano", "Videogame", "Animal Crossing", "Mario", "Live Performance"],
+      "short_description": "Live piano cover of KK Slider's version of the Piranha Plant Lullaby.",
+      "audioFiles": []
+    }
+]

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guglielmo Fratticioli | Composition & Sound Design</title>
+
+    <!-- ReelCrafter Inspired Font (Using Google Fonts - Montserrat is close enough) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Plyr.io Player CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+
+    <!-- Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Your Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Marked.js (Keep for Markdown) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <header class="hero">
+         <div class="hero-content">
+            <!-- Keep existing hero content, styling will adapt -->
+            <img src="profile.jpg" alt="Guglielmo Fratticioli" class="profile-pic">
+            <h1>Guglielmo Fratticioli</h1>
+            <p class="tagline">Composer | Sound Designer | Music Producer</p>
+            <div class="bio">
+                <p>Classically trained pianist from age 7, with a background in Jazz composition and songwriting. Passionate about scoring for animation and videogames, producing EDM, and mastering the art of audio production and mixing.</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Portfolio sections remain structurally the same -->
+        <section id="portfolio-main" class="portfolio-section">
+            <h2>Featured Projects</h2>
+            <div id="project-grid-main" class="project-grid">
+                <p class="loading-message">Loading main projects...</p>
+            </div>
+        </section>
+
+        <section id="portfolio-covers" class="portfolio-section secondary-section">
+            <h2>Live Covers</h2>
+            <div id="project-grid-covers" class="project-grid project-grid-secondary">
+                 <p class="loading-message">Loading covers...</p>
+            </div>
+        </section>
+
+        <section id="portfolio-commissions" class="portfolio-section secondary-section">
+            <h2>Client Commissions (Fiverr)</h2>
+            <div id="project-grid-commissions" class="project-grid project-grid-secondary">
+                 <p class="loading-message">Loading commissions...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- NEW Footer Structure -->
+    <footer class="site-footer">
+        <div class="social-icons">
+             <!-- Add your actual social media links here -->
+            <a href="https://instagram.com/your_instagram" target="_blank" rel="noopener noreferrer" title="Instagram">
+                <i class="fab fa-instagram fa-lg"></i>
+            </a>
+            <a href="https://facebook.com/your_facebook" target="_blank" rel="noopener noreferrer" title="Facebook">
+                <i class="fab fa-facebook fa-lg"></i>
+            </a>
+            <a href="https://youtube.com/your_youtube" target="_blank" rel="noopener noreferrer" title="YouTube">
+                 <i class="fab fa-youtube fa-lg"></i>
+            </a>
+            <a href="https://linkedin.com/in/your_linkedin" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                 <i class="fab fa-linkedin fa-lg"></i>
+            </a>
+             <a href="mailto:your_email@example.com" title="Email">
+                 <i class="fas fa-envelope fa-lg"></i>
+            </a>
+            <!-- Add other icons as needed (e.g., fa-twitter, fa-soundcloud) -->
+        </div>
+        <div class="legal-links">
+            © <span id="current-year"></span> Guglielmo Fratticioli. All Rights Reserved.
+            <!-- Add links like Privacy Policy if needed -->
+            <!-- | <a href="/privacy-policy">Privacy Policy</a> -->
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal hidden">
+       <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="close-button" aria-label="Close modal">×</button>
+            <h2 id="modal-title">Project Title</h2>
+
+            <!-- MODIFIED Video Container for Plyr -->
+            <div id="modal-video" class="video-container plyr__video-embed">
+                 <!-- Plyr will populate this or show an error message -->
+            </div>
+
+            <!-- Modal Image Carousel -->
+            <div id="modal-images" class="modal-image-carousel"></div>
+
+            <!-- Project Details (Markdown) -->
+            <div id="modal-description" class="modal-description"></div>
+
+            <!-- Audio Players -->
+            <div id="modal-audio" class="modal-audio-container"></div>
+
+            <!-- Tags -->
+             <div id="modal-tags" class="modal-tags"></div>
+        </div>
+    </div>
+
+    <!-- Plyr.io Player JS -->
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <!-- Your Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>

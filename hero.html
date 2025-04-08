@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagonal Split Hero with Animated Letters</title>
+  <style>
+    /* Global Resets */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: #333;
+      overflow-x: hidden;
+    }
+    
+    /* Hero Section with Diagonal Split Background */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      /* Base background (bottom half color) */
+      background: #f8b133;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    
+    /* Diagonal overlay for the top half of the hero */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 110%; /* extended for smooth diagonal edge */
+      height: 110%;
+      background: #da9c27; /* slightly darker hue */
+      z-index: 0;
+      /* Diagonal clip-path */
+      clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+    }
+    
+    .hero-container {
+      position: relative; /* so content is above pseudo-element */
+      z-index: 2;
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 2rem;
+      align-items: center;
+    }
+    
+    /* Left Column: Text */
+    .hero-text {
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .hero-text h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+    }
+    
+    /* Emphasized text styling */
+    .hero-text h1 span {
+      color: #333;
+      background: #fff3c9;
+      padding: 0.2rem 0.3rem;
+      border-radius: 4px;
+    }
+    
+    .hero-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 90%;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: #fff;
+      color: #f8b133;
+      font-weight: bold;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 24px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+    .cta-button:hover {
+      background-color: #f6f6f6;
+      color: #da9c27;
+    }
+    
+    /* Right Column: Image + Animated Random Letters */
+    .hero-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .hero-image img {
+      width: 300px;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* The container for the letters */
+    .letters {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    /* Each letter styling */
+    .letters span {
+      position: absolute;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fff;
+      opacity: 0;  /* Start hidden */
+      transform: translateY(20px); /* Initial offset for animation */
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    /* Randomized positions for each letter - adjust these values as desired */
+    .letter-O { top: 10%; left: 70%; }
+    .letter-R { top: 25%; left: 85%; }
+    .letter-A { top: 50%; left: 90%; }
+    .letter-N { top: 70%; left: 65%; }
+    .letter-G { top: 80%; left: 40%; }
+    .letter-E { top: 50%; left: 20%; }
+    
+    /* Animation class added on scroll */
+    .animate {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-image {
+        margin-top: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <!-- Left Column: Text -->
+      <div class="hero-text">
+        <h1>
+          Get <span>FRESH</span> FRUITS <br> Today
+        </h1>
+        <p>
+          Orange is not just a tasty fruit, it’s more. Discover the health benefits of adding oranges to your daily diet.
+        </p>
+        <a href="#" class="cta-button">Know More</a>
+      </div>
+      
+      <!-- Right Column: Image and Decorative Letters -->
+      <div class="hero-image">
+        <!-- Container for scattered letters -->
+        <div class="letters">
+          <span class="letter-O">O</span>
+          <span class="letter-R">R</span>
+          <span class="letter-A">A</span>
+          <span class="letter-N">N</span>
+          <span class="letter-G">G</span>
+          <span class="letter-E">E</span>
+        </div>
+        <!-- Orange Image -->
+        <img src="images/orange.png" alt="Orange Fruit">
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Use IntersectionObserver to animate the letters when the hero section scrolls into view
+    document.addEventListener('DOMContentLoaded', function() {
+      const heroSection = document.querySelector('.hero');
+      const letters = document.querySelectorAll('.letters span');
+      
+      const observerOptions = {
+        root: null, // viewport
+        threshold: 0.3  // trigger when 30% of the hero is visible
+      };
+      
+      const observer = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            letters.forEach((letter, index) => {
+              // Slight stagger for each letter
+              setTimeout(() => {
+                letter.classList.add('animate');
+              }, index * 150);
+            });
+            // Optionally, disconnect after animation runs
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      observer.observe(heroSection);
+    });
+  </script>
+
+</body>
+</html>

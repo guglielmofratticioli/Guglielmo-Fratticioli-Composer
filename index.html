@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,37 +9,492 @@
     <!-- ReelCrafter Inspired Font (Using Google Fonts - Montserrat is close enough) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Plyr.io Player CSS -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 
     <!-- Font Awesome for Social Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Your Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- Custom Hero Styles -->
+    <style>
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            background: #1e1e1e;
+            /* Base background color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .top-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #121212e0;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.top-nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.top-nav a {
+    color: #64ffda;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.top-nav a:hover {
+    color: white;
+}
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 110%;
+            height: 110%;
+            background: #121212;
+            /* Diagonal overlay color */
+            z-index: 0;
+            /* Creates the diagonal split */
+            clip-path: polygon(0 0, 100% 0, 100% 0%, 0 90%);
+        }
+
+        .hero-container {
+            position: relative;
+            /* Ensure content stays above the pseudo-element */
+            z-index: 2;
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 2rem;
+            align-items: center;
+        }
+
+        .bio{
+            bottom: 1rem;
+            line-height: 1.6;
+            max-width: 100%;
+        }
+        /* Left Column: Text Content */
+        .hero-text {
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 .emoji-set {
+            font-size: 1.5rem;
+        }
+
+        .hero-text p.tagline {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .hero-text .bio p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 90%;
+        }
+
+        /* Button Group Styles */
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .role-button {
+            display: inline-block;
+            background-color: #64ffda;
+            color: black;
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 24px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .role-button:hover {
+            background-color: black;
+            color: #64ffda;
+            box-shadow: #64ffda 0px 0px 10px;
+        }
+
+        /* Right Column: Image and Scattered Animated Letters */
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 300px;
+            height: 300px;
+            /* Ensure height matches width for circle */
+            object-fit: cover;
+            /* Cover the area */
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Container for decorative letters */
+        .letters {
+            position: absolute;
+            width: 100%;
+            height: 150%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .letters span {
+            position: absolute;
+            font-size: 2rem;
+            /* Adjust emoji size if needed */
+            font-weight: bold;
+            color: #fff;
+            opacity: 0;
+            /* Start hidden */
+            transform: translateY(20px);
+            /* Initial offset for fade-in */
+            /* MODIFIED: Longer transition for both fade-in and fly-out */
+            transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
+                transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        /* Scattered positions for each letter/emoji */
+        .letter-G1 {
+            top: 10%;
+            left: 0%;
+            scale: 1.1;
+        }
+
+        .letter-U {
+            top: 20%;
+            left: 80%;
+            scale: 1.5;
+        }
+
+        .letter-G2 {
+            top: 35%;
+            left: 90%;
+            scale: 0.7;
+        }
+
+        .letter-L {
+            top: 50%;
+            left: 85%;
+            scale: 1.1;
+        }
+
+        .letter-I {
+            top: 65%;
+            left: 70%;
+        }
+
+        .letter-E {
+            top: -20%;
+            left: 55%;
+            scale: 1.3;
+        }
+
+        .letter-L2 {
+            top: 80%;
+            left: 40%;
+        }
+
+        .letter-M {
+            top: 60%;
+            left: 25%;
+            scale: 0.9;
+        }
+
+        .letter-O {
+            top: 30%;
+            left: 15%;
+        }
+
+        /* Animation class to reveal letters (from IntersectionObserver) */
+        .animate {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        /* NEW: Animation class for flying out on scroll */
+        .fly-out {
+            opacity: 0 !important;
+        }
+
+        /* Apply different transforms to each child using nth-child for variety */
+        .fly-out:nth-child(1) {
+            transform: translate(200px, -150px) rotate(90deg) scale(1.5) !important;
+        }
+
+        .fly-out:nth-child(2) {
+            transform: translate(300px, 50px) rotate(-45deg) scale(2) !important;
+        }
+
+        .fly-out:nth-child(3) {
+            transform: translate(150px, 250px) rotate(180deg) scale(1.6) !important;
+        }
+
+        .fly-out:nth-child(4) {
+            transform: translate(-250px, 200px) rotate(60deg) scale(3) !important;
+        }
+
+        .fly-out:nth-child(5) {
+            transform: translate(-350px, -100px) rotate(-120deg) scale(4) !important;
+        }
+
+        .fly-out:nth-child(6) {
+            transform: translate(-100px, -250px) rotate(30deg) scale(1.5) !important;
+        }
+
+        .fly-out:nth-child(7) {
+            transform: translate(50px, -300px) rotate(-75deg) scale(2.3) !important;
+        }
+
+        .fly-out:nth-child(8) {
+            transform: translate(280px, 180px) rotate(135deg) scale(2.1) !important;
+        }
+
+        .fly-out:nth-child(9) {
+            transform: translate(-200px, 300px) rotate(-150deg) scale(3.2) !important;
+        }
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .letter-G1 {
+                top: 10%;
+                left: 0%;
+                scale: 1.1;
+            }
+
+            .letter-U {
+                top: 20%;
+                left: 80%;
+                scale: 1.5;
+            }
+
+            .letter-G2 {
+                top: 35%;
+                left: 90%;
+                scale: 0.7;
+            }
+
+            .letter-L {
+                top: 50%;
+                left: 85%;
+                scale: 1.1;
+            }
+
+            .letter-I {
+                top: 65%;
+                left: 70%;
+            }
+
+            .letter-E {
+                top: -20%;
+                left: 55%;
+                scale: 1.3;
+            }
+
+            .letter-L2 {
+                top: 55%;
+                left: 20%;
+            }
+
+            .letter-M {
+                top: -10%;
+                left: 25%;
+                scale: 0.9;
+            }
+
+            .letter-O {
+                top: 30%;
+                left: 15%;
+            }
+
+            .hero-image {
+                margin-top: 2rem;
+            }
+
+            /* Adjust fly-out distances for smaller screens if needed */
+            .fly-out:nth-child(1) {
+                transform: translate(100px, -75px) rotate(90deg) scale(1.5) !important;
+            }
+
+            .fly-out:nth-child(2) {
+                transform: translate(150px, 25px) rotate(-45deg) scale(2.3) !important;
+            }
+
+
+            .fly-out:nth-child(3) {
+                transform: translate(150px, 250px) rotate(180deg) scale(1.6) !important;
+            }
+
+            .fly-out:nth-child(4) {
+                transform: translate(-250px, 200px) rotate(60deg) scale(3) !important;
+            }
+
+            .fly-out:nth-child(5) {
+                transform: translate(-350px, -100px) rotate(-120deg) scale(4) !important;
+            }
+
+            .fly-out:nth-child(6) {
+                transform: translate(-100px, -250px) rotate(30deg) scale(1.5) !important;
+            }
+
+            .fly-out:nth-child(7) {
+                transform: translate(50px, -300px) rotate(-75deg) scale(2.3) !important;
+            }
+
+            .fly-out:nth-child(8) {
+                transform: translate(280px, 180px) rotate(135deg) scale(2.1) !important;
+            }
+
+            .fly-out:nth-child(9) {
+                transform: translate(-200px, 300px) rotate(-150deg) scale(3.2) !important;
+            }
+
+            /* Button Group Styles */
+            .button-group {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin-top: 1rem;
+                width: 100%;
+            }
+
+            .role-button {
+                display: inline-block;
+                background-color: #64ffda;
+                color: black;
+                font-weight: bold;
+                padding: 0.75rem;
+                width: 47%;
+                border: none;
+                border-radius: 24px;
+                text-decoration: none;
+                transition: background-color 0.3s ease, color 0.3s ease;
+                cursor: pointer;
+            }
+
+            .role-button:hover {
+                background-color: black;
+                color: #64ffda;
+                box-shadow: #64ffda 0px 0px 10px;
+            }
+
+        }
+    </style>
+
     <!-- Marked.js (Keep for Markdown) -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 </head>
+
+<nav class="top-nav">
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#project-grid-main">Projects</a></li>
+        <li><a href="#portfolio-covers">Live Covers</a></li>
+        <li><a href="#portfolio-commissions">Fiverr</a></li>
+    </ul>
+</nav>
+
 <body>
+    <!-- Updated Hero Section -->
     <header class="hero">
-         <div class="hero-content">
-            <!-- Keep existing hero content, styling will adapt -->
-            <img src="profile.jpg" alt="Guglielmo Fratticioli" class="profile-pic">
-            <h1>Guglielmo Fratticioli</h1>
-            <p class="tagline">Composer | Sound Designer | Music Producer</p>
-            <div class="bio">
-                <p>Classically trained pianist from age 7, with a background in Jazz composition and songwriting. Passionate about scoring for animation and videogames, producing EDM, and mastering the art of audio production and mixing.</p>
+        <div class="hero-container">
+            <!-- Right Column: Profile Image & Decorative Letters -->
+            <div class="hero-image">
+                <div class="letters">
+                    <span class="letter-G1">🔊</span>
+                    <span class="letter-U">🎶</span>
+                    <span class="letter-G2">🕹️</span>
+                    <span class="letter-L">🎬</span>
+                    <span class="letter-I">💻</span>
+                    <span class="letter-E">🎷</span>
+                    <span class="letter-L2">🎺</span>
+                    <span class="letter-M">🎹</span>
+                    <span class="letter-O">🎸</span>
+                </div>
+                <img src="profile.jpg" alt="Guglielmo Fratticioli">
             </div>
+            <!-- Left Column: Text Content -->
+            <div class="hero-text">
+                <h1>
+                    Guglielmo Fratticioli <span class="emoji-set"></span>
+                </h1>
+                <!-- Button Group for Roles -->
+                <div class="button-group">
+                    <a href="#composer" class="role-button">Composer</a>
+                    <a href="#producer" class="role-button">Producer</a>
+                    <a href="#sound-designer" class="role-button">Sound Designer</a>
+                    <a href="#sound-designer" class="role-button">FMOD/Wise</a>
+                </div>
+                <div class="bio">
+                    <p>
+                        Classically trained pianist from age 7, with a background in Jazz composition and songwriting.
+                        Passionate about scoring for animation and videogames, producing EDM, and mastering the art
+                        of audio production and mixing.
+                    </p>
+                </div>
+            </div>
+
         </div>
     </header>
 
     <main>
         <!-- Portfolio sections remain structurally the same -->
         <section id="portfolio-main" class="portfolio-section">
-            <h2>Featured Projects</h2>
+            <h2>Projects Showcase</h2>
             <div id="project-grid-main" class="project-grid">
                 <p class="loading-message">Loading main projects...</p>
             </div>
@@ -47,23 +503,22 @@
         <section id="portfolio-covers" class="portfolio-section secondary-section">
             <h2>Live Covers</h2>
             <div id="project-grid-covers" class="project-grid project-grid-secondary">
-                 <p class="loading-message">Loading covers...</p>
+                <p class="loading-message">Loading covers...</p>
             </div>
         </section>
 
         <section id="portfolio-commissions" class="portfolio-section secondary-section">
             <h2>Client Commissions (Fiverr)</h2>
             <div id="project-grid-commissions" class="project-grid project-grid-secondary">
-                 <p class="loading-message">Loading commissions...</p>
+                <p class="loading-message">Loading commissions...</p>
             </div>
         </section>
-
     </main>
 
     <!-- NEW Footer Structure -->
     <footer class="site-footer">
         <div class="social-icons">
-             <!-- Add your actual social media links here -->
+            <!-- Add your actual social media links here -->
             <a href="https://instagram.com/your_instagram" target="_blank" rel="noopener noreferrer" title="Instagram">
                 <i class="fab fa-instagram fa-lg"></i>
             </a>
@@ -71,46 +526,31 @@
                 <i class="fab fa-facebook fa-lg"></i>
             </a>
             <a href="https://youtube.com/your_youtube" target="_blank" rel="noopener noreferrer" title="YouTube">
-                 <i class="fab fa-youtube fa-lg"></i>
+                <i class="fab fa-youtube fa-lg"></i>
             </a>
             <a href="https://linkedin.com/in/your_linkedin" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                 <i class="fab fa-linkedin fa-lg"></i>
+                <i class="fab fa-linkedin fa-lg"></i>
             </a>
-             <a href="mailto:your_email@example.com" title="Email">
-                 <i class="fas fa-envelope fa-lg"></i>
+            <a href="mailto:your_email@example.com" title="Email">
+                <i class="fas fa-envelope fa-lg"></i>
             </a>
-            <!-- Add other icons as needed (e.g., fa-twitter, fa-soundcloud) -->
         </div>
         <div class="legal-links">
             © <span id="current-year"></span> Guglielmo Fratticioli. All Rights Reserved.
-            <!-- Add links like Privacy Policy if needed -->
-            <!-- | <a href="/privacy-policy">Privacy Policy</a> -->
         </div>
     </footer>
 
     <!-- Project Modal -->
     <div id="project-modal" class="modal hidden">
-       <div class="modal-overlay"></div>
+        <div class="modal-overlay"></div>
         <div class="modal-content">
             <button class="close-button" aria-label="Close modal">×</button>
             <h2 id="modal-title">Project Title</h2>
-
-            <!-- MODIFIED Video Container for Plyr -->
-            <div id="modal-video" class="video-container plyr__video-embed">
-                 <!-- Plyr will populate this or show an error message -->
-            </div>
-
-            <!-- Modal Image Carousel -->
+            <div id="modal-video" class="video-container plyr__video-embed"></div>
             <div id="modal-images" class="modal-image-carousel"></div>
-
-            <!-- Project Details (Markdown) -->
             <div id="modal-description" class="modal-description"></div>
-
-            <!-- Audio Players -->
             <div id="modal-audio" class="modal-audio-container"></div>
-
-            <!-- Tags -->
-             <div id="modal-tags" class="modal-tags"></div>
+            <div id="modal-tags" class="modal-tags"></div>
         </div>
     </div>
 
@@ -118,5 +558,88 @@
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <!-- Your Custom Script -->
     <script src="script.js"></script>
+    <!-- UPDATED: Combined Intersection Observer & Scroll Listener -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const heroSection = document.querySelector('.hero');
+            const letters = document.querySelectorAll('.letters span');
+            let isFlownOut = false; // State variable: true if letters are currently flown out
+
+            // --- Intersection Observer for Initial Fade-in ---
+            const observerOptions = {
+                root: null,
+                threshold: 0.1 // Trigger even if only a small part is visible initially
+            };
+
+            const observer = new IntersectionObserver(function (entries, observerInstance) {
+                entries.forEach(entry => {
+                    // When the hero section is intersecting (visible)
+                    if (entry.isIntersecting) {
+                        console.log("Hero intersecting, checking letters..."); // Debugging
+                        letters.forEach((letter, index) => {
+                            // Only apply initial animation if NOT already flown out
+                            if (!isFlownOut) {
+                                // Use setTimeout for staggered fade-in
+                                setTimeout(() => {
+                                    letter.classList.add('animate');
+                                    letter.classList.remove('fly-out'); // Ensure fly-out is removed if coming back into view
+                                }, index * 100); // Shorter stagger for fade-in
+                            }
+                        });
+                    }
+                    // Note: We are NOT unobserving here anymore.
+                    // else {
+                    // Optional: Could add logic here if needed when element leaves viewport entirely
+                    // }
+                });
+            }, observerOptions);
+
+            // Start observing the hero section
+            if (heroSection) {
+                observer.observe(heroSection);
+            } else {
+                console.error("Hero section not found for IntersectionObserver.");
+            }
+
+
+            // --- Scroll Listener for Fly-Out and Reversal ---
+            function handleScroll() {
+                if (!heroSection) return; // Exit if hero not found
+
+                const heroHeight = heroSection.offsetHeight;
+                // Trigger point slightly lower down the page to ensure hero is mostly out of view
+                const scrollTriggerPoint = 0;
+                const currentScroll = window.scrollY;
+
+                // Scrolling DOWN past the trigger point
+                if (currentScroll > scrollTriggerPoint && !isFlownOut) {
+                    console.log("Scrolling DOWN past trigger - Flying out"); // Debugging
+                    isFlownOut = true; // Update state
+                    letters.forEach(letter => {
+                        letter.classList.remove('animate'); // Remove fade-in class
+                        letter.classList.add('fly-out'); // Add fly-out class
+                    });
+                }
+                // Scrolling UP past the trigger point
+                else if (currentScroll <= scrollTriggerPoint && isFlownOut) {
+                    console.log("Scrolling UP past trigger - Reverting"); // Debugging
+                    isFlownOut = false; // Update state
+                    letters.forEach((letter, index) => {
+                        letter.classList.remove('fly-out'); // Remove fly-out class
+                        // Re-apply the animate class with stagger for smooth return
+                        // (IntersectionObserver might also catch this if element becomes visible again)
+                        setTimeout(() => {
+                            letter.classList.add('animate');
+                        }, index * 50); // Faster stagger for return
+                    });
+                }
+            }
+
+            // Attach scroll listener
+            window.addEventListener('scroll', handleScroll, { passive: true });
+
+        });
+    </script>
 </body>
+
 </html>

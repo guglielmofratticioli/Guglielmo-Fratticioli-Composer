@@ -37,42 +37,81 @@
             justify-content: center;
             padding: 2rem;
         }
+
         .top-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #121212e0;
-    z-index: 999;
-    display: flex;
-    justify-content: center;
-    padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-.nav-link.active {
-  color: #64ffda;
-  font-weight: bold;
-  border-bottom: 2px solid #64ffda;
-}
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #121212e0;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
 
-.top-nav ul {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
+        .nav-link.active {
+            color: #64ffda;
+            font-weight: bold;
+            border-bottom: 2px solid #64ffda;
+        }
 
-.top-nav a {
-    color: #64ffda;
-    text-decoration: none;
-    font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
-    transition: color 0.3s ease;
-}
+        .top-nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
 
-.top-nav a:hover {
-    color: white;
-}
+        .top-nav a {
+            color: #64ffda;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        .top-nav a:hover {
+            color: white;
+        }
+
+        .cta {
+            
+            font-size: 2rem;
+            /* Adjust size as needed */
+            color: #fff;
+            letter-spacing: 0.1em;
+            margin-top: 2rem;
+            /* Space from the bio paragraph */
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+
+        /* Bounce animation for the CTA */
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-15px);
+            }
+
+            60% {
+                transform: translateY(-7px);
+            }
+        }
+
         .hero::before {
             content: "";
             position: absolute;
@@ -99,11 +138,12 @@
             align-items: center;
         }
 
-        .bio{
+        .bio {
             bottom: 1rem;
             line-height: 1.6;
             max-width: 100%;
         }
+
         /* Left Column: Text Content */
         .hero-text {
             color: #fff;
@@ -138,7 +178,7 @@
             flex-wrap: wrap;
             gap: 1rem;
             margin-top: 1rem;
-            width: 100%;
+            width: 200%;
         }
 
         .role-button {
@@ -446,7 +486,7 @@
 
 <nav class="top-nav">
     <ul>
-        <li><a href="#herosec"class="nav-link">About</a></li>
+        <li><a href="#herosec" class="nav-link">About</a></li>
         <li><a href="#project-grid-main" class="nav-link">Projects</a></li>
         <li><a href="#portfolio-covers" class="nav-link">Live Covers</a></li>
         <li><a href="#portfolio-commissions" class="nav-link">Fiverr</a></li>
@@ -487,13 +527,22 @@
                     </div>
                     <div class="bio">
                         <p>
-                            Classically trained pianist from age 7, with a background in Jazz composition and songwriting.
+                            Classically trained pianist from age 7, with a background in Jazz composition and
+                            songwriting.
                             Passionate about scoring for animation and videogames, producing EDM, and mastering the art
                             of audio production and mixing.
                         </p>
                     </div>
+                    <!-- CTA for swipe down -->
+                    <div class="cta"
+                        onclick="document.querySelector('#portfolio-main').scrollIntoView({ behavior: 'smooth' });">
+                        Trust and skills make the best collabs.
+                        <br>
+                        <br> 
+                    </div>
+
                 </div>
-    
+
             </div>
         </section>
 
@@ -651,32 +700,32 @@
         });
     </script>
 
-<script>
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-  
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          const id = entry.target.getAttribute('id');
-          const link = document.querySelector(`.nav-link[href="#${id}"]`);
-  
-          if (entry.isIntersecting) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            link.classList.add('active');
-          }
+    <script>
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const link = document.querySelector(`.nav-link[href="#${id}"]`);
+
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                });
+            },
+            {
+                rootMargin: '50% 0px -50% 0px',
+                threshold: 0
+            }
+        );
+
+        sections.forEach(section => {
+            observer.observe(section);
         });
-      },
-      {
-        rootMargin: '50% 0px -50% 0px',
-        threshold: 0
-      }
-    );
-  
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-  </script>
+    </script>
 </body>
 
 </html>

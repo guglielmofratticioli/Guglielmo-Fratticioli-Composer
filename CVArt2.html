@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guglielmo Fratticioli - Front-End Developer & Creative Technologist</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Internal CSS -->
+    <style>
+        /* ====================
+              VARIABLES & RESET (Updated Palette)
+           ==================== */
+        :root {
+            /* --- Palette from Image --- */
+            --primary-color: #8e44ad; /* Vibrant Purple (from magenta lighting) */
+            --secondary-color: #f39c12; /* Warm Orange (from lamp light) */
+            --dark-base: #2c3e50;      /* Dark Blue-Grey (for text, can adjust) */
+            --dark-bg: #4a235a;        /* Dark Purple (sidebar bg, derived from primary) */
+            --light-bg: #fdfbf5;       /* Very Light Cream/Off-white (like hoodie/warm neutral) */
+            --medium-grey: #7f8c8d;   /* Medium Grey (subtle text/borders) */
+            --pure-white: #ffffff;     /* Pure White (card backgrounds) */
+
+            /* --- Derived Variables --- */
+            --text-light: var(--light-bg);       /* Text on dark background */
+            --text-dark: var(--dark-base);       /* Default dark text */
+            --text-medium: var(--medium-grey); /* Less prominent text */
+            --page-bg: #f0eef2; /* Slightly cool light grey for overall page background */
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+            --card-hover-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --transition-speed: 0.3s;
+
+            /* Gradient using the new palette */
+            --primary-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Purple to Orange */
+        }
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+             scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--page-bg); /* Use the new page background */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            /* Keep default link color potentially different or use primary */
+            color: var(--primary-color);
+            transition: color var(--transition-speed) ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color); /* Use orange for hover */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            margin-bottom: 0.8em;
+            color: var(--text-dark); /* Default heading color */
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ====================
+              LAYOUT WRAPPER
+           ==================== */
+        .cv-wrapper {
+            display: flex;
+            max-width: 1200px; /* Increased max-width */
+            margin: 40px auto;
+            background-color: var(--pure-white); /* Ensure main content area is white */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            overflow: hidden; /* Ensure children don't overflow rounded corners */
+        }
+
+        /* ====================
+              SIDEBAR
+           ==================== */
+        .sidebar {
+            flex: 0 0 300px; /* Fixed width sidebar */
+            background-color: var(--dark-bg); /* Use dark purple sidebar */
+            color: var(--text-light);
+            padding: 40px 30px;
+        }
+
+        .sidebar h1, .sidebar h2, .sidebar h3 {
+            color: var(--text-light);
+        }
+
+        .sidebar-content {
+            display: flex;
+            flex-direction: column;
+            gap: 35px; /* Spacing between sections in sidebar */
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 10px; /* Adjust spacing below header */
+        }
+
+        #profile-pic {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px auto;
+            border: 4px solid var(--primary-color); /* Purple border */
+        }
+
+        .profile-header h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .profile-header .subtitle {
+            font-size: 1em;
+            font-weight: 300;
+            color: var(--light-bg); /* Use light background color for subtitle */
+            opacity: 0.9;
+        }
+
+        .sidebar section h2 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-color); /* Purple border */
+            display: inline-block; /* Make border only as wide as text */
+        }
+
+        /* Contact Info */
+        .contact-info ul {
+            padding-left: 0;
+        }
+
+        .contact-info li {
+            margin-bottom: 12px;
+        }
+
+        .contact-info a {
+            color: var(--text-light); /* Links in sidebar are light */
+            font-size: 0.9em;
+            display: flex; /* Align icon and text */
+            align-items: center;
+            gap: 10px; /* Space between icon and text */
+            transition: color var(--transition-speed) ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary-color); /* Orange hover for links */
+        }
+
+        .contact-info i {
+            color: var(--primary-color); /* Purple icons */
+            font-size: 1.1em;
+            width: 20px; /* Ensure icons align */
+            text-align: center;
+        }
+
+        /* Skills Section */
+        #skills h3, #artistic-skills h3 { /* For consistency if h3 is used */
+            font-size: 1.1em;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .skill-category {
+            margin-bottom: 20px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tags span {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.15); /* Subtle background */
+            color: var(--text-light);
+            padding: 4px 10px;
+            border-radius: 15px; /* Pill shape */
+            font-size: 0.85em;
+            font-family: 'Roboto Mono', monospace; /* Monospace for techy feel */
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+            cursor: default; /* Indicate they aren't clickable */
+        }
+
+        .skill-tags span:hover {
+            background-color: var(--secondary-color); /* Orange background on hover */
+            color: var(--dark-base); /* Dark text on orange hover */
+        }
+
+        /* Artistic Skills (reuse skill-tags) */
+        #artistic-skills .skill-tags span {
+            background-color: rgba(255, 255, 255, 0.1); /* Slightly different if needed */
+            font-family: 'Poppins', sans-serif; /* Use main font if preferred */
+        }
+
+
+        /* ====================
+              MAIN CONTENT
+           ==================== */
+        .main-content {
+            flex: 1; /* Takes remaining space */
+            padding: 50px 40px;
+            overflow-y: auto; /* Allows scrolling if content overflows */
+        }
+
+        .main-content section {
+            margin-bottom: 40px;
+        }
+
+        .main-content section:last-child {
+            margin-bottom: 0;
+        }
+
+        .main-content h2 {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        /* Underline effect for main section titles */
+        .main-content h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-gradient); /* Use the new Purple -> Orange gradient */
+            border-radius: 2px;
+        }
+
+        #profile p {
+            font-size: 1.05em;
+            color: var(--text-dark);
+            opacity: 0.9;
+        }
+
+        #profile strong {
+            color: var(--secondary-color); /* Orange for emphasis */
+            font-weight: 600;
+        }
+
+
+        /* Experience & Education Timeline Style */
+        .timeline {
+            padding-left: 0;
+            position: relative;
+        }
+
+        .timeline li {
+            margin-bottom: 25px;
+            padding-left: 30px; /* Indent content from potential line/bullet */
+            position: relative;
+        }
+
+        /* Timeline bullet */
+        .timeline li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color); /* Purple bullet */
+            border: 2px solid var(--pure-white); /* Keep white border */
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px var(--primary-color); /* Purple halo effect */
+        }
+
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+            flex-wrap: wrap; /* Allow wrapping */
+        }
+
+        .item-header h3 {
+            font-size: 1.2em;
+            color: var(--text-dark);
+            margin-bottom: 0; /* Reset margin */
+            font-weight: 600;
+        }
+
+        .date {
+            font-size: 0.9em;
+            color: var(--text-medium);
+            font-style: italic;
+            white-space: nowrap;
+            margin-left: 10px; /* Space if title wraps */
+        }
+
+        .institution {
+            font-weight: 400;
+            color: var(--text-medium);
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .timeline p {
+            font-size: 0.95em;
+            color: var(--text-dark);
+            opacity: 0.85;
+            margin-top: 5px;
+        }
+        .thesis-title {
+            font-size: 0.95em;
+            color: var(--text-dark);
+            margin-top: 8px;
+            font-style: italic;
+        }
+        .thesis-title strong {
+            font-style: normal; /* Remove italic from "Thesis:" */
+            color: var(--primary-color); /* Purple for "Thesis:" text */
+        }
+
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: var(--pure-white); /* Ensure cards are white */
+            border: 1px solid #eee; /* Lighter border */
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            display: flex; /* Align image and content */
+            flex-direction: column; /* Stack image above content */
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .project-image {
+            width: 100%; /* Full width */
+            height: 150px; /* Fixed height */
+            object-fit: cover; /* Cover the area */
+            border-radius: calc(var(--border-radius) - 4px); /* Slightly smaller radius */
+            margin-bottom: 15px;
+            border: 1px solid #eee; /* Lighter border */
+        }
+
+        .project-content h3 {
+            font-size: 1.2em;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .project-links {
+            margin-bottom: 12px;
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px; /* Space between links */
+        }
+
+        .project-links a {
+            color: var(--text-medium); /* Use medium grey for project links text */
+            font-weight: 500;
+            display: inline-flex; /* Align icon and text */
+            align-items: center;
+            gap: 5px; /* Space icon and text */
+            transition: color var(--transition-speed) ease; /* Ensure transition applies */
+        }
+
+        .project-links a i {
+            color: var(--primary-color); /* Purple icons */
+            transition: color var(--transition-speed) ease; /* Add transition to icon color */
+        }
+
+        .project-links a:hover {
+            color: var(--secondary-color); /* Orange hover for link text */
+        }
+        .project-links a:hover i {
+            color: var(--secondary-color); /* Orange icon hover */
+        }
+
+
+        .project-content p {
+            font-size: 0.9em;
+            color: var(--text-dark);
+            opacity: 0.85;
+            margin-bottom: 12px;
+            flex-grow: 1; /* Allow p to grow if card height varies */
+        }
+
+        .project-tags {
+            margin-top: auto; /* Push tags to the bottom */
+            padding-top: 10px; /* Space above tags */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .project-tags span {
+            display: inline-block;
+            background-color: #eee; /* Lighter grey background for tags */
+            color: var(--text-medium); /* Medium grey text for tags */
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 500;
+        }
+
+        /* ====================
+              RESPONSIVENESS
+           ==================== */
+
+        @media (max-width: 992px) {
+            .cv-wrapper {
+                flex-direction: column;
+                margin: 20px; /* Reduce margin */
+                max-width: 95%;
+            }
+
+            .sidebar {
+                flex: 0 0 auto; /* Reset flex basis */
+                width: 100%;
+                padding: 30px 25px;
+            }
+
+            .main-content {
+                padding: 40px 25px;
+            }
+
+            #profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+
+            .projects-grid {
+                /* Ensure at least 2 columns if space allows */
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+             body {
+                line-height: 1.6;
+             }
+            .sidebar {
+                padding: 25px 20px;
+            }
+            .main-content {
+                padding: 35px 20px;
+            }
+
+            .profile-header h1 {
+                font-size: 1.6em;
+            }
+            .main-content h2 {
+                font-size: 1.6em;
+            }
+
+            .item-header {
+                flex-direction: column; /* Stack title and date */
+                align-items: flex-start;
+            }
+            .date {
+                margin-left: 0;
+                margin-top: 3px;
+                font-size: 0.85em;
+            }
+            .project-image {
+                height: 120px; /* Adjust height for smaller cards */
+            }
+            .project-card {
+                padding: 15px;
+            }
+            .project-content h3 {
+                font-size: 1.1em;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+             .cv-wrapper {
+                margin: 10px;
+                border-radius: 0; /* Full width on smallest screens */
+                box-shadow: none;
+            }
+             .sidebar {
+                padding: 20px 15px;
+            }
+            .main-content {
+                padding: 30px 15px;
+            }
+
+            #profile-pic {
+                width: 100px;
+                height: 100px;
+                border-width: 3px;
+            }
+             .profile-header h1 {
+                font-size: 1.4em;
+            }
+            .profile-header .subtitle {
+                font-size: 0.9em;
+            }
+             .main-content h2 {
+                font-size: 1.4em;
+                margin-bottom: 20px;
+             }
+              .main-content h2::after {
+                  width: 40px;
+                  height: 3px;
+              }
+             .contact-info a {
+                font-size: 0.85em;
+                gap: 8px;
+             }
+            .skill-tags span {
+                font-size: 0.8em;
+                padding: 3px 8px;
+            }
+            .item-header h3 {
+                font-size: 1.1em;
+            }
+            .timeline li {
+                padding-left: 25px; /* Adjust indent */
+            }
+             .timeline li::before {
+                 width: 10px;
+                 height: 10px;
+                 left: -2px; /* Adjust positioning */
+                 box-shadow: 0 0 0 2px var(--primary-color);
+             }
+
+            .projects-grid {
+                grid-template-columns: 1fr; /* Single column */
+                gap: 20px;
+            }
+             .project-image {
+                height: 150px; /* Maybe increase height again for single column */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-wrapper">
+        <!-- ====================
+              SIDEBAR
+        ===================== -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <div class="profile-header">
+                    <!-- !! REPLACE 'profile.jpg' with the actual path !! -->
+                    <img src="profile.jpg" alt="Profile photo of Guglielmo Fratticioli" id="profile-pic">
+                    <h1>Guglielmo Fratticioli</h1>
+                    <div class="subtitle">Front-End Developer | Creative Technologist</div>
+                </div>
+
+                <section class="contact-info">
+                    <h2>Contact</h2>
+                    <ul>
+                        <li><a href="tel:+393774663408"><i class="fas fa-phone fa-fw"></i> +39 377 466 3408</a></li>
+                        <li><a href="mailto:Guglielmo.fratticioli@gmail.com"><i class="fas fa-envelope fa-fw"></i> Guglielmo.fratticioli@gmail.com</a></li>
+                        <li><a href="https://github.com/guglielmofratticioli" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-fw"></i> github.com/guglielmofratticioli</a></li>
+                         <li><a href="https://www.linkedin.com/in/guglielmo-fratticioli-3355b4210/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin fa-fw"></i> LinkedIn Profile</a></li>
+                        <li><a href="https://guglielmofratticioli.github.io/Guglielmo-Fratticioli-Composer/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe fa-fw"></i> Music Portfolio</a></li>
+                        <li><a href="https://www.instagram.com/gu.re.mi/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram fa-fw"></i> Instagram (@gu.re.mi)</a></li>
+                        <!-- Add location if desired: <li><i class="fas fa-map-marker-alt fa-fw"></i> Florence, Italy</li> -->
+                    </ul>
+                </section>
+
+                <section id="skills">
+                    <h2>Technical Skills</h2>
+                    <div class="skill-category">
+                        <h3>Front-End & Web</h3>
+                        <div class="skill-tags">
+                            <span>JavaScript (ES6+)</span>
+                            <span>Vue.js</span>
+                            <span>Node.js</span>
+                            <span>HTML5</span>
+                            <span>CSS3 / SASS</span>
+                            <span>Responsive Design</span>
+                            <span>Web Audio API</span>
+                            <span>Tone.js</span>
+                            <span>Three.js</span>
+                            <span>Framer</span>
+                            <span>Figma</span>
+                            <span>UI/UX Principles</span>
+                            <span>PHP</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Programming & General</h3>
+                         <div class="skill-tags">
+                            <span>Python</span>
+                            <span>C++</span>
+                            <span>Git / Github</span>
+                            <span>MATLAB</span>
+                            <span>Java</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Audio / ML / Creative</h3>
+                        <div class="skill-tags">
+                            <span>JUCE Framework</span>
+                            <span>VST Development</span>
+                            <span>DSP / Audio Effects</span>
+                            <span>PyTorch / LibTorch</span>
+                            <span>ML Models (Mamba/SSM, RVC)</span>
+                            <span>TouchDesigner</span>
+                            <span>GLSL</span>
+                            <span>Generative AI (ComfyUI)</span>
+                            <span>Web Audio</span>
+                            <span>MIR / Librosa</span>
+                        </div>
+                    </div>
+                </section>
+
+                 <section id="artistic-skills">
+                    <h2>Creative & Artistic</h2>
+                     <div class="skill-tags">
+                         <span>Music Production (Ableton, Logic)</span>
+                         <span>Sound Design</span>
+                         <span>Composition</span>
+                         <span>Piano & Guitar</span>
+                         <span>Creative Coding</span>
+                         <span>Visual Development</span>
+                         <span>Photo Editing (Photoshop)</span>
+                         <span>Vector Graphics</span>
+                         <span>3D (Blender Basics)</span>
+                         <span>Game Audio (Unity/Wwise/FMOD)</span>
+                         <span>Video Editing (FinalCut, DaVinci)</span>
+                     </div>
+                 </section>
+
+            </div>
+        </aside>
+
+        <!-- ====================
+              MAIN CONTENT
+        ===================== -->
+        <main class="main-content">
+
+            <section id="profile">
+                <h2>Profile</h2>
+                <p>
+                    A creative and technically skilled <strong>Front-End Developer</strong> and <strong>Creative Technologist</strong> with a foundation in Computer Engineering and a Master's in Music/Acoustic Engineering. Passionate about crafting engaging user experiences at the intersection of audio, visuals, and technology. Proven ability to leverage <strong>Vue.js, Node.js, JavaScript, HTML, and CSS</strong> for building intuitive interfaces. Experienced in <strong>Creative Coding (TouchDesigner, GLSL)</strong>, <strong>Audio Programming (C++, JUCE, Web Audio)</strong>, and applying machine learning (PyTorch) to novel applications. Seeking roles where I can combine deep technical expertise with a strong artistic and design sensibility.
+                </p>
+            </section>
+
+            <section id="education">
+                <h2>Education</h2>
+                <ul class="timeline">
+                    <li>
+                        <div class="item-header">
+                            <h3>M.Sc. Music & Acoustic Engineering</h3>
+                            <span class="date">2022 – 2024</span>
+                        </div>
+                        <div class="institution">Politecnico di Milano, Italy (Grade: 107/110)</div>
+                        <p class="thesis-title"><strong>Thesis:</strong> MambaTransfer: Raw Audio Musical Timbre Transfer using Selective State-Space Models</p>
+                        <!-- <p>Developed a novel, computationally efficient timbre transfer model operating directly on raw audio using Mamba (SSM).</p> -->
+                    </li>
+                    <li>
+                        <div class="item-header">
+                            <h3>B.Sc. Computer Engineering</h3>
+                            <span class="date">2018 – 2022</span>
+                        </div>
+                        <div class="institution">University of Florence, Italy</div>
+                        <p class="thesis-title"><strong>Thesis:</strong> Nonlinear Signal Processing: Theory and Models in view of Audio Systems Emulation</p>
+                        <!-- <p>Focused on modeling nonlinear audio systems (distortion emulation) using black-box approaches like Hammerstein models.</p> -->
+                    </li>
+                    <li>
+                         <div class="item-header">
+                            <h3>Certifications</h3>
+                         </div>
+                         <div class="institution">TOEFL English Certified | Basic French Knowledge</div>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="experience">
+                <h2>Work Experience</h2>
+                 <ul class="timeline">
+                    <li>
+                        <div class="item-header">
+                            <h3>Freelance Music Producer/Seller</h3>
+                            <span class="date">2024 – Present</span>
+                        </div>
+                        <div class="institution">Fiverr (Level One Seller)</div>
+                         <p>Provided custom composition, jazz songwriting, and electronic music production services to clients globally.</p>
+                    </li>
+                     <li>
+                        <div class="item-header">
+                            <h3>External R&D Collaborator</h3>
+                            <span class="date">2023</span>
+                        </div>
+                        <div class="institution">Musico (Generative Music AI Startup)</div>
+                         <p>Contributed to research and development activities focusing on generative music algorithms and AI model exploration.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="projects">
+                <h2>Selected Projects</h2>
+                <div class="projects-grid">
+
+                    <div class="project-card">
+                         <!-- !! Replace with actual path or placeholder service like picsum.photos if needed !! -->
+                         <img src="images/Zenynth.jpg" alt="Zenynth Web Synthesizer UI" class="project-image">
+                         <div class="project-content">
+                            <h3>Zenynth: Web Synthesizer</h3>
+                            <div class="project-links">
+                                <a href="https://github.com/guglielmofratticioli/zenyth" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="https://eliapirrello.github.io/zenyth/" target="_blank" rel="noopener noreferrer"><i class="fas fa-play-circle"></i> Demo</a>
+                                <a href="https://www.notion.so/guglielmo-fratticioli/Zenynth-Web-based-Synthesizer-17788a034d90804cbddfdeeb88578d31" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i> Details</a>
+                            </div>
+                            <p>Led UI/UX design & front-end (<strong>Vue.js</strong>) for an interactive web synth using <strong>Tone.js/Web Audio API</strong>.</p>
+                            <div class="project-tags">
+                                <span>Vue.js</span><span>JavaScript</span><span>Tone.js</span><span>Web Audio</span><span>UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <!-- !! Replace with actual path !! -->
+                        <img src="images/MambaTransfer.jpg" alt="MambaTransfer Project Diagram" class="project-image">
+                        <div class="project-content">
+                            <h3>MambaTransfer (Thesis)</h3>
+                            <div class="project-links">
+                                <a href="https://github.com/guglielmofratticioli/MambaTransfer" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="https://guglielmo-fratticioli.notion.site/MambaTransfer-17788a034d908005afd5dabc96d3ab03" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i> Details</a>
+                            </div>
+                            <p>Novel raw audio timbre transfer using Mamba (SSM). Achieved efficient, high-fidelity results.</p>
+                             <div class="project-tags">
+                                <span>Python</span><span>PyTorch</span><span>Mamba/SSM</span><span>Audio Processing</span><span>ML</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                       <!-- !! Replace with actual path !! -->
+                       <img src="images/Votech.jpg" alt="Votech VST UI Mockup" class="project-image">
+                       <div class="project-content">
+                           <h3>Votech: VST Web UI</h3>
+                           <div class="project-links">
+                               <a href="https://www.notion.so/guglielmo-fratticioli/Votech-Project-17788a034d9080a89c77cc6b9ef69356" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i> Details</a>
+                           </div>
+                           <p>Designed & developed a custom VST UI using <strong>HTML/CSS/JS</strong> within the <strong>JUCE</strong> framework (WebView).</p>
+                            <div class="project-tags">
+                                <span>HTML</span><span>CSS</span><span>JavaScript</span><span>C++</span><span>JUCE</span><span>VST</span><span>UI Design</span>
+                            </div>
+                       </div>
+                   </div>
+
+                    <div class="project-card">
+                        <!-- !! Replace with actual path !! -->
+                        <img src="images/NeuVC.jpg" alt="NeuVC VST Plugin Interface" class="project-image">
+                        <div class="project-content">
+                           <h3>NeuVC: AI Voice Conversion VST</h3>
+                           <div class="project-links">
+                               <a href="https://github.com/guglielmofratticioli/NeuVC" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                               <a href="https://guglielmo-fratticioli.notion.site/Singing-Voice-Conversion-C-17788a034d90803a8879c8b0dfff6dd8?pvs=74" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i> Details</a>
+                           </div>
+                           <p>Developed a C++ VST plugin (<strong>JUCE</strong>) integrating an RVC model via <strong>LibTorch</strong> for voice conversion.</p>
+                            <div class="project-tags">
+                                <span>C++</span><span>JUCE</span><span>VST</span><span>LibTorch</span><span>ML Deployment</span><span>DSP</span>
+                            </div>
+                       </div>
+                   </div>
+
+                   <div class="project-card">
+                        <!-- !! Replace with actual path !! -->
+                        <img src="images/ComposerWebsite.jpg" alt="Composer Portfolio Website Screenshot" class="project-image">
+                        <div class="project-content">
+                            <h3>Composer Portfolio</h3>
+                            <div class="project-links">
+                                <a href="https://guglielmofratticioli.github.io/Guglielmo-Fratticioli-Composer/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> Live Site</a>
+                            </div>
+                            <p>Designed and deployed a responsive personal music portfolio website using vanilla <strong>HTML, CSS, and JavaScript</strong>.</p>
+                            <div class="project-tags">
+                                <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive Design</span><span>Portfolio</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                       <!-- !! Replace with actual path !! -->
+                       <img src="images/Flow.jpg" alt="FLow Visualizer" class="project-image">
+                       <div class="project-content">
+                           <h3>Flow: Audio Visualizer</h3>
+                           <div class="project-links">
+                                <a href="https://www.youtube.com/watch?v=XEx1DSJqxcQ" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Preview</a>
+                           </div>
+                           <p>Real-time, parametric audio-reactive spectrum visualizer built in <strong>TouchDesigner</strong>, modulated via AI analysis (Cyanite API).</p>
+                            <div class="project-tags">
+                                <span>TouchDesigner</span><span>Audio Reactive</span><span>GLSL</span><span>Creative Coding</span><span>API</span>
+                            </div>
+                       </div>
+                   </div>
+
+                    <div class="project-card">
+                        <!-- !! Replace with actual path !! -->
+                        <img src="images/Wara.jpg" alt="Wara Live Event Flyer" class="project-image">
+                        <div class="project-content">
+                            <h3>Wara Live Event</h3>
+                            <div class="project-links">
+                                <a href="https://www.instagram.com/wara.live/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram</a>
+                                <!-- Add more links if available -->
+                            </div>
+                            <p>Co-founded and promoted a club event series. Handled branding, graphic design, DJing, and venue relations.</p>
+                            <div class="project-tags">
+                                <span>Event Promotion</span><span>Graphic Design</span><span>DJing</span><span>Community Building</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <!-- !! Replace with actual path !! -->
+                        <img src="images/DJVsZombies.jpg" alt="DJ Vs Zombies Game Screenshot" class="project-image">
+                        <div class="project-content">
+                            <h3>DJ Vs Zombies: Mobile Game</h3>
+                            <div class="project-links">
+                                <a href="https://polimi-game-collective.itch.io/dj-vs-zombies" target="_blank" rel="noopener noreferrer"><i class="fab fa-itch-io"></i> Itch.io</a>
+                                <a href="https://www.notion.so/guglielmo-fratticioli/DJ-Vs-Zombies-Unity-17788a034d9080e6b3a7cae34f1df527" rel="noopener noreferrer"><i class="fas fa-book-open"></i> Details</a>
+                            </div>
+                            <p>Contributed to a mobile tower defense game developed in <strong>Unity</strong> for a university game jam.</p>
+                            <div class="project-tags">
+                                <span>Unity</span><span>C#</span><span>Game Development</span><span>Mobile Game</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- /projects-grid -->
+            </section>
+
+        </main> <!-- /main-content -->
+    </div> <!-- /cv-wrapper -->
+</body>
+</html>

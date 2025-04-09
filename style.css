@@ -859,3 +859,59 @@ img {
         margin-top: 3rem;
     }
 }
+/* NEW: Container for multiple external link buttons */
+.external-links-container {
+    display: flex; /* Arrange buttons in a row */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    gap: 0.75rem; /* Space between buttons */
+    margin-top: 0.5rem; /* Space below title */
+    margin-bottom: 1.5rem; /* Space above next content */
+}
+
+/* Style for individual buttons (can be reused) */
+.external-link-button {
+    display: inline-block;
+    background-color: var(--primary);
+    color: var(--background); /* Dark text on primary bg */
+    padding: 0.6rem 1.2rem; /* Adjust padding as needed */
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.9rem; /* Slightly smaller for multiple buttons */
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    flex-grow: 0; /* Don't allow buttons to grow excessively */
+    flex-shrink: 0;
+}
+
+.external-link-button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    color: var(--background);
+}
+
+/* Optional: Add icons using pseudo-elements (requires Font Awesome setup) */
+/* Example for Instagram */
+.external-link-button.link-instagram::before {
+    font-family: "Font Awesome 6 Brands"; /* Use Brands style */
+    content: "\f16d"; /* Instagram icon unicode */
+    margin-right: 0.5em;
+    font-weight: normal; /* Use normal weight for brand icons */
+}
+/* Example for TikTok */
+.external-link-button.link-tiktok::before {
+    font-family: "Font Awesome 6 Brands";
+    content: "\e07b"; /* TikTok icon unicode */
+    margin-right: 0.5em;
+    font-weight: normal;
+}
+/* Example for SoundCloud */
+.external-link-button.link-soundcloud::before {
+    font-family: "Font Awesome 6 Brands";
+    content: "\f1be"; /* SoundCloud icon unicode */
+    margin-right: 0.5em;
+    font-weight: normal;
+}
+/* Add more rules for other platforms (e.g., link-spotify, link-youtube) */

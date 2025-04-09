@@ -406,7 +406,19 @@
     "category": "cover",
     "folder": "projects/jujutsu-kaisen-piano/",
     "title": "Jujutsu Kaisen II - Piano Cover",
-    "showVideo": true,
+    "showVideo": false, 
+    "externalLinks": [ 
+      {
+        "platform": "instagram", 
+        "url": "https://www.instagram.com/gu.re.mi/reel/Cz9SIaDiBP6/",
+        "label": "View on Instagram" 
+      },
+      {
+        "platform": "tiktok",
+        "url": "https://www.tiktok.com/@gu_re_mi/video/7304997961606466848",
+        "label": "Watch on TikTok"
+      }
+    ],
     "thumbnails": [
       "projects/jujutsu-kaisen-piano/thumbnail.jpg"
     ],
@@ -426,12 +438,25 @@
     "short_description": "Live piano cover of a poignant soundtrack piece from Jujutsu Kaisen Season II.",
     "audioFiles": []
   },
+  
   {
     "id": "kizumonogatari-bad-bully",
     "category": "cover",
     "folder": "projects/kizumonogatari-bad-bully/",
     "title": "Kizumonogatari - Bad Bully Cover",
-    "showVideo": true,
+    "showVideo": false, 
+    "externalLinks": [ 
+      {
+        "platform": "instagram", 
+        "url": "https://www.instagram.com/gu.re.mi/reel/C0hgpU9L3V3/",
+        "label": "View on Instagram" 
+      },
+      {
+        "platform": "tiktok",
+        "url": "https://www.tiktok.com/@gu_re_mi/video/7309770784505990432",
+        "label": "Watch on TikTok"
+      }
+    ],
     "thumbnails": [
       "projects/kizumonogatari-bad-bully/thumbnail.jpg"
     ],
@@ -452,12 +477,25 @@
     "short_description": "Live keyboard and piano cover of the 'Bad Bully' theme from Kizumonogatari.",
     "audioFiles": []
   },
+  
   {
     "id": "tatsuya-kitani-scar",
     "category": "cover",
     "folder": "projects/tatsuya-kitani-scar/",
     "title": "Tatsuya Kitani - Scar (Piano Cover)",
-    "showVideo": true,
+    "showVideo": false, 
+    "externalLinks": [ 
+      {
+        "platform": "instagram", 
+        "url": "https://www.instagram.com/gu.re.mi/reel/Cz9cbmfrTIA/",
+        "label": "View on Instagram" 
+      },
+      {
+        "platform": "tiktok",
+        "url": "https://www.tiktok.com/@gu_re_mi/video/7302044656152349984",
+        "label": "Watch on TikTok"
+      }
+    ],
     "thumbnails": [
       "projects/tatsuya-kitani-scar/thumbnail.jpg"
     ],
@@ -477,12 +515,25 @@
     "short_description": "Live piano cover arrangement of Tatsuya Kitani's song 'Scar'.",
     "audioFiles": []
   },
+  
   {
     "id": "kk-slider-piranha",
     "category": "cover",
     "folder": "projects/kk-slider-piranha/",
     "title": "KK Slider - Piranha Plant Lullaby Cover",
-    "showVideo": true,
+    "showVideo": false, 
+    "externalLinks": [ 
+      {
+        "platform": "instagram", 
+        "url": "https://www.instagram.com/gu.re.mi/reel/C0RGjDlCuPm/",
+        "label": "View on Instagram" 
+      },
+      {
+        "platform": "tiktok",
+        "url": "https://www.tiktok.com/@gu_re_mi/video/7307307521700580640?is_from_webapp=1&sender_device=pc&web_id=7397764505310807585",
+        "label": "Watch on TikTok"
+      }
+    ],
     "thumbnails": [
       "projects/kk-slider-piranha/thumbnail.jpg"
     ],

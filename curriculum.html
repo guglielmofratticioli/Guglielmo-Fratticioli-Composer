@@ -34,27 +34,53 @@
 
         /* Header Styles */
         header {
-            text-align: center;
+           /* text-align: center; */ /* Align text left now */
             margin-bottom: 40px;
             border-bottom: 1px solid #e0e0e0;
             padding-bottom: 20px;
+            overflow: auto; /* Clear float */
         }
 
+        #profile-pic {
+            float: left;
+            width: 120px; /* Adjust size as needed */
+            height: 120px;
+            border-radius: 50%; /* Make it circular */
+            object-fit: cover; /* Crop image to fit circle */
+            margin-right: 30px;
+            margin-bottom: 15px;
+            border: 3px solid #eee; /* Optional subtle border */
+        }
+
+        .header-content {
+             overflow: hidden; /* Contain text content */
+             text-align: left;
+        }
+
+
         header h1 {
-            font-size: 2.8em;
+            font-size: 2.6em; /* Slightly smaller to fit next to pic */
             margin-bottom: 10px;
             color: #2c3e50; /* Dark blue-grey */
             font-weight: 700;
+            margin-top: 5px; /* Adjust vertical alignment */
         }
 
         .contact-info {
             font-size: 0.95em;
             color: #555;
+            margin-top: 5px;
         }
 
         .contact-info span {
-            margin: 0 8px;
+            margin: 0 5px;
+             display: inline-block; /* Keep inline */
+             margin-bottom: 3px; /* Add spacing if they wrap */
         }
+        .contact-info span:first-child {
+             margin-left: 0;
+        }
+
 
         .contact-info a {
             color: #3498db; /* Professional blue */
@@ -150,6 +176,9 @@
             margin-top: 5px;
             color: #555;
         }
+         .thesis li { /* Styling for thesis bullet points */
+            margin-bottom: 4px;
+        }
 
         #experience p { /* Description in experience */
             font-size: 0.95em;
@@ -190,20 +219,35 @@
 
         /* Projects Section */
         #projects .project-item {
-            margin-bottom: 25px;
-            padding-bottom: 15px;
+            margin-bottom: 30px; /* Increased spacing */
+            padding-bottom: 20px;
             border-bottom: 1px dashed #e0e0e0; /* Separator */
+            overflow: auto; /* Clear float for the image */
         }
         #projects .project-item:last-child {
             border-bottom: none; /* No border for the last item */
              margin-bottom: 0;
         }
 
+        .project-image {
+            float: left;
+            width: 70px; /* Square image size */
+            height: 70px;
+            object-fit: cover; /* Crop to fit square */
+            margin-right: 20px;
+            margin-bottom: 10px;
+            border-radius: 6px; /* Slightly rounded corners */
+             border: 1px solid #ddd; /* Optional subtle border */
+        }
+
+        .project-content {
+             overflow: hidden; /* To contain text next to floated image */
+        }
 
         #projects h3 {
             font-size: 1.3em;
             color: #2c3e50;
-            margin-bottom: 8px;
+            margin-bottom: 5px; /* Reduced margin */
             font-weight: 700;
         }
 
@@ -225,7 +269,7 @@
 
 
         #projects ul {
-            list-style: none; /* Changed to none for cleaner look */
+            list-style: none;
             padding-left: 15px; /* Indentation */
             margin-top: 8px;
         }
@@ -276,14 +320,24 @@
         }
 
 
-        /* Responsive Adjustments (Basic Example) */
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .cv-container {
                 padding: 25px;
             }
 
+            header {
+                text-align: left; /* Align left on medium screens too */
+            }
+
             header h1 {
                 font-size: 2.2em;
+            }
+
+            #profile-pic {
+                width: 100px;
+                height: 100px;
+                margin-right: 20px;
             }
 
             section h2 {
@@ -291,18 +345,24 @@
             }
 
             #skills .skills-grid {
-                grid-template-columns: 1fr; /* Stack skills on smaller screens */
+                grid-template-columns: 1fr; /* Stack skills */
             }
 
             .item-header {
-                /* Removed flex-direction change to keep title and date closer */
                  align-items: flex-start;
             }
             .date {
-                margin-top: 0px; /* Reset margin if needed */
-                 margin-left: auto; /* Push date to the right if space allows */
-                 padding-left: 10px; /* Add some space */
+                 margin-left: auto;
+                 padding-left: 10px;
             }
+             .project-image {
+                 width: 60px;
+                 height: 60px;
+                 margin-right: 15px;
+             }
+             #projects h3 {
+                 font-size: 1.2em;
+             }
         }
 
         @media (max-width: 480px) {
@@ -310,10 +370,27 @@
                 padding: 10px;
             }
             .cv-container {
-                padding: 20px;
+                padding: 15px;
             }
+
+            header {
+                 text-align: center; /* Center header content on mobile */
+            }
+
+             #profile-pic {
+                float: none; /* Stack profile pic */
+                display: block;
+                margin: 0 auto 15px auto; /* Center it */
+                width: 100px;
+                height: 100px;
+            }
+            .header-content {
+                 text-align: center;
+            }
+
              header h1 {
                 font-size: 1.8em;
+                 margin-top: 0;
             }
             .contact-info {
                 font-size: 0.9em;
@@ -331,12 +408,34 @@
              .item-header strong {
                  font-size: 1em;
              }
+             .item-header {
+                  flex-direction: column; /* Stack title and date */
+                  align-items: flex-start;
+             }
               .date {
-                 width: 100%; /* Make date take full width below title */
+                 width: 100%;
                  text-align: left;
                  margin-left: 0;
                  padding-left: 0;
                  margin-top: 3px;
+             }
+
+             .project-image {
+                 float: none; /* Stack project image */
+                 display: block;
+                 margin: 0 auto 10px auto; /* Center */
+                  width: 80px;
+                 height: 80px;
+             }
+             .project-content {
+                  text-align: center; /* Center project text */
+             }
+             #projects ul {
+                 padding-left: 0; /* Remove indent for centered text */
+                 text-align: left; /* Keep list text left-aligned */
+             }
+             #projects li {
+                 padding-left: 1.2em; /* Maintain space for bullet */
              }
         }
     </style>
@@ -344,14 +443,17 @@
 <body>
     <div class="cv-container">
         <header>
-            <h1>Guglielmo Fratticioli</h1>
-            <div class="contact-info">
-                <span>+39 377 466 3408</span> |
-                <span><a href="mailto:Guglielmo.fratticioli@gmail.com">Guglielmo.fratticioli@gmail.com</a></span> |
-                <span><a href="https://github.com/guglielmofratticioli" target="_blank" rel="noopener noreferrer">github.com/guglielmofratticioli</a></span>
-                <!-- Add LinkedIn and Portfolio links if you have them -->
-                <!-- | <span><a href="[Your LinkedIn URL]" target="_blank" rel="noopener noreferrer">LinkedIn</a></span> -->
-                <!-- | <span><a href="[Your Portfolio URL]" target="_blank" rel="noopener noreferrer">Portfolio</a></span> -->
+             <!-- !! REPLACE 'images/profile.jpg' with the actual path to your profile picture !! -->
+            <img src="images/CVProfile.jpeg" alt="Profile photo of Guglielmo Fratticioli" id="profile-pic">
+            <div class="header-content">
+                <h1>Guglielmo Fratticioli</h1>
+                <div class="contact-info">
+                    <span>+39 377 466 3408</span> |
+                    <span><a href="mailto:Guglielmo.fratticioli@gmail.com">Guglielmo.fratticioli@gmail.com</a></span> |
+                    <span><a href="https://github.com/guglielmofratticioli" target="_blank" rel="noopener noreferrer">github.com/guglielmofratticioli</a></span>
+                    <!-- | <span><a href="[Your LinkedIn URL]" target="_blank" rel="noopener noreferrer">LinkedIn</a></span> -->
+                    <!-- | <span><a href="[Your Portfolio URL]" target="_blank" rel="noopener noreferrer">Portfolio</a></span> -->
+                </div>
             </div>
         </header>
 
@@ -387,6 +489,18 @@
                         <span class="date">2018 – 2022</span>
                     </div>
                     <div class="institution">University of Florence, Italy</div>
+                     <!-- Added Bachelor Thesis Information -->
+                     <div class="thesis">
+                        <strong>Thesis:</strong> <em>Nonlinear Signal Processing: Theory and Models in view of Audio Systems Emulation</em>
+                        <ul>
+                            <li>Focused on modeling nonlinear audio systems, particularly for distortion emulation using a black-box approach.</li>
+                            <li>Presented relevant signal processing theory and demonstrated a practical modeling method (Hammerstein model identification via Sine Sweep).</li>
+                            <li>Aimed to provide an accessible explanation of advanced concepts based on cited research, including implementation and testing of the Hammerstein model.</li>
+                             <!-- Optional: Add link if the thesis PDF is available online -->
+                             <!-- <li><a href="[Link to Thesis PDF/Repo]" target="_blank" rel="noopener noreferrer">[View Thesis]</a></li> -->
+                        </ul>
+                    </div>
+                    <!-- End of Added Bachelor Thesis Information -->
                 </li>
                  <li>
                     <div class="item-header">
@@ -416,7 +530,7 @@
                     <h3>Audio / DSP</h3>
                     <ul>
                         <li><strong>Core:</strong> Digital Signal Processing, Filter Design, FFT/STFT/CQT, Synthesis Techniques, Vocoding (LPC), Acoustics</li>
-                        <li><strong>Modeling:</strong> Physical Modeling (Wave Digital Filters - WDF), Circuit Simulation</li>
+                        <li><strong>Modeling:</strong> Physical Modeling (Wave Digital Filters - WDF), Nonlinear Systems (Volterra/Hammerstein), Circuit Simulation</li>
                         <li><strong>Analysis:</strong> Music Information Retrieval (MIR), Feature Extraction, Librosa</li>
                     </ul>
                 </div>
@@ -443,70 +557,114 @@
         <section id="projects">
             <h2>Selected Projects</h2>
             <div class="project-item">
-                <h3>MambaTransfer: Raw Audio Timbre Transfer (Master's Thesis)</h3>
-                <p><a href="https://github.com/guglielmofratticioli/MambaTransfer" target="_blank" rel="noopener noreferrer">[GitHub]</a></p>
-                <ul>
-                    <li><strong>Challenge:</strong> Overcome high computational costs and latency of existing timbre transfer models while working directly with high-fidelity raw audio (48kHz).</li>
-                    <li><strong>Contribution:</strong> Designed and implemented `MambaTransfer` using Selective State Space Models (Mamba) on segmented and transposed raw audio frames.</li>
-                    <li><strong>Results:</strong> Achieved competitive FAD scores with high computational efficiency (65x real-time inference, <1GB GPU RAM). Identified frame-edge artifacts for future work.</li>
-                    <li><strong>Technologies:</strong> Python, PyTorch, Mamba/SSMs, Raw Audio Processing, FAD Evaluation.</li>
-                 </ul>
+                 <!-- !! REPLACE 'images/mamba_transfer.png' with your project image path !! -->
+                <img src="images/MambaTransfer.png" alt="MambaTransfer Project Icon" class="project-image">
+                <div class="project-content">
+                    <h3>MambaTransfer: Raw Audio Timbre Transfer (Master's Thesis)</h3>
+                    <p>
+                        <a href="https://github.com/guglielmofratticioli/MambaTransfer" target="_blank" rel="noopener noreferrer">[GitHub]</a>
+                        <a href="https://guglielmo-fratticioli.notion.site/MambaTransfer-17788a034d908005afd5dabc96d3ab03" target="_blank" rel="noopener noreferrer">[Project Page]</a>
+                    </p>
+                    <ul>
+                        <li><strong>Challenge:</strong> Overcome high computational costs and latency of existing timbre transfer models while working directly with high-fidelity raw audio (48kHz).</li>
+                        <li><strong>Contribution:</strong> Designed and implemented `MambaTransfer` using Selective State Space Models (Mamba) on segmented and transposed raw audio frames.</li>
+                        <li><strong>Results:</strong> Achieved competitive FAD scores with high computational efficiency (65x real-time inference, <1GB GPU RAM). Identified frame-edge artifacts for future work.</li>
+                        <li><strong>Technologies:</strong> Python, PyTorch, Mamba/SSMs, Raw Audio Processing, FAD Evaluation.</li>
+                    </ul>
+                </div>
             </div>
             <div class="project-item">
-                <h3>NeuVC: C++ VST Plugin for AI Voice Conversion</h3>
-                 <p><a href="https://github.com/guglielmofratticioli/NeuVC" target="_blank" rel="noopener noreferrer">[GitHub]</a></p>
-                <ul>
-                    <li>Developed an offline Voice-to-Voice Conversion VST plugin using the JUCE framework.</li>
-                    <li>Integrated a pre-trained RVC model via the LibTorch C++ library for inference within the C++ plugin.</li>
-                    <li>Implemented C++ audio pipeline (loading, resampling, normalization).</li>
-                    <li><strong>Technologies:</strong> C++, JUCE, VST, LibTorch, ML Deployment, Audio DSP.</li>
-                </ul>
+                 <!-- !! REPLACE 'images/neu_vc.png' with your project image path !! -->
+                 <img src="images/NeuVC.png" alt="NeuVC Project Icon" class="project-image">
+                 <div class="project-content">
+                    <h3>NeuVC: C++ VST Plugin for AI Voice Conversion</h3>
+                    <p>
+                        <a href="https://github.com/guglielmofratticioli/NeuVC" target="_blank" rel="noopener noreferrer">[GitHub]</a>
+                        <a href="https://guglielmo-fratticioli.notion.site/Singing-Voice-Conversion-C-17788a034d90803a8879c8b0dfff6dd8?pvs=74" target="_blank" rel="noopener noreferrer">[Project Page]</a>
+                    </p>
+                    <ul>
+                        <li>Developed an offline Voice-to-Voice Conversion VST plugin using the JUCE framework.</li>
+                        <li>Integrated a pre-trained RVC model via the LibTorch C++ library for inference within the C++ plugin.</li>
+                        <li>Implemented C++ audio pipeline (loading, resampling, normalization).</li>
+                        <li><strong>Technologies:</strong> C++, JUCE, VST, LibTorch, ML Deployment, Audio DSP.</li>
+                    </ul>
+                </div>
             </div>
              <div class="project-item">
-                <h3>Zenynth: Web-Based Synthesizer</h3>
-                 <p>
-                     <a href="https://github.com/guglielmofratticioli/zenyth" target="_blank" rel="noopener noreferrer">[GitHub]</a> |
-                     <a href="https://eliapirrello.github.io/zenyth/" target="_blank" rel="noopener noreferrer">[Demo]</a>
-                 </p>
-                <ul>
-                    <li>Led UI/UX design and frontend development (Vue.js) for a collaborative web synthesizer.</li>
-                    <li>Used Tone.js (Web Audio API) for the audio engine (oscillators, filters, FX matrix, modulation).</li>
-                    <li><strong>Technologies:</strong> Vue.js, JavaScript, Tone.js, Web Audio API, HTML, CSS, UI/UX Design.</li>
-                </ul>
+                 <!-- !! REPLACE 'images/zenynth.png' with your project image path !! -->
+                 <img src="images/Zenynth.png" alt="Zenynth Project Icon" class="project-image">
+                 <div class="project-content">
+                    <h3>Zenynth: Web-Based Synthesizer</h3>
+                    <p>
+                        <a href="https://github.com/guglielmofratticioli/zenyth" target="_blank" rel="noopener noreferrer">[GitHub]</a> |
+                        <a href="https://eliapirrello.github.io/zenyth/" target="_blank" rel="noopener noreferrer">[Demo]</a>
+                        <a href="https://www.notion.so/guglielmo-fratticioli/Zenynth-Web-based-Synthesizer-17788a034d90804cbddfdeeb88578d31" target="_blank" rel="noopener noreferrer">[Project Page]</a>
+                    </p>
+                    <ul>
+                        <li>Led UI/UX design and frontend development (Vue.js) for a collaborative web synthesizer.</li>
+                        <li>Used Tone.js (Web Audio API) for the audio engine (oscillators, filters, FX matrix, modulation).</li>
+                        <li><strong>Technologies:</strong> Vue.js, JavaScript, Tone.js, Web Audio API, HTML, CSS, UI/UX Design.</li>
+                    </ul>
+                </div>
             </div>
             <div class="project-item">
-                <h3>Circuit Modeling with Wave Digital Filters (WDF)</h3>
-                 <!-- <p><a href="[GitHub Link]" target="_blank" rel="noopener noreferrer">[GitHub]</a></p> -->
-                <ul>
-                    <li>Applied WDF theory to model and simulate a 3-band passive crossover network in MATLAB/Python.</li>
-                    <li>Implemented digital representations of RLC components and connection structures.</li>
-                    <li><strong>Technologies:</strong> MATLAB/Python, DSP, Wave Digital Filters, Physical Modeling, Circuit Simulation.</li>
-                </ul>
+                 <!-- !! REPLACE 'images/wdf_circuit.png' with your project image path !! -->
+                 <img src="images/WDF_Crossover.png" alt="WDF Circuit Modeling Icon" class="project-image">
+                 <div class="project-content">
+                    <h3>Circuit Modeling with Wave Digital Filters (WDF)</h3>
+                    <p>
+                        <a href="https://guglielmo-fratticioli.notion.site/Crossover-circuit-modeled-with-WDF-theory-17688a034d9080aab763f1432583e730" target="_blank" rel="noopener noreferrer">[Project Page]</a>
+                    </p>                    
+                    <ul>
+                        <li>Applied WDF theory to model and simulate a 3-band passive crossover network in MATLAB/Python.</li>
+                        <li>Implemented digital representations of RLC components and connection structures.</li>
+                        <li><strong>Technologies:</strong> MATLAB/Python, DSP, Wave Digital Filters, Physical Modeling, Circuit Simulation.</li>
+                    </ul>
+                 </div>
             </div>
              <div class="project-item">
-                <h3>LPC Cross-Synthesis (Vocoding)</h3>
-                 <!-- <p><a href="[GitHub Link]" target="_blank" rel="noopener noreferrer">[GitHub]</a></p> -->
-                <ul>
-                    <li>Implemented the classic LPC vocoding algorithm in Python for cross-synthesis effects.</li>
-                     <li><strong>Technologies:</strong> Python, DSP, LPC, Vocoding, Audio Effects, NumPy.</li>
-                </ul>
+                 <!-- !! REPLACE 'images/lpc_vocoder.png' with your project image path !! -->
+                 <img src="images/LPC.png" alt="LPC Vocoder Icon" class="project-image">
+                 <div class="project-content">
+                    <h3>LPC Cross-Synthesis (Vocoding)</h3>
+                    <p>
+                        <a href="https://guglielmo-fratticioli.notion.site/LPC-cross-synthesis-Vocoding-17688a034d90808e9d13c3102735b8e3" target="_blank" rel="noopener noreferrer">[Project Page]</a>
+                    </p>                      
+                    <ul>
+                        <li>Implemented the classic LPC vocoding algorithm in Python for cross-synthesis effects.</li>
+                         <li><strong>Technologies:</strong> Python, DSP, LPC, Vocoding, Audio Effects, NumPy.</li>
+                    </ul>
+                 </div>
             </div>
              <div class="project-item">
-                <h3>Votech: Web UI for VST Project</h3>
-                <ul>
-                    <li>Designed and integrated a custom HTML/CSS/JavaScript UI into a C++ VST project.</li>
-                    <li><strong>Technologies:</strong> HTML, CSS, JavaScript, C++/Web Integration, VST UI.</li>
-                </ul>
+                  <!-- !! REPLACE 'images/votech_ui.png' with your project image path !! -->
+                 <img src="images/Votech.png" alt="Votech UI Icon" class="project-image">
+                 <div class="project-content">
+                    <h3>Votech: Web UI for VST Project</h3>
+                    <p>
+                        <a href="https://www.notion.so/guglielmo-fratticioli/Votech-Project-17788a034d9080a89c77cc6b9ef69356" target="_blank" rel="noopener noreferrer">[Project Page]</a>
+                    </p> 
+                    <ul>
+                        <li>Designed and integrated a custom HTML/CSS/JavaScript UI into a C++ VST project.</li>
+                        <li><strong>Technologies:</strong> HTML, CSS, JavaScript, C++/Web Integration, VST UI.</li>
+                    </ul>
+                 </div>
             </div>
              <div class="project-item">
-                <h3>DJ Vs Zombies: Unity Mobile Game</h3>
-                 <!-- <p><a href="[Itch.io Link]" target="_blank" rel="noopener noreferrer">[Itch.io]</a></p> -->
-                 <ul>
-                    <li>Contributed to mobile Tower Defense game development using Unity and C#.</li>
-                     <li><strong>Technologies:</strong> Unity, C# (implied), Game Development.</li>
-                </ul>
+                  <!-- !! REPLACE 'images/dj_zombies.png' with your project image path !! -->
+                 <img src="images/DJVsZombies.png" alt="DJ Vs Zombies Icon" class="project-image">
+                 <div class="project-content">
+                    <h3>DJ Vs Zombies: Unity Mobile Game</h3>
+                    <p>
+                        <a href="https://www.notion.so/guglielmo-fratticioli/DJ-Vs-Zombies-Unity-17788a034d9080e6b3a7cae34f1df527" rel="noopener noreferrer">[Project Page]</a>
+                        <a href="https://polimi-game-collective.itch.io/dj-vs-zombies" rel="noopener noreferrer">[Itch.io]</a>
+                    </p>                      
+                    <ul>
+                        <li>Contributed to mobile Tower Defense game development using Unity and C#.</li>
+                         <li><strong>Technologies:</strong> Unity, C# (implied), Game Development.</li>
+                    </ul>
+                 </div>
             </div>
-            <!-- Add other projects similarly -->
         </section>
 
         <section id="experience">

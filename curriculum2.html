@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guglielmo Fratticioli - Portfolio</title>
+    <!-- Modern Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Icons (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Basic Reset & Modern Body Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            /* Define CSS Variables for easier theme management */
+            --primary-color: #087ea4; /* Modern Teal/Blue */
+            --secondary-color: #2c3e50; /* Dark Blue-Grey (kept for some elements) */
+            --text-color: #343a40; /* Darker Grey for better readability */
+            --light-text-color: #6c757d; /* Lighter grey for secondary text */
+            --background-light: #f8f9fa; /* Light grey page background */
+            --background-white: #ffffff; /* White container background */
+            --border-color: #dee2e6; /* Subtle border color */
+            --font-primary: 'Poppins', sans-serif;
+            --transition-speed: 0.3s;
+        }
+
+        html {
+             scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.7; /* Slightly increased line-height */
+            color: var(--text-color);
+            background-color: var(--background-light);
+            padding: 20px;
+            font-size: 16px; /* Base font size */
+        }
+
+        .cv-container {
+            max-width: 1000px; /* Slightly wider */
+            margin: 30px auto;
+            background-color: var(--background-white);
+            padding: 50px 60px; /* More padding */
+            border-radius: 12px; /* Slightly more rounded */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Softer shadow */
+        }
+
+        /* Header Styles - Using Flexbox */
+        header {
+            display: flex;
+            align-items: center; /* Vertically align items */
+            gap: 35px; /* Space between image and text */
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        #profile-pic {
+            width: 140px; /* Slightly larger */
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--background-light); /* Subtle border */
+            flex-shrink: 0; /* Prevent image from shrinking */
+        }
+
+        .header-content {
+             flex-grow: 1; /* Allow text content to take remaining space */
+        }
+
+        header h1 {
+            font-size: 2.8em; /* Larger */
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .contact-info {
+            font-size: 0.95em;
+            color: var(--light-text-color);
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping */
+            gap: 8px 15px; /* Row and column gap */
+        }
+
+        .contact-info span {
+            display: inline-flex; /* Use flex for icon alignment */
+            align-items: center;
+            gap: 6px; /* Space between icon and text */
+        }
+        .contact-info span i { /* Icon styling */
+            color: var(--primary-color);
+            font-size: 1.1em;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color var(--transition-speed) ease, text-decoration var(--transition-speed) ease;
+        }
+
+        .contact-info a:hover,
+        .contact-info a:focus {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 50px; /* Increased spacing */
+        }
+        section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        section h2 {
+            font-size: 1.9em; /* Increased size */
+            color: var(--primary-color);
+            margin-bottom: 30px; /* Increased spacing */
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+        }
+         /* Optional: Subtle underline effect for section titles */
+         section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            opacity: 0.6;
+         }
+
+
+        /* Profile Section */
+        #profile p {
+            font-size: 1.05em;
+            color: var(--text-color);
+        }
+
+        /* Education & Experience Styles */
+        #education ul, #experience ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #education li, #experience li {
+            margin-bottom: 25px; /* Increased spacing */
+            padding: 15px 10px 15px 5px; /* Add some padding for hover effects */
+            border-radius: 6px;
+            transition: background-color var(--transition-speed) ease;
+        }
+        /* Optional: Subtle hover effect
+         #education li:hover, #experience li:hover {
+            background-color: #f8f9fa;
+         }
+        */
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+            flex-wrap: wrap; /* Allow wrapping */
+            gap: 5px 15px; /* Row and column gap */
+        }
+
+        .item-header strong {
+            font-size: 1.15em; /* Slightly larger */
+            color: var(--secondary-color);
+            font-weight: 600; /* Slightly less heavy than 700 */
+        }
+
+        .date {
+            font-size: 0.9em;
+            color: var(--light-text-color);
+            font-style: italic;
+            white-space: nowrap;
+            margin-left: auto; /* Push to the right */
+            padding-left: 15px; /* Ensure space when wrapping */
+        }
+
+        .institution {
+            font-weight: 400;
+            color: var(--light-text-color);
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        .grade {
+            font-size: 0.9em;
+            color: var(--light-text-color);
+            margin-bottom: 10px;
+        }
+
+        .thesis {
+            margin-top: 12px;
+            padding-left: 10px; /* Indent thesis details */
+            font-size: 0.95em;
+            border-left: 3px solid var(--primary-color); /* Accent border */
+            padding-left: 15px;
+            margin-left: 5px;
+        }
+
+        .thesis strong {
+             font-weight: 600;
+             color: var(--text-color);
+        }
+
+        .thesis ul {
+            list-style: disc;
+            padding-left: 25px; /* Indent bullet points */
+            margin-top: 8px;
+            color: var(--text-color);
+        }
+        .thesis li {
+            margin-bottom: 5px;
+            padding: 0; /* Reset padding from parent li */
+        }
+        .thesis li::marker { /* Style the default bullets */
+             color: var(--primary-color);
+        }
+
+        #experience p { /* Description in experience */
+            font-size: 1em;
+            color: var(--text-color);
+            margin-top: 8px;
+        }
+
+        /* Skills Section */
+        #skills .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive grid */
+            gap: 30px; /* Increased gap */
+        }
+
+        .skill-category {
+             padding: 20px;
+             background-color: #f8f9fa; /* Subtle background */
+             border-radius: 8px;
+             border: 1px solid var(--border-color);
+        }
+
+        .skill-category h3 {
+            font-size: 1.25em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .skill-category li {
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            color: var(--text-color);
+        }
+        .skill-category li strong { /* Bolded primary skills */
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+
+        /* Projects Section */
+        #projects .project-item {
+            display: flex; /* Use Flexbox */
+            align-items: flex-start; /* Align items to the top */
+            gap: 25px; /* Space between image and content */
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color); /* Subtle separator */
+        }
+        #projects .project-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .project-image {
+            width: 80px; /* Consistent size */
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px; /* Rounded corners */
+            border: 1px solid var(--border-color);
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+
+        .project-content {
+             flex-grow: 1; /* Take remaining space */
+        }
+
+        #projects h3 {
+            font-size: 1.35em;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        #projects .project-links { /* Container for links */
+            margin-bottom: 12px;
+            font-size: 0.9em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px 15px;
+        }
+
+        #projects .project-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600; /* Make links stand out */
+            transition: color var(--transition-speed) ease, text-decoration var(--transition-speed) ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px; /* Space for potential icons */
+        }
+        #projects .project-links a:hover,
+        #projects .project-links a:focus {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+         /* Add icons to project links */
+        #projects .project-links a[href*="github.com"]::before {
+            font-family: "Font Awesome 6 Brands"; /* Correct font family */
+            content: "\f09b"; /* GitHub icon */
+            margin-right: 4px;
+        }
+        #projects .project-links a:not([href*="github.com"])::before { /* Generic link icon */
+             font-family: "Font Awesome 6 Free";
+             font-weight: 900;
+             content: "\f0c1"; /* Link icon */
+             margin-right: 4px;
+        }
+
+
+        #projects ul {
+            list-style: none; /* Remove default */
+            padding-left: 5px; /* Base indentation */
+            margin-top: 10px;
+        }
+
+        #projects li {
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            color: var(--text-color);
+            position: relative;
+            padding-left: 20px; /* Space for custom bullet */
+        }
+        #projects li::before {
+            content: '▹'; /* Modern bullet */
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: -2px; /* Adjust vertical alignment */
+            font-size: 1.2em;
+        }
+
+        #projects li strong { /* Tech keywords */
+            font-weight: 600;
+            color: var(--secondary-color);
+            background-color: #e9ecef; /* Subtle highlight for tech keywords */
+            padding: 1px 4px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+
+        /* Artistic Skills */
+        #artistic-skills ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        #artistic-skills li {
+            margin-bottom: 8px;
+            font-size: 1em;
+            color: var(--text-color);
+            position: relative;
+            padding-left: 20px;
+        }
+        #artistic-skills li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 1px; /* Adjust alignment */
+        }
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .cv-container {
+                padding: 30px 30px; /* Adjust padding */
+            }
+
+            header {
+                flex-direction: column; /* Stack header items */
+                text-align: center;
+                gap: 20px;
+            }
+
+            #profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+
+             header h1 {
+                 font-size: 2.4em;
+             }
+              .contact-info {
+                justify-content: center; /* Center contact links */
+                font-size: 0.9em;
+             }
+
+
+            section h2 {
+                font-size: 1.7em;
+            }
+
+            #skills .skills-grid {
+                grid-template-columns: 1fr; /* Stack skills */
+                gap: 20px;
+            }
+
+            .item-header {
+                 flex-direction: column; /* Stack item header */
+                 align-items: flex-start;
+                 gap: 2px;
+            }
+            .date {
+                 margin-left: 0; /* Reset margin */
+                 padding-left: 0;
+                 width: 100%; /* Take full width */
+                 text-align: left;
+            }
+            #projects .project-item {
+                 flex-direction: column; /* Stack project image and content */
+                 align-items: center; /* Center items */
+                 text-align: center;
+                 gap: 15px;
+             }
+             .project-content {
+                 text-align: left; /* Keep text left-aligned */
+             }
+             #projects ul {
+                 padding-left: 5px; /* Adjust indentation */
+                 display: inline-block; /* Keep centered block left aligned */
+                 text-align: left;
+             }
+        }
+
+        @media (max-width: 480px) {
+             body {
+                padding: 10px;
+                font-size: 15px; /* Slightly smaller base font */
+            }
+            .cv-container {
+                padding: 25px 20px; /* Less padding on small screens */
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+             #profile-pic {
+                width: 100px;
+                height: 100px;
+            }
+            .contact-info span {
+                font-size: 0.9em; /* Ensure readability */
+             }
+             .contact-info {
+                gap: 5px 10px; /* Reduce gap */
+             }
+
+             section h2 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+             section h2::after { /* Smaller underline */
+                 width: 40px;
+                 height: 2px;
+             }
+
+             #profile p {
+                 font-size: 1em;
+             }
+
+             .item-header strong {
+                 font-size: 1.1em;
+             }
+
+             #projects h3 {
+                 font-size: 1.2em;
+             }
+             #projects li {
+                 font-size: 0.9em;
+             }
+             .project-image {
+                 width: 70px;
+                 height: 70px;
+             }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <header>
+            <!-- !! REPLACE 'images/profile.jpg' with your actual profile picture path !! -->
+            <img src="images/CVProfile.jpeg" alt="Profile photo of Guglielmo Fratticioli" id="profile-pic">
+            <div class="header-content">
+                <h1>Guglielmo Fratticioli</h1>
+                <div class="contact-info">
+                    <!-- Added Font Awesome Icons -->
+                    <span><i class="fas fa-phone"></i> +39 377 466 3408</span>
+                    <span><i class="fas fa-envelope"></i> <a href="mailto:Guglielmo.fratticioli@gmail.com">Guglielmo.fratticioli@gmail.com</a></span>
+                    <span><i class="fab fa-github"></i> <a href="https://github.com/guglielmofratticioli" target="_blank" rel="noopener noreferrer">github.com/guglielmofratticioli</a></span>
+                    <!-- Example Links (Uncomment and fill if needed)
+                    <span><i class="fab fa-linkedin"></i> <a href="[Your LinkedIn URL]" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></span>
+                    <span><i class="fas fa-globe"></i> <a href="[Your Portfolio URL]" target="_blank" rel="noopener noreferrer">Personal Website</a></span>
+                     -->
+                </div>
+            </div>
+        </header>
+
+        <section id="profile">
+            <h2>Profile</h2>
+            <p>
+                Highly motivated Music & Acoustic Engineer (Master Degree at Politecnico di Milano, 107/110) with a strong foundation in Computer Engineering. Passionate about recent audio technologies, specializing in the application of machine learning (State Space Models, RVC), digital signal processing, and software engineering (C++, Python, JUCE) to audio synthesis, VST development, and physical modeling. Proven ability to conduct research, develop novel architectures (MambaTransfer), and implement complex audio systems from low-level DSP to interactive web applications. Seeking innovative roles in Audio Software Engineering, Machine Learning for Audio R&D, or VST/Plugin Development.
+            </p>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <ul>
+                <li>
+                    <div class="item-header">
+                        <strong>Master's Degree in Music and Acoustic Engineering (EN)</strong>
+                        <span class="date">2022 – 2024</span>
+                    </div>
+                    <div class="institution">Politecnico di Milano, Italy</div>
+                    <div class="grade">Final Grade: 107/110</div>
+                    <div class="thesis">
+                        <strong>Thesis:</strong> <em>MambaTransfer: Raw Audio Musical Timbre Transfer using Selective State-Space Models</em>
+                        <ul>
+                            <li>Developed a novel architecture for timbre transfer operating directly on 48kHz raw audio waveforms using Mamba (SSM).</li>
+                            <li>Introduced an innovative input strategy involving audio segmentation and transposition for feeding raw audio into the Mamba model.</li>
+                            <li>Achieved competitive FAD scores compared to baselines (outperforming Universal Network), with significant computational advantages: <1GB GPU memory usage, <24hr training time, and 65x real-time inference speed on consumer hardware.</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-header">
+                        <strong>Bachelor's Degree in Computer Engineering</strong>
+                        <span class="date">2018 – 2022</span>
+                    </div>
+                    <div class="institution">University of Florence, Italy</div>
+                     <div class="thesis">
+                        <strong>Thesis:</strong> <em>Nonlinear Signal Processing: Theory and Models in view of Audio Systems Emulation</em>
+                        <ul>
+                            <li>Focused on modeling nonlinear audio systems, particularly for distortion emulation using a black-box approach.</li>
+                            <li>Presented relevant signal processing theory and demonstrated a practical modeling method (Hammerstein model identification via Sine Sweep).</li>
+                            <li>Aimed to provide an accessible explanation of advanced concepts based on cited research, including implementation and testing of the Hammerstein model.</li>
+                             <!-- Optional: Add link if the thesis PDF is available online
+                             <li><a href="[Link to Thesis PDF/Repo]" target="_blank" rel="noopener noreferrer">[View Thesis]</a></li>
+                             -->
+                        </ul>
+                    </div>
+                </li>
+                 <li>
+                    <div class="item-header">
+                        <strong>Certifications</strong>
+                    </div>
+                     <div class="institution">TOEFL English Certified | Basic knowledge of French language</div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li><strong>Python</strong></li>
+                        <li><strong>C++</strong></li>
+                        <li>MATLAB</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>HTML5, CSS3</li>
+                        <li>Java</li>
+                        <li>GLSL (Basic)</li>
+                    </ul>
+                </div>
+                 <div class="skill-category">
+                    <h3>Audio / DSP</h3>
+                    <ul>
+                        <li><strong>Core:</strong> Digital Signal Processing, Filter Design, FFT/STFT/CQT, Synthesis Techniques, Vocoding (LPC), Acoustics</li>
+                        <li><strong>Modeling:</strong> Physical Modeling (Wave Digital Filters - WDF), Nonlinear Systems (Volterra/Hammerstein), Circuit Simulation</li>
+                        <li><strong>Analysis:</strong> Music Information Retrieval (MIR), Feature Extraction, Librosa</li>
+                    </ul>
+                </div>
+                 <div class="skill-category">
+                    <h3>Machine Learning for Audio</h3>
+                    <ul>
+                        <li><strong>Frameworks:</strong> PyTorch, LibTorch (C++)</li>
+                        <li><strong>Architectures:</strong> State Space Models (Mamba, S4), RVC, Diffusion Models (Concept), GANs/VAEs (Concept)</li>
+                        <li><strong>Applications:</strong> Timbre Transfer, Voice Conversion, Raw Audio Generation</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Software & Tools</h3>
+                    <ul>
+                         <li><strong>Audio Dev:</strong> JUCE Framework, VST Development</li>
+                         <li><strong>Web:</strong> Vue.js, Tone.js (Web Audio)</li>
+                         <li><strong>Interactive:</strong> Unity (C#), TouchDesigner</li>
+                         <li><strong>General:</strong> Git, Microsoft Office, Excel, .NET, NumPy, SciPy</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="artistic-skills">
+            <h2>Artistic Skills</h2>
+            <ul>
+                <li>Composition, Electronic Music Production, Advanced Piano Skills</li>
+                <li>Proficiency: Bitwig Studio, Ableton Live, Musescore, FinalCut Pro, TouchDesigner</li>
+            </ul>
+        </section>
+
+        <section id="experience">
+            <h2>Work Experience</h2>
+             <ul>
+                <li>
+                    <div class="item-header">
+                        <strong>External R&D Collaborator</strong>
+                        <span class="date">2023</span>
+                    </div>
+                    <div class="institution">Musico (Generative Music AI Startup)</div>
+                     <p>Contributed to R&D activities related to generative music AI.</p>
+                </li>
+                 <li>
+                    <div class="item-header">
+                        <strong>Freelance Music Producer/Seller (Level One Seller)</strong>
+                        <span class="date">2024 – Present</span>
+                    </div>
+                    <div class="institution">Fiverr</div>
+                     <p>Provided composition and electronic music production services.</p>
+                </li>
+            </ul>
+        </section>
+
+
+
+        <section id="projects">
+            <h2>Selected Projects</h2>
+            <div class="project-item">
+                 <!-- !! REPLACE 'images/mamba_transfer.jpg' with your project image path !! -->
+                <img src="images/MambaTransfer.jpg" alt="MambaTransfer Project Icon" class="project-image">
+                <div class="project-content">
+                    <h3>MambaTransfer: Raw Audio Timbre Transfer (Master's Thesis)</h3>
+                    <div class="project-links"> <!-- Wrap links -->
+                        <a href="https://github.com/guglielmofratticioli/MambaTransfer" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://guglielmo-fratticioli.notion.site/MambaTransfer-17788a034d908005afd5dabc96d3ab03" target="_blank" rel="noopener noreferrer">Project Page</a>
+                    </div>
+                    <ul>
+                        <li><strong>Challenge:</strong> Overcome high computational costs and latency of existing timbre transfer models while working directly with high-fidelity raw audio (48kHz).</li>
+                        <li><strong>Contribution:</strong> Designed and implemented `MambaTransfer` using Selective State Space Models (Mamba) on segmented and transposed raw audio frames.</li>
+                        <li><strong>Results:</strong> Achieved competitive FAD scores with high computational efficiency (65x real-time inference, <1GB GPU RAM). Identified frame-edge artifacts for future work.</li>
+                        <li><strong>Technologies:</strong> <strong>Python</strong>, <strong>PyTorch</strong>, <strong>Mamba/SSMs</strong>, Raw Audio Processing, FAD Evaluation.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="project-item">
+                 <!-- !! REPLACE 'images/neu_vc.jpg' with your project image path !! -->
+                 <img src="images/NeuVC.jpg" alt="NeuVC Project Icon" class="project-image">
+                 <div class="project-content">
+                    <h3>NeuVC: C++ VST Plugin for AI Voice Conversion</h3>
+                    <div class="project-links">
+                        <a href="https://github.com/guglielmofratticioli/NeuVC" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://guglielmo-fratticioli.notion.site/Singing-Voice-Conversion-C-17788a034d90803a8879c8b0dfff6dd8?pvs=74" target="_blank" rel="noopener noreferrer">Project Page</a>
+                    </div>
+                    <ul>
+                        <li>Developed an offline Voice-to-Voice Conversion VST plugin using the JUCE framework.</li>
+                        <li>Integrated a pre-trained RVC model via the LibTorch C++ library for inference within the C++ plugin.</li>
+                        <li>Implemented C++ audio pipeline (loading, resampling, normalization).</li>
+                        <li><strong>Technologies:</strong> <strong>C++</strong>, <strong>JUCE</strong>, <strong>VST</strong>, <strong>LibTorch</strong>, ML Deployment, Audio DSP.</li>
+                    </ul>
+                </div>
+            </div>
+             <div class="project-item">
+                 <!-- !! REPLACE 'images/zenynth.jpg' with your project image path !! -->
+                 <img src="images/Zenynth.jpg" alt="Zenynth Project Icon" class="project-image">
+                 <div class="project-content">
+                    <h3>Zenynth: Web-Based Synthesizer</h3>
+                     <div class="project-links">
+                        <a href="https://github.com/guglielmofratticioli/zenyth" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://eliapirrello.github.io/zenyth/" target="_blank" rel="noopener noreferrer">Demo</a>
+                        <a href="https://www.notion.so/guglielmo-fratticioli/Zenynth-Web-based-Synthesizer-17788a034d90804cbddfdeeb88578d31" target="_blank" rel="noopener noreferrer">Project Page</a>
+                    </div>
+                    <ul>
+                        <li>Led UI/UX design and frontend development (Vue.js) for a collaborative web synthesizer.</li>
+                        <li>Used Tone.js (Web Audio API) for the audio engine (oscillators, filters, FX matrix, modulation).</li>
+                        <li><strong>Technologies:</strong> <strong>Vue.js</strong>, <strong>JavaScript</strong>, <strong>Tone.js</strong>, Web Audio API, HTML, CSS, UI/UX Design.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="project-item">
+                 <!-- !! REPLACE 'images/wdf_circuit.jpg' with your project image path !! -->
+                 <img src="images/WDF_Crossover.jpg" alt="WDF Circuit Modeling Icon" class="project-image">
+                 <div class="project-content">
+                    <h3>Circuit Modeling with Wave Digital Filters (WDF)</h3>
+                    <div class="project-links">
+                        <a href="https://guglielmo-fratticioli.notion.site/Crossover-circuit-modeled-with-WDF-theory-17688a034d9080aab763f1432583e730" target="_blank" rel="noopener noreferrer">Project Page</a>
+                    </div>
+                    <ul>
+                        <li>Applied WDF theory to model and simulate a 3-band passive crossover network in MATLAB/Python.</li>
+                        <li>Implemented digital representations of RLC components and connection structures.</li>
+                        <li><strong>Technologies:</strong> <strong>MATLAB/Python</strong>, DSP, <strong>Wave Digital Filters</strong>, Physical Modeling, Circuit Simulation.</li>
+                    </ul>
+                 </div>
+            </div>
+             <div class="project-item">
+                 <!-- !! REPLACE 'images/lpc_vocoder.jpg' with your project image path !! -->
+                 <img src="images/LPC.jpg" alt="LPC Vocoder Icon" class="project-image">
+                 <div class="project-content">
+                    <h3>LPC Cross-Synthesis (Vocoding)</h3>
+                     <div class="project-links">
+                        <a href="https://guglielmo-fratticioli.notion.site/LPC-cross-synthesis-Vocoding-17688a034d90808e9d13c3102735b8e3" target="_blank" rel="noopener noreferrer">Project Page</a>
+                    </div>
+                    <ul>
+                        <li>Implemented the classic LPC vocoding algorithm in Python for cross-synthesis effects.</li>
+                         <li><strong>Technologies:</strong> <strong>Python</strong>, DSP, <strong>LPC</strong>, Vocoding, Audio Effects, <strong>NumPy</strong>.</li>
+                    </ul>
+                 </div>
+            </div>
+             <div class="project-item">
+                  <!-- !! REPLACE 'images/votech_ui.jpg' with your project image path !! -->
+                 <img src="images/Votech.jpg" alt="Votech UI Icon" class="project-image">
+                 <div class="project-content">
+                    <h3>Votech: Web UI for VST Project</h3>
+                    <div class="project-links">
+                        <a href="https://www.notion.so/guglielmo-fratticioli/Votech-Project-17788a034d9080a89c77cc6b9ef69356" target="_blank" rel="noopener noreferrer">Project Page</a>
+                    </div>
+                    <ul>
+                        <li>Designed and integrated a custom HTML/CSS/JavaScript UI into a C++ VST project.</li>
+                        <li><strong>Technologies:</strong> <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, C++/Web Integration, VST UI.</li>
+                    </ul>
+                 </div>
+            </div>
+             <div class="project-item">
+                  <!-- !! REPLACE 'images/dj_zombies.jpg' with your project image path !! -->
+                 <img src="images/DJVsZombies.jpg" alt="DJ Vs Zombies Icon" class="project-image">
+                 <div class="project-content">
+                    <h3>DJ Vs Zombies: Unity Mobile Game</h3>
+                     <div class="project-links">
+                        <a href="https://www.notion.so/guglielmo-fratticioli/DJ-Vs-Zombies-Unity-17788a034d9080e6b3a7cae34f1df527" rel="noopener noreferrer">Project Page</a>
+                        <a href="https://polimi-game-collective.itch.io/dj-vs-zombies" rel="noopener noreferrer">Itch.io</a>
+                    </div>
+                    <ul>
+                        <li>Contributed to mobile Tower Defense game development using Unity and C#.</li>
+                         <li><strong>Technologies:</strong> <strong>Unity</strong>, C#, Game Development.</li>
+                    </ul>
+                 </div>
+            </div>
+        </section>
+
+       
+
+    </div> <!-- /cv-container -->
+</body>
+</html>

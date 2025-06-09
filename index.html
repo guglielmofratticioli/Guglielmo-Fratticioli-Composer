@@ -77,7 +77,6 @@
         }
 
         .cta {
-            
             font-size: 2rem;
             /* Adjust size as needed */
             color: #fff;
@@ -198,7 +197,7 @@
             background-color: #64ffda;
             color: black;
             box-shadow: #64ffda 0px 0px 10px;
-            cursor: default; 
+            cursor: default;
         }
 
         /* Right Column: Image and Scattered Animated Letters */
@@ -478,6 +477,126 @@
             }
 
         }
+
+        /* Styles for the new Selling Section */
+        .selling-section {
+            background-color: #1a1a1a;
+            /* Darker background for contrast, similar to other sections */
+            color: #ffffff;
+            padding: 4rem 2rem;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .selling-section h2 {
+            font-size: 2.8rem;
+            color: #64ffda;
+            /* Highlight color */
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .selling-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin-bottom: 1.5rem;
+            color: #e0e0e0;
+        }
+
+        .selling-section p strong {
+            color: #64ffda;
+        }
+
+        .selling-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            max-width: 900px;
+            text-align: left;
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .selling-section ul li {
+            margin-bottom: 0.7rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .selling-section ul li::before {
+            content: '🎵'; /* Unicode musical note */
+            position: absolute;
+            left: 0;
+            color: #64ffda;
+            font-size: 1.2rem;
+            top: 0;
+        }
+
+
+        .selling-section .cta-button {
+            display: inline-block;
+            background-color: #64ffda;
+            color: #1a1a1a;
+            /* Dark text for button */
+            font-weight: bold;
+            font-size: 1.3rem;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+        }
+
+        .selling-section .cta-button:hover {
+            background-color: #55e0c5;
+            /* Slightly darker teal on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(100, 255, 218, 0.5);
+        }
+
+        /* Responsive adjustments for selling section */
+        @media (max-width: 768px) {
+            .selling-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .selling-section h2 {
+                font-size: 2rem;
+            }
+
+            .selling-section p {
+                font-size: 1rem;
+            }
+
+            .selling-section ul {
+                padding-left: 0; /* Remove default list padding */
+                text-align: center; /* Center list items on small screens */
+            }
+
+            .selling-section ul li {
+                padding-left: 0; /* Remove custom padding */
+                position: static; /* Reset position for centering */
+                margin-bottom: 0.5rem;
+            }
+
+            .selling-section ul li::before {
+                content: ''; /* Hide bullet for centering */
+            }
+
+            .selling-section .cta-button {
+                font-size: 1.1rem;
+                padding: 0.8rem 2rem;
+            }
+        }
     </style>
 
     <!-- Marked.js (Keep for Markdown) -->
@@ -488,7 +607,9 @@
 <nav class="top-nav">
     <ul>
         <li><a href="#herosec" class="nav-link">About</a></li>
-        <li><a href="#project-grid-main" class="nav-link">Projects</a></li>
+        <!-- NEW NAVIGATION LINK -->
+        <li><a href="#selling-section" class="nav-link">Services</a></li>
+        <li><a href="#portfolio-main" class="nav-link">Projects</a></li>
         <li><a href="#portfolio-covers" class="nav-link">Live Covers</a></li>
         <li><a href="#portfolio-commissions" class="nav-link">Fiverr</a></li>
     </ul>
@@ -530,16 +651,14 @@
                         <p>
                             Classically trained pianist from age 7, with a background in Jazz composition and
                             songwriting.
-                            Passionate about scoring for animation and videogames, producing EDM, and mastering the art
-                            of audio production and mixing.
-                        </p>
+                            Producing Electronic Music and Symphonic Mockups suited for Video Games, Films and short Movies.
                     </div>
                     <!-- CTA for swipe down -->
                     <div class="cta"
                         onclick="document.querySelector('#portfolio-main').scrollIntoView({ behavior: 'smooth' });">
                         Trust and skills make the best collabs.
                         <br>
-                        <br> 
+                        <br>
                     </div>
 
                 </div>
@@ -552,6 +671,33 @@
 
 
     <main>
+        <!-- NEW SELLING SECTION ADDED HERE -->
+        <section id="selling-section" class="selling-section">
+
+            <h3> <b> Do you want your game to sound as good as it looks?</b> </h3>
+            <p>
+                <br> I'm a Composer and Sound Designer with a strong <b>IT Background</b>. With my 10+ 
+                years of <b>music production</b> expertise I guarantee Professional Audio Quality, Reactive scoring, Adaptive Soundtrack Loops as well as 
+                <b>Audio Middleware Integration (FMOD, Wwise)</b>.
+            <p>
+                Whether you require a <strong>freelance audio specialist</strong> or a partner for
+                a <strong>fixed-term contract</strong>, I offer flexible collaborations to fit your
+                project's needs and budget. I care about communication and deadlines, project meetings and dialogue to ensure timely delivery.
+            </p>
+            <p>
+            I encourage <strong>revisions and payment only after you arecompletely satisfied</strong> with the results. 
+
+            </p>
+            <p>
+                Let's discuss how we can bring your game's audio to life.
+            </p>
+            <a href="mailto:guglielmo.fratticioli@gmail.com?subject=Inquiry%20from%20Your%20Website%20-%20Game%20Audio%20Services"
+                class="cta-button">
+                Get in Touch & Start Collaborating!
+            </a>
+        </section>
+        <!-- END NEW SELLING SECTION -->
+
         <!-- Portfolio sections remain structurally the same -->
         <section id="portfolio-main" class="portfolio-section">
             <h2>Projects Showcase</h2>
@@ -585,7 +731,8 @@
             <a href="https://www.tiktok.com/@gu_re_mi" target="_blank" rel="noopener noreferrer" title="TikTok">
                 <i class="fab fa-tiktok fa-lg"></i>
             </a>
-            <a href="https://www.linkedin.com/in/guglielmo-fratticioli-3355b4210/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <a href="https://www.linkedin.com/in/guglielmo-fratticioli-3355b4210/" target="_blank"
+                rel="noopener noreferrer" title="LinkedIn">
                 <i class="fab fa-linkedin fa-lg"></i>
             </a>
             <a href="mailto:guglielmo.fratticioli@gmail.com" title="Email">
@@ -663,28 +810,24 @@
             function handleScroll() {
                 if (!heroSection) return; // Exit if hero not found
 
-                const heroHeight = heroSection.offsetHeight;
-                // Trigger point slightly lower down the page to ensure hero is mostly out of view
-                const scrollTriggerPoint = 0;
+                // A better trigger for fly-out might be when the bottom of the hero section is out of view
+                const heroBottom = heroSection.getBoundingClientRect().bottom + window.scrollY;
                 const currentScroll = window.scrollY;
 
-                // Scrolling DOWN past the trigger point
-                if (currentScroll > scrollTriggerPoint && !isFlownOut) {
-                    console.log("Scrolling DOWN past trigger - Flying out"); // Debugging
+                if (currentScroll > (heroBottom - 100) && !isFlownOut) { // 100px buffer
+                    console.log("Scrolling DOWN past hero bottom - Flying out"); // Debugging
                     isFlownOut = true; // Update state
                     letters.forEach(letter => {
                         letter.classList.remove('animate'); // Remove fade-in class
                         letter.classList.add('fly-out'); // Add fly-out class
                     });
                 }
-                // Scrolling UP past the trigger point
-                else if (currentScroll <= scrollTriggerPoint && isFlownOut) {
-                    console.log("Scrolling UP past trigger - Reverting"); // Debugging
+                // Scrolling UP back into the hero section
+                else if (currentScroll <= (heroBottom - 100) && isFlownOut) { // Re-enter buffer
+                    console.log("Scrolling UP into hero - Reverting"); // Debugging
                     isFlownOut = false; // Update state
                     letters.forEach((letter, index) => {
                         letter.classList.remove('fly-out'); // Remove fly-out class
-                        // Re-apply the animate class with stagger for smooth return
-                        // (IntersectionObserver might also catch this if element becomes visible again)
                         setTimeout(() => {
                             letter.classList.add('animate');
                         }, index * 50); // Faster stagger for return
@@ -708,15 +851,19 @@
                     const id = entry.target.getAttribute('id');
                     const link = document.querySelector(`.nav-link[href="#${id}"]`);
 
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(link => link.classList.remove('active'));
-                        link.classList.add('active');
+                    // Check if link exists before adding/removing class
+                    if (link) {
+                        if (entry.isIntersecting) {
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            link.classList.add('active');
+                        }
                     }
                 });
             },
             {
-                rootMargin: '50% 0px -50% 0px',
-                threshold: 0
+                // Root margin adjusted to better handle multiple sections and provide a more centered trigger point
+                rootMargin: '-30% 0px -30% 0px', // When the middle 40% of the viewport is in the section
+                threshold: 0 // A small threshold is often sufficient with rootMargin
             }
         );
 

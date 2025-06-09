@@ -3,7 +3,7 @@
     "id": "onigiri-sound-design-soundtrack",
     "category": "main",
     "folder": "projects/onigiri/",
-    "title": "Onigiri Sound Design and Soundtrack",
+    "title": "Onigiri ",
     "showVideo": false,
     "thumbnails": [
       "projects/onigiri/thumbnail.jpg"
@@ -24,7 +24,7 @@
       "OST",
       "Game Audio"
     ],
-    "short_description": "In collaboration with the Onigiri team I recorded and designed a brand new Japanese-Themed SoundFX Pack and Soundtrack.",
+    "short_description": "In collaboration with the Onigiri team I recorded and designed a brand new Japanese-Themed SoundFX Pack and its main Soundtrack.",
     "audioFiles": [
       { "title": "Barrel Crash", "filename": "Barrel Crash.wav" },
       { "title": "Barrel Explode", "filename": "Barrel Explode.wav" },

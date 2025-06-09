@@ -1,5 +1,83 @@
 [
   {
+    "id": "onigiri-sound-design-soundtrack",
+    "category": "main",
+    "folder": "projects/onigiri/",
+    "title": "Onigiri Sound Design and Soundtrack",
+    "showVideo": false,
+    "thumbnails": [
+      "projects/onigiri/thumbnail.jpg"
+    ],
+    "imageFiles": [
+      {
+        "filename": "thumbnail.png",
+        "alt": "Onigiri Project Thumbnail"
+      }
+    ],
+    "tags": [
+      "Sound Design",
+      "Soundtrack",
+      "Videogame",
+      "Indie Game",
+      "Pixel Art",
+      "SFX",
+      "OST",
+      "Game Audio"
+    ],
+    "short_description": "In collaboration with the Onigiri team I recorded and designed a brand new Japanese-Themed SoundFX Pack and Soundtrack.",
+    "audioFiles": [
+      { "title": "Barrel Crash", "filename": "Barrel Crash.wav" },
+      { "title": "Barrel Explode", "filename": "Barrel Explode.wav" },
+      { "title": "Barrel Hit", "filename": "Barrel Hit.wav" },
+      { "title": "Big Wall Hit 1", "filename": "Big Wall Hit 1.wav" },
+      { "title": "Big Wall Hit 2", "filename": "Big Wall Hit 2.wav" },
+      { "title": "Big Wall Hit 3", "filename": "Big Wall Hit 3.wav" },
+      { "title": "Big Wall Hit 4", "filename": "Big Wall Hit 4.wav" },
+      { "title": "Box Crash", "filename": "Box Crash.wav" },
+      { "title": "Box Hit", "filename": "Box Hit.wav" },
+      { "title": "BSkull Alert (glued)", "filename": "BSkull Alert-glued.wav" },
+      { "title": "BSkull Attack Load", "filename": "BSkull ATTACK LOAD.wav" },
+      { "title": "BSkull Attack Loop", "filename": "BSkull ATTACK LOOP.wav" },
+      { "title": "BSkull Direct Hit", "filename": "BSkull Direct Hit.wav" },
+      { "title": "BSkull Indirect Hit", "filename": "BSkull Indirect Hit.wav" },
+      { "title": "BSkull Spawn (glued)", "filename": "BSkull SPAWN-glued.wav" },
+      { "title": "Explosive Barrel Hit", "filename": "Explosive Barrel Hit.wav" },
+      { "title": "FireSkull Loop", "filename": "FireSkull Loop.wav" },
+      { "title": "FireSkull Start (glued)", "filename": "FireSkull Start-glued.wav" },
+      { "title": "Fly Away + Reverb", "filename": "FLY AWAY + Reverb.wav" },
+      { "title": "Fly Away Dry", "filename": "FLY AWAY Dry.wav" },
+      { "title": "Long Alert", "filename": "LONG Alert.wav" },
+      { "title": "Long Alert 2", "filename": "LONG Alert2.wav" },
+      { "title": "Long Alert 3", "filename": "LONG Alert3.wav" },
+      { "title": "Long Direct Hit", "filename": "LONG Direct Hit.wav" },
+      { "title": "Long Indirect Hit", "filename": "LONG Indirect Hit.wav" },
+      { "title": "Long Shot Load", "filename": "LONG Shot LOAD.wav" },
+      { "title": "Long Shot Release", "filename": "LONG Shot RELEASE.wav" },
+      { "title": "Mace Load", "filename": "MACE LOAD.wav" },
+      { "title": "Mace Swing", "filename": "MACE SWING.wav" },
+      { "title": "Metal Door", "filename": "Metal Door.wav" },
+      { "title": "Onigiri OST - Intro (glued)", "filename": "ONIGIRI OST - INTRO-glued.wav" },
+      { "title": "Ranged Direct Hit", "filename": "Ranged Direct Hit.wav" },
+      { "title": "Ranged Indirect Hit", "filename": "Ranged Indirect Hit.wav" },
+      { "title": "Ranged Shot", "filename": "RANGED Shot.wav" },
+      { "title": "Shot Bullet Hit", "filename": "Shot Bullet Hit.wav" },
+      { "title": "Skull Alert", "filename": "Skull Alert.wav" },
+      { "title": "Skull Attack Load (glued)", "filename": "Skull Attack LOAD-glued.wav" },
+      { "title": "Skull Attack Loop", "filename": "Skull Attack LOOP.wav" },
+      { "title": "Skull Direct Hit", "filename": "Skull Direct Hit.wav" },
+      { "title": "Skull Indirect Hit", "filename": "Skull Indirect Hit.wav" },
+      { "title": "Small Wall Hit 1", "filename": "Small Wall Hit 1.wav" },
+      { "title": "Small Wall Hit 2", "filename": "Small Wall Hit 2.wav" }
+    ], 
+     "externalLinks": [
+      {
+        "platform": "itchio",
+        "url": "https://joevanni.itch.io/onigiri",
+        "label": "View Onigiri on itch.io"
+      }
+    ]
+  },
+  {
     "id": "gamejam-pandemonium",
     "category": "main",
     "folder": "projects/gamejam-pandemonium/",

@@ -1,7 +1,7 @@
 [
   {
     "id": "onigiri-sound-design-soundtrack",
-    "category": "main",
+    "category": "collab",
     "folder": "projects/onigiri/",
     "title": "Onigiri ",
     "showVideo": false,
@@ -24,7 +24,7 @@
       "OST",
       "Game Audio"
     ],
-    "short_description": "In collaboration with the Onigiri team I recorded and designed a brand new Japanese-Themed SoundFX Pack and its main Soundtrack.",
+    "short_description": "In collaboration with the Onigiri team I recorded and designed a brand new Japanese-Themed SoundFX Pack and its demo Soundtrack.",
     "audioFiles": [
       { "title": "Barrel Crash", "filename": "Barrel Crash.wav" },
       { "title": "Barrel Explode", "filename": "Barrel Explode.wav" },
@@ -79,7 +79,7 @@
   },
   {
     "id": "gamejam-pandemonium",
-    "category": "main",
+    "category": "collab",
     "folder": "projects/gamejam-pandemonium/",
     "title": "Game Jam: Pandemonium - Soundtrack & SFX",
     "showVideo": false,
@@ -119,9 +119,66 @@
       }
     ]
   },
+
+  {
+    "id": "DJVsZombies",
+    "category": "collab",
+    "folder": "projects/DJVsZombies/",
+    "title": "DJ Vs Zombies - Soundtrack & FMod Integration",
+    "showVideo": false,
+    "thumbnails": [
+      "Guglielmo-Fratticioli-Composer/projects/DJVsZombies/Cover.png"
+    ],
+    "imageFiles": [
+    ],
+    "tags": [
+      "Composition",
+      "Sound Design",
+      "Videogame",
+      "FMod",
+      "Demo",
+      "School Project"
+    ],
+    "short_description": "This was a School project I joined as Composer on the Polimi Videogame design's Course, the idea was to produce various song in different genres. Note the tracks are still in Demo quality as the project was not continued.",
+    "audioFiles": [
+      {
+        "title": "Rock",
+        "filename": "Rock.mp3"
+      },
+      {
+        "title": "Rock2",
+        "filename": "Rock2.mp3"
+      },
+      {
+        "title": "Techno1",
+        "filename": "Techno1.mp3"
+      },
+      {
+        "title": "Techno2",
+        "filename": "Techno2.mp3"
+      },
+      {
+        "title": "Raggae",
+        "filename": "Raggae.mp3"
+      },
+      {
+        "title": "Raggae2",
+        "filename": "Raggae2.mp3"
+      },
+      {
+        "title": "EDM",
+        "filename": "EDM1.mp3"
+      },
+      {
+        "title": "EDM2",
+        "filename": "EDM2.mp3"
+      }
+    ]
+  },
+
   {
     "id": "dying-light",
-    "category": "main",
+    "category": "demo",
     "folder": "projects/dying-light/",
     "title": "Dying Light 2 - Sound Redesign",
     "showVideo": true,
@@ -191,9 +248,10 @@
       }
     ]
   },
+  
   {
     "id": "super-mario-odissey",
-    "category": "main",
+    "category": "demo",
     "folder": "projects/Mario-Odissey/",
     "title": "Super Mario Odissey - reactive music scoring",
     "showVideo": true,
@@ -205,9 +263,10 @@
     "audioFiles": [
       ]
   },
+  
   {
     "id": "tic-tac",
-    "category": "main",
+    "category": "demo",
     "folder": "projects/tic-tac/",
     "title": "Tic Tac Advertisement - Sound Design",
     "showVideo": true,
@@ -240,9 +299,10 @@
       }
     ]
   },
+  
   {
     "id": "cuphead",
-    "category": "main",
+    "category": "demo",
     "folder": "projects/cuphead/",
     "title": "CupHead - Vintage Vibes",
     "showVideo": true,
@@ -289,7 +349,7 @@
 
   {
     "id": "paulettes-chair",
-    "category": "main",
+    "category": "demo",
     "folder": "projects/paulettes-chair/",
     "title": "Paulette’s Chair - Orchestral Score",
     "showVideo": true,
@@ -315,9 +375,10 @@
     "short_description": "Emotional orchestral scoring for an animated short, utilizing mickey-mousing techniques.",
     "audioFiles": []
   },
+  
   {
     "id": "lo-chiamavano-jeeg-robot",
-    "category": "main",
+    "category": "demo",
     "folder": "projects/lo-chiamavano-jeeg-robot/",
     "title": "Lo Chiamavano Jeeg Robot - Action Rescore",
     "showVideo": true,
@@ -344,7 +405,7 @@
 
   {
     "id": "documentary-demo",
-    "category": "main",
+    "category": "demo",
     "folder": "projects/documentary-demo/",
     "title": "Documentary Demo - Scoring & Sound Design",
     "showVideo": true,
@@ -369,8 +430,6 @@
     "short_description": "Atmospheric and acoustic scoring combined with subtle sound design for a documentary clip.",
     "audioFiles": []
   },
-  
-  
   
   {
     "id": "fiver-commissions",

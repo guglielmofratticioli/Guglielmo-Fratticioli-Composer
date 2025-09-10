@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Get DOM Elements ---
-    const mainGrid = document.getElementById('project-grid-main');
-    const coversGrid = document.getElementById('project-grid-covers');
+    const demoGrid = document.getElementById('project-grid-demo');
+    const collabGrid = document.getElementById('project-grid-collab');
     const commissionsGrid = document.getElementById('project-grid-commissions');
     const modal = document.getElementById('project-modal');
     const modalOverlay = modal.querySelector('.modal-overlay');
@@ -36,12 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!Array.isArray(data)) throw new Error("projects.json is not a valid JSON array.");
             projectsData = data;
 
-            const mainProjects = projectsData.filter(p => p.category === 'main');
-            const coverProjects = projectsData.filter(p => p.category === 'cover');
+            const demoProjects = projectsData.filter(p => p.category === 'demo');
+            const collabProjects = projectsData.filter(p => p.category === 'collab');
             const commissionProjects = projectsData.filter(p => p.category === 'commission');
 
-            renderProjects(mainProjects, mainGrid);
-            renderProjects(coverProjects, coversGrid);
+            renderProjects(demoProjects, demoGrid);
+            renderProjects(collabProjects, collabGrid);
             renderProjects(commissionProjects, commissionsGrid);
 
             document.querySelectorAll('.loading-message').forEach(el => el.remove());
@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
             console.error("Error fetching or parsing projects.json:", error);
             const errorMessage = `<p class="error-message">Could not load projects: ${error.message}. Please check console and projects.json.</p>`;
-            if (mainGrid) mainGrid.innerHTML = errorMessage;
-            if (coversGrid) coversGrid.innerHTML = errorMessage;
+            if (demoGrid) demoGrid.innerHTML = errorMessage;
+            if (collabGrid) collabGrid.innerHTML = errorMessage;
             if (commissionsGrid) commissionsGrid.innerHTML = errorMessage;
              document.querySelectorAll('.loading-message').forEach(el => el.remove());
         });

@@ -19,6 +19,9 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Splide.js CSS for the Reels Gallery -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+
     <!-- Your Custom Stylesheet (Embedded for this example) -->
     <link rel="stylesheet" href="style.css"> <!-- Assuming your external styles are minimal or also need updating -->
 
@@ -386,6 +389,61 @@
             box-shadow: 3px 3px 0px #000000;
         }
 
+        /* --- NEW Reels Gallery Section --- */
+        .reels-gallery-section {
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .reels-gallery-section h2 {
+            font-size: 1.8rem;
+            color: var(--color-primary-purple);
+            margin-bottom: 2rem;
+        }
+
+        .splide__slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+
+        .splide__slide iframe {
+            width: 100%;
+            max-width: 320px; /* Typical reel width */
+            height: 568px; /* Typical reel height */
+            border: var(--pixel-border-fg);
+            box-shadow: 4px 4px 0px var(--color-primary-purple);
+        }
+
+        /* Customizing Splide Arrows to Match Theme */
+        .splide__arrow {
+            background: var(--color-primary-purple);
+            border: var(--pixel-border-bg);
+            opacity: 1;
+            transform: translateY(-50%);
+        }
+        .splide__arrow:hover {
+            background: var(--color-accent-purple);
+        }
+        .splide__arrow svg {
+            fill: var(--color-text);
+        }
+        .splide__arrow--prev {
+            left: -1em;
+        }
+        .splide__arrow--next {
+            right: -1em;
+        }
+        .splide__pagination__page {
+            background: var(--color-dark-purple);
+            border: 1px solid var(--color-text);
+        }
+        .splide__pagination__page.is-active {
+            background: var(--color-accent-purple);
+            transform: scale(1.4);
+        }
+
         /* Portfolio Sections General */
         .portfolio-section {
             padding: 3rem 2rem;
@@ -504,6 +562,27 @@
                 padding: 0.7rem 1.2rem;
             }
 
+            .reels-gallery-section {
+                padding: 2rem 0;
+            }
+
+            .splide__slide iframe {
+                max-width: 280px;
+                height: 498px;
+            }
+
+            .splide__arrow {
+                width: 2.5em;
+                height: 2.5em;
+            }
+            .splide__arrow--prev {
+                left: 0.5em;
+            }
+            .splide__arrow--next {
+                right: 0.5em;
+            }
+
+
             /* Adjust fly-out distances for smaller screens if needed */
             .fly-out:nth-child(1) { transform: translate(100px, -75px) rotate(90deg) scale(1.5) !important; }
             .fly-out:nth-child(2) { transform: translate(150px, 25px) rotate(-45deg) scale(2.3) !important; }
@@ -554,6 +633,7 @@
     <ul>
         <li><a href="#herosec" class="nav-link">About</a></li>
         <li><a href="#selling-section" class="nav-link">Services</a></li>
+        <li><a href="#reels-gallery" class="nav-link">Reels</a></li>
         <li><a href="#portfolio-main" class="nav-link">Projects</a></li>
         <li><a href="#portfolio-covers" class="nav-link">Live Covers</a></li>
         <li><a href="#portfolio-commissions" class="nav-link">Fiverr</a></li>
@@ -646,6 +726,33 @@
         </section>
         <!-- END NEW SELLING SECTION -->
 
+        <!-- ===== NEW REELS GALLERY SHOWCASE ===== -->
+        <section id="reels-gallery" class="reels-gallery-section">
+            <h2>Vertical Reels Showcase</h2>
+            <div class="splide" aria-label="Vertical Video Reels">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <!-- SLIDE 1: Replace with your Instagram Reel Embed Code -->
+                        <li class="splide__slide">
+                            <!-- To get the embed code, go to your Reel on Instagram on a computer, click the '...' and then 'Embed'. -->
+                            <iframe src="https://www.instagram.com/reel/C7a_ABCDEF/embed" width="320" height="568" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                        </li>
+                        <!-- SLIDE 2: Replace with your Instagram Reel Embed Code -->
+                        <li class="splide__slide">
+                            <iframe src="https://www.instagram.com/reel/C8b_GHIJKL/embed" width="320" height="568" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                        </li>
+                        <!-- SLIDE 3: Replace with your Instagram Reel Embed Code -->
+                        <li class="splide__slide">
+                            <iframe src="https://www.instagram.com/reel/C9c_MNOPQR/embed" width="320" height="568" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                        </li>
+                        <!-- Add more <li class="splide__slide"> items for more reels -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- ===== END REELS GALLERY SHOWCASE ===== -->
+
+
         <!-- Portfolio sections remain structurally the same -->
         <section id="portfolio-main" class="portfolio-section">
             <h2>Projects Showcase</h2>
@@ -707,11 +814,32 @@
 
     <!-- Plyr.io Player JS -->
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <!-- Splide.js for the Reels Gallery -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <!-- Your Custom Script -->
     <script src="script.js"></script>
     <!-- UPDATED: Combined Intersection Observer & Scroll Listener -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // -- Reels Gallery Initialization --
+            var splide = new Splide('.splide', {
+                type: 'loop',
+                perPage: 3,
+                perMove: 1,
+                gap: '1rem',
+                pagination: true,
+                arrows: true,
+                breakpoints: {
+                    768: {
+                        perPage: 1,
+                    },
+                    1024: {
+                        perPage: 2,
+                    },
+                }
+            });
+            splide.mount();
+
             const heroSection = document.querySelector('.hero');
             const letters = document.querySelectorAll('.letters span');
             let isFlownOut = false; 

@@ -4,727 +4,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guglielmo Fratticioli | Composition & Sound Design</title>
+    <title>Guglielmo Fratticioli | Tech Audio</title>
 
-    <!-- Pixel Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-
-    <!-- Plyr.io Player CSS -->
+    <!-- Plyr.io -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-
-    <!-- Font Awesome for Social Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Splide.js CSS for the Reels Gallery -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- Splide.js -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    
+    <!-- YOUR NEW STYLE SHEET -->
+    <link rel="stylesheet" href="style.css"> 
 
-    <!-- Your Custom Stylesheet (Embedded for this example) -->
-    <link rel="stylesheet" href="style.css"> <!-- Assuming your external styles are minimal or also need updating -->
-
-    <!-- Custom Hero Styles -->
-    <style>
-        :root {
-            --pixel-font-display: 'Press Start 2P', monospace;
-            --pixel-font-text: 'VT323', monospace;
-            --color-background: #000000;
-            --color-text: #FFFFFF;
-            --color-primary-purple: #6F42C1; /* Main purple from chat bubble */
-            --color-accent-purple: #A979F7;  /* Brighter purple for highlights */
-            --color-dark-purple: #3B225A;   /* Darker shade for depth if needed */
-            --pixel-border-fg: 2px solid var(--color-text);
-            --pixel-border-bg: 2px solid var(--color-background);
-            --pixel-border-accent: 2px solid var(--color-primary-purple);
-        }
-
-        /* Global Resets and Base Styles */
-        body {
-            font-family: var(--pixel-font-text);
-            background-color: var(--color-background);
-            color: var(--color-text);
-            margin: 0;
-            padding: 0;
-            line-height: 1.5; /* Adjusted for VT323 readability */
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--pixel-font-display);
-            color: var(--color-primary-purple); /* Default heading color */
-            margin-top: 1em;
-            margin-bottom: 0.5em;
-            line-height: 1.2;
-        }
-        h1 { font-size: 2.2rem; } /* Adjusted for Press Start 2P */
-        h2 { font-size: 1.8rem; }
-        h3 { font-size: 1.5rem; }
-
-        p {
-            font-size: 1.2rem; /* VT323 is readable at this size */
-            margin-bottom: 1em;
-        }
-
-        a {
-            color: var(--color-accent-purple);
-            text-decoration: none; /* remove default underline */
-        }
-        a:hover {
-            text-decoration: underline; /* underline on hover */
-        }
-
-        /* Top Navigation */
-        .top-nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #111111; /* Very dark grey, slightly off-black */
-            z-index: 999;
-            display: flex;
-            justify-content: center;
-            padding: 0.3rem 0;
-            border-bottom: var(--pixel-border-fg);
-            box-shadow: none;
-        }
-
-        .top-nav ul {
-            display: flex;
-            gap: 1rem; /* Reduced gap */
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .top-nav a {
-            color: var(--color-text);
-            text-decoration: none;
-            font-family: var(--pixel-font-text);
-            font-size: 1.2rem; /* Adjusted for VT323 */
-            padding: 0.4rem 0.8rem;
-            border: var(--pixel-border-bg); /* Border same as bg initially */
-            transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
-        }
-
-        .top-nav a:hover {
-            color: var(--color-background);
-            background-color: var(--color-primary-purple);
-            border-color: var(--color-background);
-            text-decoration: none;
-        }
-
-        .nav-link.active {
-            color: var(--color-background);
-            background-color: var(--color-accent-purple);
-            font-weight: normal;
-            border-bottom: none;
-            border-color: var(--color-background);
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-            overflow: hidden;
-            background: var(--color-background); /* Solid black */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .hero::before {
-            /* Neutralize the diagonal background effect */
-            content: "";
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: transparent; /* Makes it invisible */
-            z-index: 0;
-            clip-path: none; /* Removes the clipping */
-        }
-
-        .hero-container {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 2rem;
-            align-items: center;
-        }
-
-        /* Left Column: Text Content */
-        .hero-text {
-            color: var(--color-text);
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .hero-text h1 {
-            font-size: 2rem; /* Adjusted for Press Start 2P */
-            line-height: 1.3;
-            color: var(--color-text); /* White for main title */
-        }
-         .hero-text h1 .pixel-smiley { /* If you add a smiley */
-            color: var(--color-accent-purple);
-            font-family: var(--pixel-font-text); /* Ensure it's not display font */
-        }
-
-        .hero-text h1 .emoji-set {
-            font-size: 1.5rem; /* Emojis will retain their style */
-        }
-
-        .hero-text p.tagline {
-            font-size: 1.1rem; /* Adjusted for VT323 */
-            margin-top: 0.5rem;
-            font-family: var(--pixel-font-text);
-        }
-
-        .bio {
-            line-height: 1.6;
-            max-width: 100%;
-        }
-        .hero-text .bio p {
-            font-size: 1.1rem; /* Adjusted for VT323 */
-            line-height: 1.6;
-            max-width: 90%;
-            font-family: var(--pixel-font-text);
-        }
-
-        /* Button Group Styles */
-        .button-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem; /* Adjusted gap */
-            margin-top: 1rem;
-            width: 100%; /* Adjusted for better wrapping on small screens */
-        }
-
-        .role-button {
-            display: inline-block;
-            background-color: var(--color-primary-purple);
-            color: var(--color-text);
-            font-family: var(--pixel-font-text);
-            font-size: 1rem; /* Adjusted for VT323 */
-            padding: 0.5em 1em;
-            border: var(--pixel-border-bg); /* Black border */
-            border-radius: 0; /* Sharp corners */
-            text-decoration: none;
-            transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
-            text-transform: uppercase;
-            box-shadow: 2px 2px 0px #000000; /* Hard black shadow */
-            line-height: 1.2;
-        }
-
-        .role-button:hover {
-            background-color: var(--color-accent-purple);
-            color: var(--color-background);
-            box-shadow: 2px 2px 0px var(--color-text); /* White shadow on hover */
-            transform: translate(-1px, -1px);
-            cursor: pointer;
-        }
-
-        /* Right Column: Image and Scattered Animated Letters */
-        .hero-image {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image img {
-            width: 280px; /* Adjusted size */
-            height: 280px;
-            object-fit: cover;
-            border-radius: 0; /* Square image */
-            border: var(--pixel-border-fg); /* White pixel border */
-            box-shadow: 4px 4px 0px var(--color-primary-purple); /* Hard purple shadow */
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Container for decorative letters */
-        .letters { /* No style changes needed, emojis will work */
-            position: absolute; width: 100%; height: 150%;
-            top: 0; left: 0; z-index: 1; pointer-events: none;
-        }
-        .letters span { /* Style for individual letters/emojis */
-            position: absolute; font-size: 2rem;
-            color: #fff; opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
-                        transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-        /* Positions for letters - keep as is or adjust if they clash with new image style */
-        .letter-G1 { top: 10%; left: 0%; scale: 1.1; }
-        .letter-U { top: 20%; left: 80%; scale: 1.5; }
-        .letter-G2 { top: 35%; left: 90%; scale: 0.7; }
-        .letter-L { top: 50%; left: 85%; scale: 1.1; }
-        .letter-I { top: 65%; left: 70%; }
-        .letter-E { top: -20%; left: 55%; scale: 1.3; }
-        .letter-L2 { top: 80%; left: 40%; }
-        .letter-M { top: 60%; left: 25%; scale: 0.9; }
-        .letter-O { top: 30%; left: 15%; }
-
-        .animate { opacity: 1 !important; transform: translateY(0) !important; }
-        .fly-out { opacity: 0 !important; }
-        /* Fly-out transforms - keep as is */
-        .fly-out:nth-child(1) { transform: translate(200px, -150px) rotate(90deg) scale(1.5) !important; }
-        .fly-out:nth-child(2) { transform: translate(300px, 50px) rotate(-45deg) scale(2) !important; }
-        /* ... (rest of fly-out styles) ... */
-
-
-        /* Hero CTA */
-        .cta {
-            font-size: 1.1rem; /* Adjusted for VT323 */
-            color: var(--color-text);
-            letter-spacing: normal; /* Pixel fonts usually have own spacing */
-            margin-top: 1.5rem;
-            cursor: pointer;
-            display: inline-block; /* For border */
-            align-items: center;
-            justify-content: center;
-            animation: none; /* Removed pulse animation */
-            font-family: var(--pixel-font-text);
-            border: var(--pixel-border-accent); /* Dashed purple border */
-            padding: 0.5em 0.8em;
-            transition: background-color 0.2s, color 0.2s;
-        }
-        .cta:hover {
-            background-color: var(--color-dark-purple);
-            color: var(--color-text);
-        }
-
-
-        /* Styles for the Selling Section */
-        .selling-section {
-            background-color: var(--color-primary-purple); /* Main purple background */
-            color: var(--color-text); /* White text */
-            padding: 3rem 2rem;
-            text-align: center;
-            font-family: var(--pixel-font-text);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-top: var(--pixel-border-fg);
-            border-bottom: var(--pixel-border-fg);
-            margin: 3rem 0; /* Space it out */
-        }
-
-        .selling-section h2, .selling-section h3 { /* h3 is used */
-            font-size: 1.6rem; /* Adjusted for Press Start 2P on colored bg */
-            color: var(--color-text); /* White on purple */
-            margin-bottom: 1.5rem;
-            font-weight: normal; /* Pixel fonts often have inherent 'boldness' */
-        }
-
-        .selling-section p {
-            font-size: 1.1rem; /* Adjusted for VT323 */
-            line-height: 1.7;
-            max-width: 900px;
-            margin-bottom: 1.5rem;
-            color: var(--color-text); /* Ensure contrast */
-        }
-
-        .selling-section p strong {
-            color: var(--color-text); /* Keep white for contrast */
-            text-decoration: underline; /* Underline for emphasis */
-            text-underline-offset: 3px;
-            font-weight: normal; /* VT323 handles emphasis well */
-        }
-
-        .selling-section ul {
-            list-style: none;
-            padding: 0;
-            margin: 1.5rem 0;
-            max-width: 900px;
-            text-align: left;
-            color: var(--color-text);
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        .selling-section ul li {
-            margin-bottom: 0.7rem;
-            padding-left: 1.5rem; /* Space for custom bullet */
-            position: relative;
-        }
-
-        .selling-section ul li::before {
-            content: '»'; /* Pixel-friendly bullet */
-            position: absolute;
-            left: 0;
-            color: var(--color-text);
-            font-size: 1.2rem; /* Matches VT323 size */
-            top: 0.1em; /* Align with text */
-        }
-
-        .selling-section .cta-button {
-            display: inline-block;
-            background-color: var(--color-accent-purple); /* Brighter button */
-            color: var(--color-background); /* Black text for contrast */
-            font-family: var(--pixel-font-text);
-            font-weight: normal;
-            font-size: 1.1rem; /* Adjusted for VT323 */
-            padding: 0.7rem 1.5rem;
-            border: var(--pixel-border-bg); /* Black border */
-            border-radius: 0;
-            text-decoration: none;
-            transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-            cursor: pointer;
-            margin-top: 1.5rem;
-            box-shadow: 2px 2px 0px #000000; /* Hard black shadow */
-            text-transform: uppercase;
-        }
-
-        .selling-section .cta-button:hover {
-            background-color: var(--color-text); /* White button */
-            color: var(--color-background); /* Black text */
-            transform: translate(-1px, -1px);
-            box-shadow: 3px 3px 0px #000000;
-        }
-
-        /* --- NEW Reels Gallery Section --- */
-        .reels-gallery-section {
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .reels-gallery-section h2 {
-            font-size: 1.8rem;
-            color: var(--color-primary-purple);
-            margin-bottom: 2rem;
-        }
-
-        .splide__slide {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 1rem;
-        }
-
-        .splide__slide iframe {
-            width: 100%;
-            max-width: 320px; /* Typical reel width */
-            height: 568px; /* Typical reel height */
-            border: var(--pixel-border-fg);
-            box-shadow: 4px 4px 0px var(--color-primary-purple);
-        }
-
-        /* Customizing Splide Arrows to Match Theme */
-        .splide__arrow {
-            background: var(--color-primary-purple);
-            border: var(--pixel-border-bg);
-            opacity: 1;
-            transform: translateY(-50%);
-        }
-        .splide__arrow:hover {
-            background: var(--color-accent-purple);
-        }
-        .splide__arrow svg {
-            fill: var(--color-text);
-        }
-        .splide__arrow--prev {
-            left: -1em;
-        }
-        .splide__arrow--next {
-            right: -1em;
-        }
-        .splide__pagination__page {
-            background: var(--color-dark-purple);
-            border: 1px solid var(--color-text);
-        }
-        .splide__pagination__page.is-active {
-            background: var(--color-accent-purple);
-            transform: scale(1.4);
-        }
-
-        /* Portfolio Sections General */
-        .portfolio-section {
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-        .portfolio-section h2 {
-            font-size: 1.8rem; /* Press Start 2P */
-            color: var(--color-primary-purple);
-            margin-bottom: 2rem;
-        }
-        .project-grid {
-            /* Existing grid styles should largely work, ensure text inherits pixel font */
-        }
-        .loading-message {
-            font-family: var(--pixel-font-text);
-            font-size: 1.2rem;
-            color: var(--color-text);
-        }
-
-        /* Footer */
-        .site-footer {
-            background-color: #111111; /* Same as nav */
-            color: var(--color-text);
-            padding: 1.5rem 1rem;
-            text-align: center;
-            font-family: var(--pixel-font-text);
-            font-size: 0.9rem; /* Smaller for footer text */
-            border-top: var(--pixel-border-fg);
-        }
-        .social-icons {
-            margin-bottom: 1rem;
-        }
-        .social-icons a {
-            margin: 0 0.7rem;
-            color: var(--color-text);
-            font-size: 1.5rem; /* Icon size */
-            transition: color 0.2s ease;
-        }
-        .social-icons a:hover {
-            color: var(--color-primary-purple);
-            text-decoration: none;
-        }
-        .social-icons a i {
-            vertical-align: middle;
-        }
-        .legal-links {
-            font-size: 0.8rem;
-            color: #AAAAAA; /* Muted white */
-        }
-
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            h1 { font-size: 1.8rem; }
-            h2 { font-size: 1.5rem; }
-            h3 { font-size: 1.3rem; }
-            p, .hero-text .bio p, .hero-text p.tagline { font-size: 1rem; }
-            .cta { font-size: 1rem; }
-
-
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-image {
-                margin-top: 2rem;
-                order: -1; /* Image first on mobile */
-            }
-            .hero-image img {
-                width: 200px;
-                height: 200px;
-            }
-            .letters span { font-size: 1.5rem; } /* Slightly smaller emojis on mobile */
-
-            .button-group {
-                justify-content: center; /* Center buttons on mobile */
-                width: 100%;
-            }
-            .role-button {
-                padding: 0.6em; /* Slightly smaller padding */
-                font-size: 0.9rem;
-                width: auto; /* Allow natural width or set percentage if needed */
-                flex-grow: 1; /* Allow buttons to grow if space available */
-                max-width: 45%; /* Ensure two per row if desired */
-            }
-             .button-group a.role-button:nth-child(odd) { margin-right: 0.5rem;}
-             .button-group a.role-button:nth-child(even) { margin-left: 0.5rem;}
-
-
-            .selling-section {
-                padding: 2rem 1rem;
-            }
-            .selling-section h2, .selling-section h3 {
-                font-size: 1.3rem;
-            }
-            .selling-section p, .selling-section ul {
-                font-size: 1rem;
-            }
-            .selling-section ul {
-                padding-left: 0;
-                text-align: center;
-            }
-            .selling-section ul li {
-                padding-left: 0;
-                position: static;
-                text-align: left; /* Keep list items left aligned for readability */
-                padding-left: 1.5em; /* Re-add padding for bullet */
-            }
-             .selling-section ul li::before { /* Ensure bullet is still positioned relative */
-                position: absolute;
-                left: 0;
-             }
-
-            .selling-section .cta-button {
-                font-size: 1rem;
-                padding: 0.7rem 1.2rem;
-            }
-
-            .reels-gallery-section {
-                padding: 2rem 0;
-            }
-
-            .splide__slide iframe {
-                max-width: 280px;
-                height: 498px;
-            }
-
-            .splide__arrow {
-                width: 2.5em;
-                height: 2.5em;
-            }
-            .splide__arrow--prev {
-                left: 0.5em;
-            }
-            .splide__arrow--next {
-                right: 0.5em;
-            }
-
-
-            /* Adjust fly-out distances for smaller screens if needed */
-            .fly-out:nth-child(1) { transform: translate(100px, -75px) rotate(90deg) scale(1.5) !important; }
-            .fly-out:nth-child(2) { transform: translate(150px, 25px) rotate(-45deg) scale(2.3) !important; }
-            /* ... (rest of fly-out styles for mobile, if customization is needed) ... */
-        }
-
-        /* Modal Styles - Basic Theming */
-        .modal {
-            /* Ensure modal stands out */
-        }
-        .modal-content {
-            background-color: #1A1A1A; /* Dark background for modal */
-            color: var(--color-text);
-            border: var(--pixel-border-fg);
-            border-radius: 0;
-            box-shadow: 5px 5px 0px var(--color-primary-purple);
-        }
-        .modal-content h2 {
-            font-family: var(--pixel-font-display);
-            color: var(--color-primary-purple);
-        }
-        .modal-description, .modal-tags {
-            font-family: var(--pixel-font-text);
-            font-size: 1.1rem;
-        }
-        .close-button {
-            background: var(--color-primary-purple);
-            color: var(--color-text);
-            border: var(--pixel-border-bg);
-            border-radius: 0;
-            font-family: var(--pixel-font-text);
-            font-size: 1.5rem;
-            width: 30px; height: 30px; line-height: 26px;
-        }
-        .close-button:hover {
-            background: var(--color-accent-purple);
-            color: var(--color-background);
-        }
-
-    </style>
-
-    <!-- Marked.js (Keep for Markdown) -->
+    <!-- Marked.js -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
 </head>
 
-<nav class="top-nav">
-    <ul>
-        <li><a href="#herosec" class="nav-link">About</a></li>
-        <li><a href="#selling-section" class="nav-link">Services</a></li>
-        <li><a href="#reels-gallery" class="nav-link">Reels</a></li>
-        <li><a href="#portfolio-main" class="nav-link">Demo Projects</a></li>
-        <li><a href="#portfolio-covers" class="nav-link">Collaborations</a></li>
-        <li><a href="#portfolio-commissions" class="nav-link">Fiverr</a></li>
-    </ul>
-</nav>
-
 <body>
-    <!-- Updated Hero Section -->
-    <header class="hero">
-        <section id="herosec">
-            <div class="hero-container">
-                <!-- Right Column: Profile Image & Decorative Letters -->
-                <div class="hero-image">
-                    <div class="letters">
-                        <span class="letter-G1">🔊</span>
-                        <span class="letter-U">🎶</span>
-                        <span class="letter-G2">🕹️</span>
-                        <span class="letter-L">🎬</span>
-                        <span class="letter-I">💻</span>
-                        <span class="letter-E">🎷</span>
-                        <span class="letter-L2">🎺</span>
-                        <span class="letter-M">🎹</span>
-                        <span class="letter-O">🎸</span>
-                    </div>
-                    <img src="PerfectPRO.jpg" alt="Guglielmo Fratticioli">
-                </div>
-                <!-- Left Column: Text Content -->
-                <div class="hero-text">
-                    <h1>
-                        Guglielmo Fratticioli <span class="emoji-set"></span>
-                        <!-- Optionally, add a pixel smiley like on your card: -->
-                        <!-- <span class="pixel-smiley">:)</span> -->
-                    </h1>
-                    <!-- Button Group for Roles -->
-                    <div class="button-group">
-                        <a href="#composer" class="role-button">Composer</a>
-                        <a href="#producer" class="role-button">Producer</a>
-                        <a href="#sound-designer" class="role-button">Sound Designer</a>
-                        <a href="#sound-designer" class="role-button">FMOD/Wise</a>
-                    </div>
-                    <div class="bio">
-                        <p>
-                            Classically trained pianist from age 7, with a background in Jazz composition and
-                            songwriting.
-                            Producing Electronic Music and Symphonic Mockups suited for Video Games, Films and short Movies.
-                        </p> <!-- Closing p tag was missing here -->
-                    </div>
-                    <!-- CTA for swipe down -->
-                    <div class="cta"
-                        onclick="document.querySelector('#portfolio-main').scrollIntoView({ behavior: 'smooth' });">
-                        Trust and skills make the best collabs.
-                        <br>
-                        <br>
-                    </div>
 
+    <nav class="top-nav">
+        <ul>
+            <li><a href="#herosec" class="nav-link active">01 // ABOUT</a></li>
+            <li><a href="#selling-section" class="nav-link">02 // SERVICES</a></li>
+            <li><a href="#portfolio-main" class="nav-link">03 // PROJECTS</a></li>
+        </ul>
+    </nav>
+
+    <!-- TECH HERO SECTION -->
+    <header class="hero" id="herosec">
+        <!-- Vertical Japanese Decoration -->
+        <div class="hero-deco-text">
+            オーディオ・コンポーザー<br>
+            サウンドデザイン
+        </div>
+
+        <div class="hero-container">
+            <!-- Left: Text -->
+            <div class="hero-text">
+                <p class="tagline">SYSTEM ONLINE // AUDIO_CORE</p>
+                <h1>GUGLIELMO<br>FRATTICIOLI</h1>
+                
+                <div class="bio">
+                    <p>
+                        <strong>[CLASS_PIANIST]</strong> from age 7.<br>
+                        <strong>[CURRENT_STATUS]</strong> Producing Electronic Music & Symphonic Mockups for Games & Film.<br>
+                        <strong>[SKILLS]</strong> FMOD / Wwise / Composition.
+                    </p>
                 </div>
 
+                <div class="button-group">
+                    <span class="role-button">COMPOSER</span>
+                    <span class="role-button">PRODUCER</span>
+                    <span class="role-button">SOUND_DESIGN</span>
+                </div>
+
+                <br><br>
+                <div class="cta-primary" onclick="document.querySelector('#portfolio-main').scrollIntoView({ behavior: 'smooth' });" style="cursor: pointer;">
+                    INITIALIZE COLLAB_
+                </div>
             </div>
-        </section>
 
+            <!-- Right: Image with Tech Elements -->
+            <div class="hero-image">
+                <div class="tech-circle"></div> <!-- Spinning circle decoration -->
+                <!-- Ensure you have a good quality image here -->
+                <img src="PerfectPRO.jpg" alt="Guglielmo Fratticioli">
+            </div>
+        </div>
     </header>
 
-
-
     <main>
-        <!-- NEW SELLING SECTION ADDED HERE -->
+        <!-- SELLING SECTION -->
         <section id="selling-section" class="selling-section">
-
-            <h3>Do you want your game to sound as good as it looks?</h3> <!-- Removed <b> as h3 is already display font -->
-            <p>
-                <br> I'm a <strong>Soundtrack Composer</strong> and Sound Designer with a strong <strong>Modern Electronic Music</strong> Background. With my 10+ 
-                years of <strong>Music Production</strong> expertise I guarantee Professional Audio Quality, Professional Sounding Masters, Reactive scoring, Dynamic Music Loops as well as 
-                <strong>Audio Middleware Integration (FMOD, Wwise)</strong>.
-            </p> <!-- Self-closing <p> tag corrected to <p>...</p> -->
-            <p>
-                Whether you require a <strong>Music Composer</strong>, a <strong>freelance audio specialist</strong> or a partner for
-               Collaborations, I offer flexible collaborations to fit your
-                project's needs and budget. I care about communication and deadlines, project meetings and dialogue to ensure timely delivery.
-            </p>
-            <p>
-            I encourage <strong>revisions and payment only after you are completely satisfied</strong> with the results. 
-            </p>
-            <p>
-                Let's discuss how we can bring your game's audio to life.
-            </p>
-            <a href="mailto:guglielmo.fratticioli@gmail.com?subject=Inquiry%20from%20Your%20Website%20-%20Game%20Audio%20Services"
-                class="cta-button">
-                Get in Touch & Start Collaborating!
-            </a>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h3>SYNC YOUR GAME AUDIO</h3>
+                <p>
+                    I combine <strong>10+ years of Electronic Production</strong> with Orchestral theory. 
+                    I don't just write music; I design <strong>Audio Systems</strong>.
+                </p>
+                <br>
+                <a href="mailto:guglielmo.fratticioli@gmail.com" class="cta-button">
+                    EXECUTE: CONTACT_ME
+                </a>
+            </div>
         </section>
-        <!-- END NEW SELLING SECTION -->
 
         <!-- ===== NEW REELS GALLERY SHOWCASE ===== -->
         <section id="reels-gallery" class="reels-gallery-section">
@@ -735,82 +98,165 @@
                         
                         <!-- SLIDE 1: Replace with your Instagram Reel Embed Code -->
                         <li class="splide__slide">
+                            <div class="instagram-crop">
                             <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DOWJnDOiDjN/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/DOWJnDOiDjN/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/DOWJnDOiDjN/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Gu (@gu.re.mi)</a></p></div></blockquote>
-<script async src="//www.instagram.com/embed.js"></script>
-                        </li>
-                        
-                        <!-- SLIDE 2: Replace with your Instagram Reel Embed Code -->
-                        <li class="splide__slide">
-<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C0hgpU9L3V3/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/C0hgpU9L3V3/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/C0hgpU9L3V3/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Gu (@gu.re.mi)</a></p></div></blockquote>
-<script async src="//www.instagram.com/embed.js"></script>                        
-                        </li>
-                        
-                        <!-- SLIDE 3: Replace with your Instagram Reel Embed Code -->
-                        <li class="splide__slide">
-<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/Cz9cbmfrTIA/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/Cz9cbmfrTIA/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/Cz9cbmfrTIA/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Gu (@gu.re.mi)</a></p></div></blockquote>
-<script async src="//www.instagram.com/embed.js"></script>                        
+                            <script async src="//www.instagram.com/embed.js"></script>
+                        </div>
                         </li>
 
+                        <li class="splide__slide">
+                            <div class="instagram-crop">
+                            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C0hgpU9L3V3/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/DOWJnDOiDjN/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/DOWJnDOiDjN/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Gu (@gu.re.mi)</a></p></div></blockquote>
+                            <script async src="//www.instagram.com/embed.js"></script>
+                        </div>
+                        </li>
+
+                        <li class="splide__slide">
+                            <div class="instagram-crop">
+                            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/Cz9cbmfrTIA/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/DOWJnDOiDjN/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/DOWJnDOiDjN/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Gu (@gu.re.mi)</a></p></div></blockquote>
+                            <script async src="//www.instagram.com/embed.js"></script>
+                        </div>
+                        </li>
+
+                         <li class="splide__slide">
+                            <div class="instagram-crop">
+                            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DTYKmrpCMeu/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/DOWJnDOiDjN/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/DOWJnDOiDjN/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Gu (@gu.re.mi)</a></p></div></blockquote>
+                            <script async src="//www.instagram.com/embed.js"></script>
+                        </div>
+                        </li>
                         
-                        <!-- Add more <li class="splide__slide"> items for more reels -->
                     </ul>
                 </div>
             </div>
         </section>
         <!-- ===== END REELS GALLERY SHOWCASE ===== -->
 
+        <!-- ===== AUDIO TERMINAL SECTION ===== -->
+<section id="audio-terminal" class="audioterminal-section">
+    
+    <div class="audio-terminal-container">
+        <!-- Terminal Header Decoration -->
+        <div class="terminal-bar">
+            <span>SYSTEM_READY</span>
+            <span class="blinking-cursor">_</span>
+        </div>
 
-        <!-- Portfolio sections remain structurally the same -->
+        <div class="terminal-grid">
+            <!-- LEFT: The Player Screen -->
+            <div class="player-screen">
+                <div class="screen-overlay"></div> <!-- CRT Scanline effect -->
+                <iframe 
+                    id="sc-player" 
+                    width="100%" 
+                    height="300" 
+                    scrolling="no" 
+                    frameborder="no" 
+                    allow="autoplay" 
+                    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gu_re_mi/leonpteryx-battle-music&color=%23ff2a2a&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+                </iframe>
+            </div>
+
+            <!-- RIGHT: The Track List -->
+            <div class="track-list-container">
+                <ul class="tech-track-list">
+                    <!-- Track 1 -->
+                    <li class="track-item active" data-url="https://soundcloud.com/gu_re_mi/leonpteryx-battle-music">
+                        <span class="track-id">01</span>
+                        <div class="track-info">
+                            <span class="track-title">LEONPTERYX BATTLE</span>
+                            <span class="track-genre">Battle Music / Orchestral</span>
+                        </div>
+                    </li>
+
+                    <!-- Track 2 -->
+                    <li class="track-item" data-url="https://soundcloud.com/gu_re_mi/jpunk-style-instrumental-mp3">
+                        <span class="track-id">02</span>
+                        <div class="track-info">
+                            <span class="track-title">JPUNK STYLE</span>
+                            <span class="track-genre">Instrumental / Punk</span>
+                        </div>
+                    </li>
+
+                    <!-- Track 3 -->
+                    <li class="track-item" data-url="https://soundcloud.com/gu_re_mi/deltarune-metaphysical-challenge-neurofunk-rmx">
+                        <span class="track-id">03</span>
+                        <div class="track-info">
+                            <span class="track-title">DELTARUNE RMX</span>
+                            <span class="track-genre">Neurofunk / Challenge</span>
+                        </div>
+                    </li>
+
+                    <!-- Track 4 -->
+                    <li class="track-item" data-url="https://soundcloud.com/gu_re_mi/guremi-desert-of-tartarus-hades-dnb-remix">
+                        <span class="track-id">04</span>
+                        <div class="track-info">
+                            <span class="track-title">DESERT OF TARTARUS</span>
+                            <span class="track-genre">Hades DnB Remix</span>
+                        </div>
+                    </li>
+
+                    <!-- Track 5 -->
+                    <li class="track-item" data-url="https://soundcloud.com/gu_re_mi/creepynuts-doppleganger-hitech-remix-gu">
+                        <span class="track-id">05</span>
+                        <div class="track-info">
+                            <span class="track-title">CREEPYNUTS DOPPELGANGER</span>
+                            <span class="track-genre">HiTech Remix</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+        
+<!-- Required Script -->
+<script async src="//www.instagram.com/embed.js"></script>
+
+<!-- REQUIRED: Instagram Script (Place this right after the section or at the end of body) -->
+<script async src="//www.instagram.com/embed.js"></script>
+
+        <!-- PORTFOLIO -->
         <section id="portfolio-main" class="portfolio-section">
-            <h2>Demo Projects</h2>
+            <h2>// DEMO_ARCHIVE</h2>
             <div id="project-grid-demo" class="project-grid">
-                <p class="loading-message">Loading Demo Projects...</p>
+                <p class="loading-message">LOADING DATA...</p>
             </div>
         </section>
 
-        <section id="portfolio-covers" class="portfolio-section secondary-section">
-            <h2>Collaborations</h2>
-            <div id="project-grid-collab" class="project-grid project-grid-secondary">
-                <p class="loading-message">Loading Collaborations...</p>
+        <section id="portfolio-covers" class="portfolio-section">
+            <h2>// COLLAB_LOGS</h2>
+            <div id="project-grid-collab" class="project-grid">
+                <p class="loading-message">LOADING DATA...</p>
             </div>
         </section>
 
-        <section id="portfolio-commissions" class="portfolio-section secondary-section">
-            <h2>Fiverr Commissions</h2>
-            <div id="project-grid-commissions" class="project-grid project-grid-secondary">
-                <p class="loading-message">Loading commissions...</p>
+        <section id="portfolio-commissions" class="portfolio-section">
+            <h2>// COMMISSIONS_DB</h2>
+            <div id="project-grid-commissions" class="project-grid">
+                <p class="loading-message">LOADING DATA...</p>
             </div>
         </section>
     </main>
 
-    <!-- NEW Footer Structure -->
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="social-icons">
-            <a href="https://www.instagram.com/gu.re.mi/" target="_blank" rel="noopener noreferrer" title="Instagram">
-                <i class="fab fa-instagram fa-lg"></i>
-            </a>
-            <a href="https://www.tiktok.com/@gu_re_mi" target="_blank" rel="noopener noreferrer" title="TikTok">
-                <i class="fab fa-tiktok fa-lg"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/guglielmo-fratticioli-3355b4210/" target="_blank"
-                rel="noopener noreferrer" title="LinkedIn">
-                <i class="fab fa-linkedin fa-lg"></i>
-            </a>
-            <a href="mailto:guglielmo.fratticioli@gmail.com" title="Email">
-                <i class="fas fa-envelope fa-lg"></i>
-            </a>
+            <a href="https://www.instagram.com/gu.re.mi/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@gu_re_mi" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.linkedin.com/in/guglielmo-fratticioli-3355b4210/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:guglielmo.fratticioli@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
         <div class="legal-links">
-            © <span id="current-year"></span> Guglielmo Fratticioli. All Rights Reserved.
+            SYSTEM.COPYRIGHT © <span id="current-year"></span> // ALL RIGHTS RESERVED
         </div>
     </footer>
 
-    <!-- Project Modal -->
+    <!-- MODAL -->
     <div id="project-modal" class="modal hidden">
         <div class="modal-overlay"></div>
         <div class="modal-content">
             <button class="close-button" aria-label="Close modal">×</button>
-            <h2 id="modal-title">Project Title</h2>
+            <h2 id="modal-title">PROJECT_TITLE</h2>
             <div id="modal-video" class="video-container plyr__video-embed"></div>
             <div id="modal-images" class="modal-image-carousel"></div>
             <div id="modal-description" class="modal-description"></div>
@@ -819,128 +265,30 @@
         </div>
     </div>
 
-    <!-- Plyr.io Player JS -->
+    <!-- SCRIPTS -->
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-    <!-- Splide.js for the Reels Gallery -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <!-- Your Custom Script -->
     <script src="script.js"></script>
-    <!-- UPDATED: Combined Intersection Observer & Scroll Listener -->
+    
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // -- Reels Gallery Initialization --
             var splide = new Splide('.splide', {
                 type: 'loop',
                 perPage: 3,
                 perMove: 1,
-                gap: '1rem',
-                pagination: true,
+                gap: '2rem',
+                pagination: false,
                 arrows: true,
                 breakpoints: {
-                    768: {
-                        perPage: 1,
-                    },
-                    1024: {
-                        perPage: 2,
-                    },
+                    768: { perPage: 1 },
+                    1024: { perPage: 2 }
                 }
             });
             splide.mount();
 
-            const heroSection = document.querySelector('.hero');
-            const letters = document.querySelectorAll('.letters span');
-            let isFlownOut = false; 
-
-            const observerOptions = {
-                root: null,
-                threshold: 0.1 
-            };
-
-            const observer = new IntersectionObserver(function (entries, observerInstance) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        letters.forEach((letter, index) => {
-                            if (!isFlownOut) {
-                                setTimeout(() => {
-                                    letter.classList.add('animate');
-                                    letter.classList.remove('fly-out'); 
-                                }, index * 100); 
-                            }
-                        });
-                    }
-                });
-            }, observerOptions);
-
-            if (heroSection) {
-                observer.observe(heroSection);
-            }
-
-            function handleScroll() {
-                if (!heroSection) return; 
-
-                const heroBottom = heroSection.getBoundingClientRect().bottom + window.scrollY;
-                const currentScroll = window.scrollY;
-
-                if (currentScroll > (heroBottom - 100) && !isFlownOut) { 
-                    isFlownOut = true; 
-                    letters.forEach(letter => {
-                        letter.classList.remove('animate'); 
-                        letter.classList.add('fly-out'); 
-                    });
-                }
-                else if (currentScroll <= (heroBottom - 100) && isFlownOut) { 
-                    isFlownOut = false; 
-                    letters.forEach((letter, index) => {
-                        letter.classList.remove('fly-out'); 
-                        setTimeout(() => {
-                            letter.classList.add('animate');
-                        }, index * 50); 
-                    });
-                }
-            }
-            window.addEventListener('scroll', handleScroll, { passive: true });
-
-            // Update current year in footer
-            const currentYearSpan = document.getElementById('current-year');
-            if (currentYearSpan) {
-                currentYearSpan.textContent = new Date().getFullYear();
-            }
-        });
-    </script>
-
-    <script>
-        // Active Nav Link Observer
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        const navObserver = new IntersectionObserver(
-            entries => {
-                entries.forEach(entry => {
-                    const id = entry.target.getAttribute('id');
-                    const link = document.querySelector(`.nav-link[href="#${id}"]`);
-
-                    if (link) {
-                        if (entry.isIntersecting && entry.intersectionRatio >= 0.3) { // Ensure a good portion is visible
-                            navLinks.forEach(l => l.classList.remove('active'));
-                            link.classList.add('active');
-                        } else {
-                            // Optional: remove active class if not intersecting enough,
-                            // but this can cause flickering if multiple sections are in view.
-                            // link.classList.remove('active');
-                        }
-                    }
-                });
-            },
-            {
-                rootMargin: '-30% 0px -30% 0px', 
-                threshold: [0.3, 0.7] // Trigger when 30% or 70% of the section is visible
-            }
-        );
-
-        sections.forEach(section => {
-            navObserver.observe(section);
+            // Update Year
+            document.getElementById('current-year').textContent = new Date().getFullYear();
         });
     </script>
 </body>
-
 </html>

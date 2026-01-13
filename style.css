@@ -1,4 +1,25 @@
-/* --- Reset & Base --- */
+/* --- IMPORTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Rajdhani:wght@400;600;700&display=swap');
+
+/* --- VARIABLES --- */
+:root {
+    /* Neo JPop Tech Palette */
+    --bg-main: #F4F5F7;       /* Off-white lab color */
+    --bg-surface: #FFFFFF;    /* Pure white */
+    --text-main: #111111;     /* Jet black */
+    --text-muted: #888888;
+    --accent-red: #FF2A2A;    /* The "Anime" Red */
+    --tech-line: #D1D5DB;     /* Subtle grid lines */
+    
+    /* Dimensions */
+    --cut-corner: 20px;       /* Size of angled cuts */
+    
+    /* Fonts */
+    --font-display: 'Rajdhani', sans-serif; /* Tech headers */
+    --font-body: 'Noto Sans JP', sans-serif; /* Readable body */
+}
+
+/* --- RESET & BASE --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,911 +28,903 @@
 
 html {
     scroll-behavior: smooth;
-}
-
-/* Enhanced Theme Variables */
-:root {
-    /* Palette */
-    --background: #121212;
-    --background-contrast: #1E1E1E;
-    --surface: #242424;
-    --primary: #64FFDA;
-    --primary-hover: #A7FFEB;
-    --primary-faded: #64FFDA1A;
-    --text: #E0E0E0;
-    --text-medium-emphasis: #A0A0A0;
-    --text-heading: #FFFFFF;
-    --link: var(--primary);
-    --link-hover: var(--primary-hover);
-    --border-color: #FFFFFF1A;
-    --border-color-med: #FFFFFF33;
-
-    /* Fonts */
-    --font-family-base: 'Inter', sans-serif;
-
-    /* Plyr Overrides */
-    --plyr-color-main: var(--primary);
-    --plyr-video-background: var(--background);
-    --plyr-control-icon-color: var(--text);
-    --plyr-control-color: var(--text);
-    --plyr-tooltip-background: var(--primary);
-    --plyr-tooltip-color: var(--background);
-    --plyr-video-control-background-hover: var(--primary-faded);
-    --plyr-video-range-thumb-background: var(--text);
+    font-size: 16px;
 }
 
 body {
-    font-family: var(--font-family-base);
-    line-height: 1.65;
-    color: var(--text);
-    background-color: var(--background);
-    font-weight: 400;
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    /* Dot grid background pattern */
+    background-image: radial-gradient(var(--tech-line) 1px, transparent 1px);
+    background-size: 40px 40px; 
 }
 
-body::-webkit-scrollbar {
-    display: none;
-}
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
 
-/* Hide scrollbar for IE, Edge */
-body {
-    -ms-overflow-style: none;
-}
-
-/* Hide scrollbar for Firefox */
-body {
-    scrollbar-width: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: var(--font-family-base);
-    margin-bottom: 0.75em;
-    line-height: 1.3;
-    font-weight: 600;
-    color: var(--text-heading);
-}
-
-h1 {
-    font-size: 2.8rem;
+/* --- TYPOGRAPHY --- */
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
 }
 
-h2 {
-    /* Section Headings */
-    font-size: 2.2rem;
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; border-left: 5px solid var(--accent-red); padding-left: 1rem; }
+h3 { font-size: 1.5rem; }
+
+p { font-weight: 300; }
+
+/* --- NAVIGATION --- */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--tech-line);
+    z-index: 1000;
+    padding: 0.8rem 0;
+}
+
+.top-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.top-nav a {
+    font-family: var(--font-display);
     font-weight: 600;
-    letter-spacing: -0.01em;
-    text-align: center;
-    margin-bottom: 2em;
-    color: var(--text-heading);
+    font-size: 1.1rem;
     position: relative;
-    padding-bottom: 0.6em;
+    padding: 0.2rem 0;
+    color: var(--text-main);
 }
 
-h2::after {
-    /* Underline for section titles */
+.top-nav a::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 3px;
-    background-color: var(--primary);
-    border-radius: 2px;
+    left: 0;
+    width: 0%;
+    font-size: 2rem;
+    height: 2px;
+    background: var(--accent-red);
+    transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-p {
-    margin-bottom: 1.2em;
-    color: var(--text);
-    font-weight: 300;
+.top-nav a:hover::after, .top-nav a.active::after {
+    width: 100%;
 }
 
-a {
-    color: var(--link);
-    text-decoration: none;
-    transition: color 0.2s ease;
+/* --- HERO SECTION --- */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px; /* Nav spacing */
+    overflow: hidden;
+    background: var(--bg-surface);
 }
 
-a:hover {
-    color: var(--link-hover);
+/* The Red Diagonal Slash */
+.hero::before {
+    content: '/';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    font-size: 2rem;
+    background: var(--accent-red);
+    clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: 0;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-
-/* --- Portfolio Section --- */
-.portfolio-section {
-    padding: 5rem 1rem;
-    max-width: 1200px;
+.hero-container {
+    max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    gap: 4rem;
 }
 
-.secondary-section {
-    background-color: var(--background-contrast);
+/* Hero Text Side */
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+.hero-text h1 {
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+    /* Subtle shadow to separate text from background if they overlap */
+    text-shadow: 2px 2px 0px rgba(255,255,255,0.5); 
+}
+
+/* Japanese vertical text decoration */
+.hero-deco-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    position: absolute;
+    left: 2rem;
+    top: 20%;
+    font-family: var(--font-display);
+    color: var(--text-muted);
+    letter-spacing: 0.5em;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+.tagline {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--accent-red);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.bio {
+    background: rgba(255,255,255, 0.9);
+    backdrop-filter: blur(5px);
+    padding: 1.5rem;
+    border-left: 3px solid var(--text-main);
+    margin-bottom: 2rem;
+}
+
+/* Tech Buttons */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.role-button {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--text-main);
+    color: var(--text-main);
+    position: relative;
+    overflow: hidden;
+    /* Angled corners */
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    transition: 0.3s;
+}
+
+.role-button:hover {
+    background: var(--text-main);
+    color: var(--bg-surface);
+    transform: translateY(-2px);
+}
+
+.cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-red);
+    color: white;
+    padding: 1rem 3rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    /* Aggressive angle */
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%);
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.cta-primary:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* Hero Image Side */
+.hero-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    /* The Anime Diamond Cut */
+    clip-path: polygon(20% 0%, 100% 0, 100% 20%, 100% 80%, 80% 100%, 0 100%, 0% 80%, 0% 20%);
+    /* Full color by default */
+    filter: none; 
+    transition: 0.5s;
+    border: 2px solid white; /* Mock border */
+}
+
+.hero-image:hover img {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Expands on hover */
+    transform: scale(1.02);
+}
+
+/* Floating Tech Decoration */
+.tech-circle {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border: 10px dashed rgba(255,255,255,0.5);
+    border-radius: 50%;
+    right:  -200px;
+    bottom: -20px;
+    animation: spin 20s linear infinite;
+    z-index: 0;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* --- SECTIONS GENERAL --- */
+.portfolio-section{
+    padding: 6rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.reels-gallery-section{
+    padding: 0rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+.selling-section{
+    padding: 12rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.audioterminal-section{
+    padding: 0rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Decorative Section Markers */
+.portfolio-section::before {
+    content: '+ + + +';
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2rem;
+    font-family: var(--font-display);
+    letter-spacing: 1em;
+    color: var(--accent-red);
+}
+
+/* --- SELLING SECTION --- */
+.selling-section {
+    background: var(--text-main);
+    color: var(--bg-surface);
+    clip-path: polygon(0 50px, 100% 0, 100% calc(100% - 50px), 0 100%);
+    margin: 4rem auto;
+    text-align: center;
+}
+
+.selling-section h3 {
+    color: var(--accent-red);
+    font-size: 2rem;
+}
+
+.selling-section p strong {
+    color: var(--accent-red);
+}
+
+.selling-section .cta-button {
+    display: inline-block;
+    background: var(--bg-surface);
+    color: var(--text-main);
+    padding: 1rem 2rem;
+    font-weight: 700;
+    clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%, 0 15px);
+    margin-top: 1.5rem;
+}
+
+.selling-section .cta-button:hover {
+    background: var(--accent-red);
+    color: white;
+}
+
+/* --- GRID & CARDS --- */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-}
-
-.project-grid-secondary {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
-.loading-message,
-.error-message {
-    grid-column: 1 / -1;
-    text-align: center;
-    font-style: italic;
-    color: var(--text-medium-emphasis);
-    padding: 2rem;
-}
-
-.error-message {
-    color: #ff6b6b;
-    font-weight: bold;
-}
-
-/* --- Project Card --- */
 .project-card {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: none;
-    border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    background: var(--bg-surface);
+    border: 1px solid var(--tech-line);
     position: relative;
-    min-height: 380px;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--background-contrast);
+    transition: 0.3s;
+    cursor: pointer;
 }
 
-.project-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--border-color-med);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+.project-card::after {
+    /* Corner Accent */
+    content: '</>';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-red);
+    clip-path: polygon(100% 0, 100% 100%, 0 0);
 }
 
 .card-thumbnail-container {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
     overflow: hidden;
 }
 
 .card-thumbnail-container img {
     width: 100%;
-    height: 100%;
+    height: 250px;
     object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease, filter 0.3s ease;
+    /* Full color by default */
+    filter: none; 
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover {
+    border-color: var(--accent-red);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .project-card:hover .card-thumbnail-container img {
-    transform: scale(1.03);
-    filter: brightness(0.9);
+    /* Slight zoom on hover */
+    transform: scale(1.05); 
 }
 
 .card-content {
-    position: relative;
-    z-index: 3;
     padding: 1.5rem;
-    background: linear-gradient(to top, rgba(18, 18, 18, 1) 15%, rgba(18, 18, 18, 0.7) 50%, transparent 100%);
-    margin-top: auto;
-    color: var(--text);
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    min-height: 50%;
-    transition: background 0.3s ease;
-}
-
-.project-card:hover .card-content {
-    background: linear-gradient(to top, rgba(18, 18, 18, 1) 20%, rgba(18, 18, 18, 0.8) 60%, transparent 100%);
 }
 
 .card-content h3 {
     font-size: 1.3rem;
-    margin-bottom: 0.5em;
-    color: var(--text-heading);
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.project-card:hover h3 {
-    color: var(--primary);
-}
-
-.card-description {
-    font-size: 0.9rem;
-    color: var(--text-medium-emphasis);
-    margin-bottom: 1rem;
-    font-weight: 300;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    margin-bottom: 0.5rem;
 }
 
 .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em;
+    margin-top: 0.5rem;
 }
 
 .card-tags span {
-    background-color: transparent;
-    color: var(--text-medium-emphasis);
+    display: inline-block;
     font-size: 0.75rem;
-    padding: 0.3em 0.7em;
-    border-radius: 4px;
-    font-weight: 400;
-    border: 1px solid var(--border-color);
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    text-transform: uppercase;
+    border: 1px solid var(--tech-line);
+    padding: 2px 8px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-family: var(--font-display);
+    color: var(--text-muted);
 }
 
-.project-card:hover .card-tags span {
-    border-color: var(--primary-faded);
-    background-color: var(--primary-faded);
-    color: var(--primary-hover);
+.loading-message {
+    text-align: center;
+    font-family: var(--font-display);
+    color: var(--text-muted);
 }
 
+/* --- MODAL SYSTEM --- */
 
-/* --- Modal --- */
-/* Base state - hidden */
+/* Base State (Hidden) */
 .modal {
     position: fixed;
-    inset: 0;
-    z-index: 1000;
+    inset: 0; /* Full screen */
+    z-index: 2000; /* On top of everything */
     display: flex;
-    /* Use flex for centering content */
     align-items: center;
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    /* Correct transition */
-    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    pointer-events: none; /* Click-through when hidden */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Visible state */
+/* Active State (Visible) */
 .modal.visible {
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.3s ease, visibility 0s linear 0s;
-    /* Immediate visibility */
+    pointer-events: auto;
 }
 
-/* Ensure hidden doesn't conflict if visibility is handled by lack of .visible */
-/* .modal.hidden { ... } */
-/* This class is less necessary if default is hidden */
-
-
+/* The Dark Background */
 .modal-overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(18, 18, 18, 0.9);
+    background-color: rgba(17, 17, 17, 0.85); /* Dark tint */
+    backdrop-filter: blur(8px); /* Blur effect behind */
+    z-index: 2001;
     cursor: pointer;
-    z-index: 1000;
-    /* Ensure overlay is behind content but covers page */
 }
 
+/* The Modal Card (Tech Window) */
 .modal-content {
     position: relative;
-    /* Keep relative for close button positioning */
-    background-color: var(--surface);
-    padding: 2rem 2.5rem;
-    border-radius: 8px;
-    max-width: 90vw;
-    width: 900px;
+    z-index: 2002;
+    background: var(--bg-surface);
+    width: 90%;
+    max-width: 1000px;
     max-height: 90vh;
     overflow-y: auto;
-    z-index: 1001;
-    /* Higher than overlay */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-    border: 1px solid var(--border-color-med);
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) #444;
+    padding: 3rem;
+    
+    /* Neo Tech Borders */
+    border: 1px solid var(--text-main);
+    border-left: 10px solid var(--accent-red); /* Thick red bar on left */
+    
+    /* Tech Shape (Angled Corners) */
+    clip-path: polygon(
+        0 0, 
+        100% 0, 
+        100% calc(100% - 30px), 
+        calc(100% - 30px) 100%, 
+        0 100%
+    );
+    
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
 }
 
-.modal-content::-webkit-scrollbar {
-    width: 8px;
+/* Custom Scrollbar for Modal */
+.modal-content::-webkit-scrollbar { width: 8px; }
+.modal-content::-webkit-scrollbar-track { background: #eee; }
+.modal-content::-webkit-scrollbar-thumb { background: var(--text-main); border-radius: 0; }
+.modal-content::-webkit-scrollbar-thumb:hover { background: var(--accent-red); }
+
+/* Modal Header */
+#modal-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    padding-right: 3rem;
+    line-height: 1;
+    color: var(--text-main);
 }
 
-.modal-content::-webkit-scrollbar-track {
-    background: #333;
-    border-radius: 4px;
+/* Decorative line under title */
+#modal-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: var(--accent-red);
+    margin-top: 10px;
 }
 
-.modal-content::-webkit-scrollbar-thumb {
-    background-color: var(--primary);
-    border-radius: 4px;
-    border: 2px solid #333;
-}
-
+/* Close Button (Tech Box) */
 .close-button {
     position: absolute;
-    top: 0.8rem;
-    right: 0.8rem;
-    background: none;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: var(--text-main);
+    color: var(--bg-surface);
     border: none;
-    color: var(--text-medium-emphasis);
-    font-size: 1.8rem;
-    font-weight: bold;
-    line-height: 1;
+    font-family: var(--font-display);
+    font-size: 2rem;
     cursor: pointer;
-    padding: 0.2rem;
-    transition: color 0.3s ease;
-    z-index: 1002;
-    /* Ensure button is on top */
-}
-
-.close-button:hover {
-    color: var(--text-heading);
-}
-
-#modal-title {
-    margin-top: 0;
-    margin-bottom: 2rem;
-    padding-right: 2rem;
-    /* Space for close button */
-    color: var(--text-heading);
-    text-align: left;
-    font-weight: 700;
-    font-size: 1.8rem;
-    letter-spacing: -0.02em;
-}
-
-/* Modal Video Container */
-.video-container {
-    margin-bottom: 2rem;
-    background-color: var(--background);
-    border-radius: 6px;
-    overflow: hidden;
-    position: relative;
-    /* Needed for absolute positioning of error text */
-}
-
-/* Style for loading/error text */
-.video-container p {
-    position: absolute;
-    /* Position text over background */
-    inset: 0;
+    transition: 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4rem 1rem;
-    text-align: center;
-    color: var(--text-medium-emphasis);
-    font-style: italic;
-    z-index: 1;
-    /* Ensure text is above potential empty iframe */
+    z-index: 2003;
 }
 
-/* Plyr adjustments */
-.plyr--video {
-    border-radius: 6px;
+.close-button:hover {
+    background: var(--accent-red);
+    color: white;
 }
 
-.plyr__control--overlaid {
-    background: var(--primary) !important;
-    opacity: 0.9;
-}
-
-.plyr__control--overlaid:hover {
-    opacity: 1;
-}
-
-
-/* Modal Image Carousel */
-.modal-image-carousel {
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 2rem;
-    background-color: #111;
-    border-radius: 5px;
-}
-
-.modal-image-carousel:empty {
-    display: none;
-}
-
-.modal-carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.modal-carousel-slide {
-    min-width: 100%;
-    flex-shrink: 0;
-    text-align: center;
-}
-
-.modal-carousel-slide img {
-    max-width: 100%;
-    max-height: 60vh;
-    height: auto;
-    display: inline-block;
-    margin: 0 auto;
-    border-radius: 4px;
-}
-
-.modal-carousel-dots {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 5;
-}
-
-.modal-carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(224, 224, 224, 0.3);
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 0;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.modal-carousel-dot.active {
-    background-color: var(--primary);
-}
-
-.modal-carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.4);
-    color: var(--text);
-    border: none;
-    font-size: 2rem;
-    font-weight: bold;
-    padding: 0.5rem 0.8rem;
-    cursor: pointer;
-    z-index: 5;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border-radius: 4px;
-    line-height: 1;
-}
-
-.modal-carousel-arrow:hover {
-    background-color: var(--primary);
-    color: var(--background);
-}
-
-.modal-carousel-arrow.prev {
-    left: 15px;
-}
-
-.modal-carousel-arrow.next {
-    right: 15px;
-}
-
-.modal-image-carousel[data-single-image="true"] .modal-carousel-dots,
-.modal-image-carousel[data-single-image="true"] .modal-carousel-arrow {
-    display: none;
-}
-
-/* Modal Description */
+/* Modal Content Typography */
 .modal-description {
-    margin-bottom: 2.5rem;
-    color: var(--text);
-    font-weight: 300;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #333;
 }
 
-.modal-description h3,
-.modal-description h4 {
-    color: var(--text-heading);
-    font-weight: 600;
-    margin-top: 2em;
-    margin-bottom: 0.6em;
-}
+.modal-description p { margin-bottom: 1rem; }
+.modal-description a { color: var(--accent-red); font-weight: 700; text-decoration: underline; }
 
-.modal-description p {
-    color: var(--text);
-    margin-bottom: 1em;
-    line-height: 1.7;
-}
-
-.modal-description a {
-    color: var(--primary);
-    text-decoration: underline;
-    font-weight: 400;
-}
-
-.modal-description a:hover {
-    color: var(--primary-hover);
-}
-
-.modal-description ul,
-.modal-description ol {
-    margin-left: 1.5em;
-    margin-bottom: 1em;
-    color: var(--text);
-}
-
-.modal-description li {
-    margin-bottom: 0.5em;
-}
-
-.modal-description code {
-    background-color: var(--background-contrast);
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-family: monospace;
-    color: var(--text);
-    border: 1px solid var(--border-color);
-}
-
-.modal-description pre {
-    background-color: var(--background-contrast);
-    border: 1px solid var(--border-color);
-    padding: 1em;
-    border-radius: 5px;
-    overflow-x: auto;
-    margin-bottom: 1em;
-}
-
-.modal-description pre code {
-    background: none;
-    padding: 0;
-    border: none;
-}
-
-/* Modal Audio Container */
-.modal-audio-container {
-    margin-bottom: 2.5rem;
-    border-top: 1px solid var(--border-color);
-    padding-top: 2rem;
-}
-
-.modal-audio-container:empty {
-    display: none;
-}
-
-.modal-audio-container h4 {
-    color: var(--text-medium-emphasis);
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-.audio-item {
-    margin-bottom: 1.2rem;
-}
-
-.audio-title {
-    font-size: 1rem;
-    color: var(--text);
-    margin-bottom: 0.5em;
-    font-weight: 400;
-}
-
-.modal-audio-container audio {
-    width: 100%;
-    height: 45px;
-    filter: invert(0.9) sepia(0.1) saturate(5) hue-rotate(180);
-    border-radius: 4px;
-}
-
-.error-text {
-    color: #ff6b6b;
-    font-style: italic;
-    font-size: 0.9em;
-}
-
-/* Modal Tags */
+/* Tags (Tech Capsules) */
 .modal-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.7em;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border-color);
-    margin-top: 1.5rem;
-}
-
-.modal-tags:empty {
-    display: none;
-    padding-top: 0;
-    border-top: none;
-    margin-top: 0;
+    gap: 0.8rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--tech-line);
 }
 
 .modal-tags span {
-    background-color: var(--background-contrast);
-    color: var(--text-medium-emphasis);
-    font-size: 0.8rem;
-    padding: 0.4em 0.9em;
-    border-radius: 4px;
-    font-weight: 400;
-    border: 1px solid var(--border-color);
+    background: transparent;
+    border: 1px solid var(--text-main);
+    color: var(--text-main);
+    padding: 0.3em 1em;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
-
-/* --- Enhanced Footer --- */
-.site-footer {
-    text-align: center;
-    padding: 4rem 1rem 3rem 1rem;
-    margin-top: 5rem;
-    border-top: 1px solid var(--border-color);
-    background-color: var(--background);
-}
-
-.footer-content {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.footer-connect {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--text-heading);
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.02em;
-}
-
-.social-icons {
+/* External Link Buttons */
+.external-links-container {
+    display: flex;
+    gap: 1rem;
     margin-bottom: 2rem;
 }
 
-.social-icons a {
-    color: var(--text-medium-emphasis);
-    margin: 0 1rem;
-    font-size: 1.4rem;
-    transition: color 0.3s ease, transform 0.3s ease;
-    display: inline-block;
-}
-
-.social-icons a:hover {
-    color: var(--primary);
-    transform: scale(1.1) translateY(-2px);
-}
-
-.legal-links {
-    color: var(--text-medium-emphasis);
-    font-size: 0.85rem;
-    font-weight: 300;
-}
-
-.legal-links a {
-    color: var(--text-medium-emphasis);
-    text-decoration: underline;
-}
-
-.legal-links a:hover {
-    color: var(--text);
-}
-
-
-/* --- Responsive Adjustments --- */
-@media (max-width: 900px) {
-    .modal-content {
-        width: 90vw;
-    }
-
-    .hero {
-        padding: 5rem 1rem 3rem 1rem;
-    }
-
-    .hero-quote {
-        font-size: 2.1rem;
-    }
-}
-
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.2rem;
-    }
-
-    h2 {
-        font-size: 1.9rem;
-        margin-bottom: 1.5em;
-    }
-
-    .project-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.8rem;
-    }
-
-    .hero-intro {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-        margin-bottom: 2.5rem;
-    }
-
-    .hero-text h1 {
-        text-align: center;
-        font-size: 2rem;
-    }
-
-    .hero-text .tagline {
-        text-align: center;
-    }
-
-    .hero-quote-wrapper {
-        margin: 3rem 0;
-    }
-
-    .hero-quote {
-        font-size: 1.8rem;
-        text-align: center;
-    }
-
-
-    .modal-content {
-        padding: 1.5rem;
-    }
-
-    #modal-title {
-        font-size: 1.6rem;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        line-height: 1.6;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    h2 {
-        font-size: 1.6rem;
-    }
-
-    .hero {
-        padding: 4rem 1rem 2.5rem 1rem;
-    }
-
-    .profile-pic {
-        width: 90px;
-        height: 90px;
-    }
-
-    .hero-text h1 {
-        font-size: 1.8rem;
-    }
-
-    .tagline {
-        font-size: 1rem;
-    }
-
-    .hero-quote-wrapper {
-        margin: 2.5rem 0;
-    }
-
-    .hero-quote {
-        font-size: 1.5rem;
-    }
-
-
-    .portfolio-section {
-        padding: 3.5rem 1rem;
-    }
-
-    .project-grid {
-        grid-template-columns: 1fr;
-        gap: 1.8rem;
-    }
-
-    .project-card {
-        min-height: 320px;
-    }
-
-    .card-content h3 {
-        font-size: 1.2rem;
-    }
-
-    .card-description {
-        font-size: 0.85rem;
-    }
-
-    .modal-content {
-        padding: 1.2rem;
-        max-width: 95vw;
-        max-height: 90vh;
-    }
-
-    #modal-title {
-        font-size: 1.4rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .close-button {
-        font-size: 1.6rem;
-        top: 0.6rem;
-        right: 0.6rem;
-    }
-
-    .social-icons a {
-        margin: 0 0.7rem;
-        font-size: 1.3rem;
-    }
-
-    .site-footer {
-        padding: 3rem 1rem 2rem 1rem;
-        margin-top: 3rem;
-    }
-}
-/* NEW: Container for multiple external link buttons */
-.external-links-container {
-    display: flex; /* Arrange buttons in a row */
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-    gap: 0.75rem; /* Space between buttons */
-    margin-top: 0.5rem; /* Space below title */
-    margin-bottom: 1.5rem; /* Space above next content */
-}
-
-/* Style for individual buttons (can be reused) */
 .external-link-button {
     display: inline-block;
-    background-color: var(--primary);
-    color: var(--background); /* Dark text on primary bg */
-    padding: 0.6rem 1.2rem; /* Adjust padding as needed */
-    border-radius: 5px;
-    font-weight: 500;
-    font-size: 0.9rem; /* Slightly smaller for multiple buttons */
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    flex-grow: 0; /* Don't allow buttons to grow excessively */
-    flex-shrink: 0;
+    padding: 0.6rem 1.2rem;
+    background: var(--text-main);
+    color: white;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.9rem;
+    clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+    transition: 0.3s;
 }
 
 .external-link-button:hover {
-    background-color: var(--primary-hover);
+    background: var(--accent-red);
     transform: translateY(-2px);
-    color: var(--background);
+    color: white;
 }
 
-/* Optional: Add icons using pseudo-elements (requires Font Awesome setup) */
-/* Example for Instagram */
-.external-link-button.link-instagram::before {
-    font-family: "Font Awesome 6 Brands"; /* Use Brands style */
-    content: "\f16d"; /* Instagram icon unicode */
-    margin-right: 0.5em;
-    font-weight: normal; /* Use normal weight for brand icons */
+/* Plyr / Video / Audio Overrides */
+.video-container { margin-bottom: 2rem; width: 100%; aspect-ratio: 16/9; background: #000; }
+.modal-audio-container { margin-top: 2rem; padding: 1rem; background: #f4f4f4; border-left: 3px solid var(--accent-red); }
+.modal-audio-container h4 { font-size: 1rem; margin-bottom: 1rem; }
+.modal-image-carousel img { width: 100%; height: auto; display: block; margin-bottom: 1rem; }
+
+/* --- FOOTER --- */
+.site-footer {
+    background: var(--bg-surface);
+    border-top: 5px solid var(--text-main);
+    padding: 4rem 2rem;
+    text-align: center;
 }
-/* Example for TikTok */
-.external-link-button.link-tiktok::before {
-    font-family: "Font Awesome 6 Brands";
-    content: "\e07b"; /* TikTok icon unicode */
-    margin-right: 0.5em;
-    font-weight: normal;
+
+.social-icons a {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin: 0 1rem;
 }
-/* Example for SoundCloud */
-.external-link-button.link-soundcloud::before {
-    font-family: "Font Awesome 6 Brands";
-    content: "\f1be"; /* SoundCloud icon unicode */
-    margin-right: 0.5em;
-    font-weight: normal;
+
+.social-icons a:hover {
+    color: var(--accent-red);
 }
-/* Add more rules for other platforms (e.g., link-spotify, link-youtube) */
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .hero::before {
+        width: 100%;
+        height: 40%;
+        clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+        top: auto;
+        bottom: 0;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding-top: 2rem;
+    }
+    
+    .hero-text h1 { font-size: 3rem; }
+    
+    .hero-image { order: -1; }
+    
+    .hero-deco-text { display: none; }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 100%;
+        height: 100%; /* Full screen on mobile */
+        max-height: 100vh;
+        border: none;
+        clip-path: none;
+        padding: 4rem 1.5rem 2rem 1.5rem; /* More top padding for close button */
+    }
+    .close-button {
+        position: fixed; /* Stick to screen on mobile */
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+}
+
+
+/* --- UPDATED REELS STYLING (CROP UI) --- */
+
+.reels-gallery-section .splide {
+    padding: 2rem 0;
+}
+
+.splide__slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3rem;
+}
+
+/* THE MASK CONTAINER */
+.reel-frame {
+    background: var(--bg-surface);
+    border: 1px solid var(--text-main);
+    
+    /* 1. Set Fixed Dimensions for the Crop Window (9:16 Aspect Ratio) */
+    width: 330px; 
+    height: 600px; 
+    
+    /* 2. Hide everything outside this box */
+    overflow: hidden; 
+    position: relative;
+    
+    /* Tech Style Effects */
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
+    clip-path: polygon(
+        0 0, 
+        100% 0, 
+        100% calc(100% - 20px), 
+        calc(100% - 20px) 100%, 
+        0 100%
+    );
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    
+    /* Flex to align iframe */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligns iframe to top so we can pull it up */
+}
+
+/* TARGET THE IFRAME INSIDE */
+.reel-frame iframe.instagram-media {
+    /* 3. Pull the iframe UP to hide the User Header */
+    margin-top: -58px !important; 
+    
+    /* 4. Force Width/Height to ensure video fills the frame */
+    width: 100% !important;
+    min-width: 100% !important;
+    
+    /* Make iframe tall enough so the video fills the view, 
+       and the caption gets pushed out of the .reel-frame overflow */
+    height: 750px !important; 
+    
+    position: relative;
+    z-index: 1;
+}
+
+/* HOVER EFFECTS */
+.reel-frame:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-red);
+    box-shadow: 8px 8px 0px rgba(255, 42, 42, 0.2);
+}
+
+/* Custom Arrows (Kept from previous design) */
+.splide__arrow {
+    background: var(--text-main);
+    opacity: 1;
+    border-radius: 0;
+    width: 3rem;
+    height: 3rem;
+    clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+}
+.splide__arrow svg { fill: var(--bg-surface); }
+.splide__arrow:hover { background: var(--accent-red); }
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .reel-frame {
+        width: 300px;
+        height: 550px;
+    }
+}
+
+
+/* --- AUDIO TERMINAL STYLING --- */
+
+.audio-terminal-container {
+    max-width: 2000px;
+    margin: 0 auto;
+    background: var(--bg-surface);
+    border: 1px solid var(--text-main);
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+    
+    /* The Tech "Cut" Shape */
+    clip-path: polygon(
+        20px 0, 
+        100% 0, 
+        100% calc(100% - 20px), 
+        calc(100% - 20px) 100%, 
+        0 100%, 
+        0 20px
+    );
+}
+
+/* Header Bar */
+.terminal-bar {
+    background: var(--text-main);
+    color: var(--bg-surface);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.blinking-cursor {
+    animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Grid Layout */
+.terminal-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 0;
+}
+
+/* LEFT: Player Screen */
+.player-screen {
+    position: relative;
+    background: #000;
+    border-right: 1px solid var(--text-main);
+    min-height: 300px;
+}
+
+/* Scanline Overlay Effect */
+.screen-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    pointer-events: none; /* Let clicks pass through */
+    z-index: 5;
+}
+
+/* RIGHT: Track List */
+.track-list-container {
+    background: var(--bg-main);
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Custom scrollbar for list */
+.track-list-container::-webkit-scrollbar { width: 6px; }
+.track-list-container::-webkit-scrollbar-thumb { background: var(--accent-red); }
+
+.tech-track-list {
+    padding: 0;
+}
+
+.track-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--tech-line);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.track-item:last-child { border-bottom: none; }
+
+.track-item:hover {
+    background: #fff;
+    padding-left: 1.5rem; /* Slide effect */
+}
+
+/* Active State */
+.track-item.active {
+    background: var(--text-main);
+    color: var(--bg-surface);
+}
+
+.track-item.active .track-id { color: var(--accent-red); }
+.track-item.active .track-genre { color: #aaa; }
+
+/* Typography */
+.track-id {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-right: 1rem;
+    color: var(--text-muted);
+}
+
+.track-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.track-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.track-genre {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .terminal-grid {
+        grid-template-columns: 1fr; /* Stack vertically on mobile */
+    }
+    .player-screen {
+        border-right: none;
+        border-bottom: 1px solid var(--text-main);
+    }
+}
+
+
+/* 1. The Mask Container */
+.instagram-crop {
+    width: 100%;
+    /* Set the Width/Height ratio to match a Reel (9:16) */
+    /* Adjust '350px' to your preferred card width */
+    max-width: 350px; 
+    height: 450px; /* Fixed height to cut off the bottom caption/footer */
+    overflow: hidden; /* This cuts off the UI */
+    position: relative;
+    border-radius: 15px; /* Optional: rounds the corners of your video */
+    margin: 0 auto;
+}
+
+/* 2. Target the iframe that Instagram generates */
+.instagram-crop iframe {
+    position: absolute;
+    left: 0;
+    width: 100% !important; /* Force width */
+    
+    /* THE MAGIC NUMBERS */
+    /* Pull the iframe UP to hide the user profile header */
+    top: -65px; 
+    
+    /* Make the iframe taller than the container so the bottom UI 
+       gets pushed out of the visible area */
+    height: 125% !important; 
+    
+    /* Optional: Scale up slightly to hide white borders if they appear */
+    transform: scale(1.02); 
+    transform-origin: top center;
+}

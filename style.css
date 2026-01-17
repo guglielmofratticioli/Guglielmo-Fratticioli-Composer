@@ -161,7 +161,7 @@ p { font-weight: 300; }
 
 /* The Red Diagonal Slash */
 .hero::before {
-    content: '/';
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
@@ -210,7 +210,7 @@ p { font-weight: 300; }
     font-family: var(--font-display);
     color: var(--text-muted);
     letter-spacing: 0.5em;
-    font-size: 0.8rem;
+    font-size: .8rem;
     text-transform: uppercase;
     opacity: 0.6;
 }
@@ -1332,11 +1332,37 @@ p { font-weight: 300; }
 
     /* --- HERO & OTHER FIXES (Keep these from previous step) --- */
     .hero { padding-top: 80px; padding-bottom: 2rem; min-height: auto; }
-    .hero-container { flex-direction: column-reverse; gap: 2rem; padding: 1rem; }
-    .hero-text { text-align: center; }
+    .hero-container { flex-direction: column-reverse; gap: 2rem; padding: 0.8rem; }
+    .hero-text { text-align: left; width: 100%;}
     .hero-text h1 { font-size: 3rem; }
-    .hero-bg-text { top: 20%; right: 50%; transform: translateX(50%); z-index: 0; }
-    .hero-bg-text span { font-size: 25vw; opacity: 0.15; }
+   .hero-bg-text {
+        /* Reset positioning from desktop */
+        top: 45%;  /* Position vertically near the middle */
+        left: 50%; /* Position horizontally at 50% */
+        right: auto;
+        bottom: auto;
+        
+        /* Perfect Centering Technique */
+        transform: translate(-50%, -50%);
+        
+        /* Layout */
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        padding-right: 0;
+        z-index: 0; /* Ensure it stays behind the image */
+    }
+
+    .hero-bg-text span {
+        /* Responsive size */
+        font-size: 25vw; 
+        
+        /* COLOR CHANGE: Black text */
+        color: #000000; 
+        
+        /* Opacity: High enough to be seen, low enough to not block content */
+        opacity: 0.5; 
+    }
     .hero-image img { max-width: 80%; margin: 0 auto; clip-path: none; border: none; }
     .tech-circle, .tech-triangle { display: none; }
     
@@ -1349,3 +1375,41 @@ p { font-weight: 300; }
     .modal-content { width: 100%; height: 100%; max-height: 100vh; border-radius: 0; padding: 4rem 1.5rem; clip-path: none; border: none; }
     .close-button { position: fixed; top: 10px; right: 10px; z-index: 9999; background: var(--accent-red); width: 40px; height: 40px; }
 }
+
+/* --- Fix the "GU RE MI" Giant Text on Mobile --- */
+ 
+
+    
+    /* Optional: Middle letter outline style for mobile */
+    .hero-bg-text span:nth-child(2) {
+        -webkit-text-stroke: 1px var(--accent-red);
+        color: transparent; /* Makes the middle letter just an outline */
+        opacity: 0.8; /* Slightly more visible for the red outline */
+    }
+
+    /* --- CENTER BIO & BUTTONS --- */
+    
+    /* 1. Fix the Bio Text Box */
+    .bio {
+        text-align: left; /* Center the text lines */
+        border-left: none;  /* Remove the black left bar */
+        border-top: 3px solid var(--text-main); /* Move the bar to the top for symmetry */
+        width: calc(90% - 0.5rem);
+        padding: 1.5rem rem; /* Adjust padding for mobile width */
+    }
+
+    /* 2. Fix the Buttons (Composer, Producer, etc.) */
+    .button-group {
+        justify-content: left; /* Push buttons to the middle */
+        width: 90%;
+        margin-bottom: 2rem; /* Add space before the big Discord button */
+    }
+
+    /* 3. Ensure the Role Buttons don't stretch weirdly */
+    .role-button {
+        font-size: 0.9rem; /* Slightly smaller text for mobile fitting */
+        padding: 0.6rem 1rem;
+    }
+
+
+    

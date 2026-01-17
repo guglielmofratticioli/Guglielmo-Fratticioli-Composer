@@ -23,11 +23,26 @@
 <body>
 
     <nav class="top-nav">
-        <ul>
+        <ul class="nav-links">
             <li><a href="#herosec" class="nav-link active">01 // ABOUT</a></li>
             <li><a href="#selling-section" class="nav-link">02 // SERVICES</a></li>
             <li><a href="#portfolio-main" class="nav-link">03 // PROJECTS</a></li>
         </ul>
+        <!-- 2. New Contact Actions -->
+    <div class="nav-actions">
+        <!-- Email Icon Button -->
+        <a href="mailto:guglielmo.fratticioli@gmail.com" class="nav-icon-btn" title="Send Email">
+            <i class="fa-solid fa-envelope"></i>
+        </a>
+
+        <!-- Schedule Meet Button -->
+        <!-- REPLACE 'YOUR_CALENDAR_LINK' with your Calendly or Google Calendar Appointment link -->
+        <a href="https://calendar.google.com/calendar/" target="_blank" class="nav-cta-btn">
+            <i class="fa-solid fa-video"></i> 
+            <span>SCHEDULE_MEET</span>
+        </a>
+    </div>
+    
     </nav>
 
     <!-- TECH HERO SECTION -->
@@ -60,34 +75,130 @@
 
                 <br><br>
                 <div class="cta-primary" onclick="document.querySelector('#portfolio-main').scrollIntoView({ behavior: 'smooth' });" style="cursor: pointer;">
-                    INITIALIZE COLLAB_
+                    <!-- DISCORD HERO BUTTON -->
+                    <a href="https://discordapp.com/users/Gu7b5" target="_blank" class="cta-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 12px; color: white;">
+                        <i class="fa-brands fa-discord" style="font-size: 1.3em;"></i> 
+                        <span>CONTACT_ON_DISCORD</span>
+                    </a>
                 </div>
             </div>
 
             <!-- Right: Image with Tech Elements -->
             <div class="hero-image">
                 <div class="tech-circle"></div> <!-- Spinning circle decoration -->
+                <div class="tech-triangle"></div> <!-- NEW: Static Triangle -->
+
+                <!-- NEW: Background Giant Text -->
+                <div class="hero-bg-text">
+                    <span>GU</span>
+                    <span>RE</span>
+                    <span>MI</span>
+                </div>
+
                 <!-- Ensure you have a good quality image here -->
-                <img src="PerfectPRO.jpg" alt="Guglielmo Fratticioli">
+                <img src="images/GUREMI2.png" alt="Guglielmo Fratticioli">
             </div>
         </div>
     </header>
 
     <main>
         <!-- SELLING SECTION -->
-        <section id="selling-section" class="selling-section">
-            <div style="max-width: 800px; margin: 0 auto;">
-                <h3>SYNC YOUR GAME AUDIO</h3>
-                <p>
-                    I combine <strong>10+ years of Electronic Production</strong> with Orchestral theory. 
-                    I don't just write music; I design <strong>Audio Systems</strong>.
-                </p>
-                <br>
-                <a href="mailto:guglielmo.fratticioli@gmail.com" class="cta-button">
-                    EXECUTE: CONTACT_ME
+        <!-- SERVICE MODULES SECTION -->
+<section id="selling-section" class="services-section">
+    <div class="services-container">
+        
+        <div class="section-header">
+            <span class="sys-label">AVAILABLE_PROTOCOLS</span>
+            <h2>SERVICES & RATES</h2>
+        </div>
+
+        <div class="services-grid">
+            <!-- CARD 1: MUSIC COMPOSITION -->
+            <div class="tech-card">
+                <div class="card-header">
+                    <i class="fa-solid fa-music icon-glow"></i>
+                    <h3>MUSIC_COMPOSITION</h3>
+                </div>
+                <ul class="tech-list">
+                    <li>
+                        <span class="list-icon"><i class="fa-solid fa-handshake"></i></span>
+                        <div class="list-content">
+                            <strong>Collaborations & Rev-Share</strong>
+                            <span class="sub-text">Open to revenue share models (Project dependent).</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="list-icon"><i class="fa-solid fa-infinity"></i></span>
+                        <div class="list-content">
+                            <strong>Full Cycle Support</strong>
+                            <span class="sub-text">Support guaranteed until game release.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="list-icon"><i class="fa-solid fa-list-check"></i></span>
+                        <div class="list-content">
+                            <strong>Milestone Process</strong>
+                            <span class="sub-text">Structured delivery with revision guarantees.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="list-icon"><i class="fa-solid fa-file-audio"></i></span>
+                        <div class="list-content">
+                            <strong>Exclusive SFX Packs</strong>
+                            <span class="sub-text">One-time purchase custom production.</span>
+                        </div>
+                    </li>
+                    <li class="highlight-item">
+                        <span class="list-icon"><i class="fa-solid fa-tag"></i></span>
+                        <div class="list-content">
+                            <strong>Standard Rate</strong>
+                            <span class="price-tag">€100 / min of music</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CARD 2: AUDIO CODING -->
+            <div class="tech-card">
+                <div class="card-header">
+                    <i class="fa-solid fa-microchip icon-glow"></i>
+                    <h3>AUDIO_CODING</h3>
+                </div>
+                <ul class="tech-list">
+                    <li>
+                        <span class="list-icon"><i class="fa-solid fa-layer-group"></i></span>
+                        <div class="list-content">
+                            <strong>Middleware Integration</strong>
+                            <span class="sub-text">Full FMOD & Wwise project implementation.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="list-icon"><i class="fa-solid fa-network-wired"></i></span>
+                        <div class="list-content">
+                            <strong>Adaptive Systems</strong>
+                            <span class="sub-text">Development of custom reactive audio logic.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="list-icon"><i class="fa-solid fa-code"></i></span>
+                        <div class="list-content">
+                            <strong>Engine Implementation</strong>
+                            <span class="sub-text">Unity / Unreal C# & Blueprint hooking.</span>
+                        </div>
+                    </li>
+                </ul>
+                
+            <div class="card-footer">
+                <p>NEED A HYBRID SOLUTION?</p>
+                <a href="mailto:guglielmo.fratticioli@gmail.com" class="cta-button small-btn">
+                    <i class="fa-solid fa-envelope"></i> SEND_EMAIL
                 </a>
             </div>
-        </section>
+            </div>
+
+        </div>
+    </div>
+</section>
 
         <!-- ===== NEW REELS GALLERY SHOWCASE ===== -->
         <section id="reels-gallery" class="reels-gallery-section">
@@ -241,7 +352,7 @@
     <!-- FOOTER -->
     <footer class="site-footer">
         <div class="social-icons">
-            <a href="https://www.instagram.com/gu.re.mi/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/guremix_/" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://www.tiktok.com/@gu_re_mi" target="_blank"><i class="fab fa-tiktok"></i></a>
             <a href="https://www.linkedin.com/in/guglielmo-fratticioli-3355b4210/" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="mailto:guglielmo.fratticioli@gmail.com"><i class="fas fa-envelope"></i></a>

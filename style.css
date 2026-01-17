@@ -61,50 +61,93 @@ h3 { font-size: 1.5rem; }
 
 p { font-weight: 300; }
 
-/* --- NAVIGATION --- */
+/* ===== UPDATED TOP NAVIGATION ===== */
 .top-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--tech-line);
-    z-index: 1000;
-    padding: 0.8rem 0;
-}
-
-.top-nav ul {
     display: flex;
-    justify-content: center;
-    gap: 2rem;
+    justify-content: space-between; /* Spreads links and buttons apart */
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.95); /* Keep your existing background */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.top-nav a {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1.1rem;
-    position: relative;
-    padding: 0.2rem 0;
-    color: var(--text-main);
+/* Fix for the ul list to sit nicely */
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.top-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    font-size: 2rem;
-    height: 2px;
-    background: var(--accent-red);
-    transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.nav-link {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif; /* Or your preferred font */
+    font-size: 0.9rem;
+    transition: color 0.3s;
 }
 
-.top-nav a:hover::after, .top-nav a.active::after {
-    width: 100%;
+.nav-link.active, .nav-link:hover {
+    color: #ff2a2a; /* Your red accent */
 }
 
+/* Container for the new buttons */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Email Icon Button */
+.nav-icon-btn {
+    color: #333;
+    font-size: 1.2rem;
+    transition: color 0.3s transform 0.3s;
+}
+
+.nav-icon-btn:hover {
+    color: #ff2a2a;
+    transform: scale(1.1);
+}
+
+/* Schedule Meeting Button (Cyberpunk Style) */
+.nav-cta-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ff2a2a; /* Red Background */
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    font-family: 'Courier New', monospace; /* Tech font */
+    font-weight: bold;
+    font-size: 0.85rem;
+    clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%); /* Angled edges */
+    transition: background 0.3s, transform 0.3s;
+}
+
+.nav-cta-btn:hover {
+    background: #d60000; /* Darker red on hover */
+    transform: translateY(-2px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .top-nav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .nav-cta-btn span {
+        display: inline; /* Ensure text shows on mobile */
+    }
+}
 /* --- HERO SECTION --- */
 .hero {
     position: relative;
@@ -245,6 +288,7 @@ p { font-weight: 300; }
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .hero-image img {
@@ -256,7 +300,8 @@ p { font-weight: 300; }
     /* Full color by default */
     filter: none; 
     transition: 0.5s;
-    border: 2px solid white; /* Mock border */
+    border-left: 10px solid white;
+    border-bottom: 4px solid white;
 }
 
 .hero-image:hover img {
@@ -276,6 +321,31 @@ p { font-weight: 300; }
     animation: spin 20s linear infinite;
     z-index: 0;
 }
+
+/* --- NEW TRIANGLE GRAPHIC --- */
+.tech-triangle {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    
+    /* Material Style: Solid White with low opacity */
+    background: rgba(255, 255, 255, 0.15);
+    
+    /* Create the Play Button Shape */
+    clip-path: polygon(30% 20%, 85% 50%, 30% 80%);
+    
+    /* Positioning: Centered based on the circle's coordinates */
+    /* Circle is at right: -200px + 250px (radius) = Center is approx at Right 50px */
+    right: -200px; 
+    bottom: -20px;
+    
+    z-index: 2; /* Above the circle (0), Below text (5) */
+    pointer-events: none;
+    
+    /* Optional: Add a subtle backdrop blur for a 'Glass' material look */
+    backdrop-filter: blur(2px);
+}
+
 
 @keyframes spin { 100% { transform: rotate(360deg); } }
 
@@ -298,6 +368,176 @@ p { font-weight: 300; }
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
+}
+
+/* ===== SERVICES SECTION STYLES ===== */
+.services-section {
+    padding: 80px 20px;
+    background-color: #0a0a0a; /* Matches your dark theme */
+    position: relative;
+}
+
+.services-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Header Styling */
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header .sys-label {
+    font-family: 'Courier New', monospace;
+    color: #ff2a2a; /* Your red accent color */
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin: 0;
+}
+
+/* Grid Layout */
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tech Cards */
+.tech-card {
+    background: #141414;
+    border: 1px solid #333;
+    border-left: 4px solid #ff2a2a; /* Red accent on left */
+    padding: 30px;
+    border-radius: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    border-color: #555;
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.icon-glow {
+    font-size: 1.8rem;
+    color: #ff2a2a;
+    text-shadow: 0 0 10px rgba(255, 42, 42, 0.4);
+}
+
+/* List Styling */
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tech-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.list-icon {
+    color: #888;
+    margin-top: 4px;
+    font-size: 1.1rem;
+}
+
+.list-content strong {
+    display: block;
+    color: #eee;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.sub-text {
+    display: block;
+    font-size: 0.9rem;
+    color: #aaa;
+    line-height: 1.4;
+}
+
+/* Pricing Highlight */
+.highlight-item {
+    background: rgba(255, 42, 42, 0.05);
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px dashed #ff2a2a;
+}
+
+.highlight-item .list-icon {
+    color: #ff2a2a;
+}
+
+.price-tag {
+    font-family: 'Courier New', monospace;
+    color: #ff2a2a;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Card Footer Button */
+.card-footer {
+    margin-top: 30px;
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+}
+
+.card-footer p {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 15px;
+    font-family: 'Courier New', monospace;
+}
+
+.cta-button.small-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.cta-button.small-btn:hover {
+    background: #fff;
+    color: #000;
 }
 
 .audioterminal-section{
@@ -927,4 +1167,90 @@ p { font-weight: 300; }
     /* Optional: Scale up slightly to hide white borders if they appear */
     transform: scale(1.02); 
     transform-origin: top center;
+}
+
+/* --- HERO IMAGE & BACKGROUND TEXT UPDATE --- */
+
+/* Ensure the container allows layering */
+.hero-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Establish stacking context */
+}
+
+/* The Profile Picture */
+.hero-image img {
+    position: relative;
+    z-index: 10; /* Places image vertically ON TOP of the text */
+    /* ... keep your existing clip-path and width styles here ... */
+}
+
+/* The New "GU RE MI" Text - RIGHT ALIGNED */
+.hero-bg-text {
+    position: absolute;
+    top: 50%;
+    
+    /* Changed from centering to Right Alignment */
+    right: 0; 
+    left: auto; 
+    transform: translateY(-50%); /* Only center vertically now */
+    
+    display: flex;
+    flex-direction: column;
+    
+    /* Aligns the letters themselves to the right */
+    align-items: flex-end; 
+    justify-content: right;
+    
+    z-index: 5; 
+    pointer-events: none; 
+    line-height: 0.85; 
+    width: 100%;
+    
+    /* Adds a small gap so it doesn't touch the exact edge of the screen/container */
+    padding-right: 2rem; 
+}
+
+.hero-bg-text span {
+    font-weight: 700;
+    font-size: 12rem; 
+    color: white; 
+
+    opacity: 1; 
+    user-select: none;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900; /* Needs to be bold for the outline to look good */
+    letter-spacing: 0.05em;
+    
+    /* Optional: If you want the text to tilt slightly for speed effect */
+    /* font-style: italic; */
+}
+
+/* Middle syllable accent */
+.hero-bg-text span:nth-child(2) {
+    -webkit-text-stroke: 3px var(--accent-red);
+    
+    /* Optional: Offset the middle text slightly to the left for a 'glitch' offset look */
+    /* margin-right: 20px; */ 
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+    .hero-bg-text span {
+        font-size: 8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-bg-text span {
+        font-size: 6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-bg-text span {
+        font-size: 6rem;
+    }
 }

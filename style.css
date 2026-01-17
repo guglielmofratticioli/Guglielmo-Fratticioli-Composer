@@ -1254,3 +1254,98 @@ p { font-weight: 300; }
         font-size: 6rem;
     }
 }
+
+/* =========================================
+   MOBILE RESPONSIVE FIXES
+   (Single Row Nav + Icon Button)
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* 1. Force Single Row Layout */
+    .top-nav {
+        flex-direction: row; /* Keep elements side-by-side */
+        align-items: center;
+        padding: 10px 15px;
+        gap: 15px;
+        height: 60px; /* Fixed height for consistency */
+        overflow: hidden;
+    }
+
+    /* 2. Scrollable Text Links (Ticker Tape Style) */
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        flex-grow: 1; /* Take up remaining space */
+        justify-content: flex-start;
+        gap: 20px;
+        overflow-x: auto; /* Allow horizontal scroll */
+        white-space: nowrap; /* Prevent text wrapping */
+        padding-right: 10px; /* Space before icons */
+        
+        /* Hide Scrollbar for clean tech look */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+    }
+    
+    .nav-links::-webkit-scrollbar { 
+        display: none; /* Chrome/Safari */
+    }
+
+    .nav-link {
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+    }
+
+    /* 3. Action Buttons Container */
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0; /* Prevent icons from getting squashed */
+        margin-top: 0;
+        width: auto;
+        padding-left: 10px;
+        border-left: 1px solid #ddd; /* Separator line */
+    }
+
+    /* 4. Transform "SCHEDULE_MEET" into an Icon */
+    .nav-cta-btn span {
+        display: none; /* Hide the text */
+    }
+
+    .nav-cta-btn {
+        padding: 0;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px; /* Soft square tech look */
+        clip-path: none; /* Remove the angled cut to save space */
+    }
+    
+    .nav-cta-btn i {
+        font-size: 1rem;
+    }
+
+    /* --- HERO & OTHER FIXES (Keep these from previous step) --- */
+    .hero { padding-top: 80px; padding-bottom: 2rem; min-height: auto; }
+    .hero-container { flex-direction: column-reverse; gap: 2rem; padding: 1rem; }
+    .hero-text { text-align: center; }
+    .hero-text h1 { font-size: 3rem; }
+    .hero-bg-text { top: 20%; right: 50%; transform: translateX(50%); z-index: 0; }
+    .hero-bg-text span { font-size: 25vw; opacity: 0.15; }
+    .hero-image img { max-width: 80%; margin: 0 auto; clip-path: none; border: none; }
+    .tech-circle, .tech-triangle { display: none; }
+    
+    /* Global Section Padding */
+    .services-section, .selling-section, .portfolio-section { padding: 3rem 1rem; clip-path: none; }
+    
+    /* Reels & Modal */
+    .reel-frame { width: 100%; max-width: 300px; height: 533px; margin: 0 auto; }
+    .instagram-crop iframe { top: -50px; }
+    .modal-content { width: 100%; height: 100%; max-height: 100vh; border-radius: 0; padding: 4rem 1.5rem; clip-path: none; border: none; }
+    .close-button { position: fixed; top: 10px; right: 10px; z-index: 9999; background: var(--accent-red); width: 40px; height: 40px; }
+}

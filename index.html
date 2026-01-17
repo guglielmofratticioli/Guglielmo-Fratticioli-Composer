@@ -26,7 +26,9 @@
         <ul class="nav-links">
             <li><a href="#herosec" class="nav-link active">01 // ABOUT</a></li>
             <li><a href="#selling-section" class="nav-link">02 // SERVICES</a></li>
-            <li><a href="#portfolio-main" class="nav-link">03 // PROJECTS</a></li>
+            <li><a href="#portfolio-main" class="nav-link">03 // DEMOS</a></li>
+            <li><a href="#portfolio-covers" class="nav-link">04 // WORKS</a></li>
+
         </ul>
         <!-- 2. New Contact Actions -->
     <div class="nav-actions">
@@ -61,9 +63,11 @@
                 
                 <div class="bio">
                     <p>
-                        <strong>[CLASS_PIANIST]</strong> from age 7.<br>
-                        <strong>[CURRENT_STATUS]</strong> Producing Electronic Music & Symphonic Mockups for Games & Film.<br>
-                        <strong>[SKILLS]</strong> FMOD / Wwise / Composition.
+                        <strong>[MUSICIAN]</strong> Piano/Guitar with a Jazz<br>
+                        <strong>[TECH]</strong> Music Production and MS in Computer Science <br>
+
+                        <strong>[CURRENT_STATUS]</strong> Producing EDM / Instrumentals / Soundtracks for Games.<br>
+                        <strong>[SKILLS]</strong> Coding / FMOD / Wwise / Composition.
                     </p>
                 </div>
 
@@ -382,23 +386,29 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var splide = new Splide('.splide', {
-                type: 'loop',
-                perPage: 3,
-                perMove: 1,
-                gap: '2rem',
-                pagination: false,
-                arrows: true,
-                breakpoints: {
-                    768: { perPage: 1 },
-                    1024: { perPage: 2 }
-                }
-            });
-            splide.mount();
-
-            // Update Year
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-        });
+    var splide = new Splide('.splide', {
+        type: 'loop',
+        perPage: 3,
+        perMove: 1,
+        gap: '2rem',
+        padding: '0rem', // Ensure no extra padding causes overflow
+        pagination: false,
+        arrows: true, // Keep arrows
+        breakpoints: {
+            1024: { 
+                perPage: 2,
+                gap: '1rem' 
+            },
+            768: { 
+                perPage: 1,
+                gap: '0rem', // No gap on mobile for full focus
+                arrows: false, // Hide arrows on mobile (users swipe)
+                pagination: true // Show dots instead
+            }
+        }
+    });
+    splide.mount();
+});
     </script>
 </body>
 </html>

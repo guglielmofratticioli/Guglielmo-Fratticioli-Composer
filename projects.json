@@ -176,6 +176,69 @@
     ]
   },
 
+   {
+    "id": "Mockbeth",
+    "category": "collab",
+    "folder": "projects/Mockbeth/",
+    "title": "Mockbeth - GlobalGameJam2026 1st prize",
+    "showVideo": false,
+    "thumbnails": [
+      "projects/Mockbeth/thumbnail.png"
+    ],
+    "imageFiles": [
+
+      {
+        "filename": "Team.jpg",
+        "alt": "The Game Jam Team Photo"
+      },
+      {
+        "filename": "plate.jpg",
+        "alt": "Winning plate"
+      }
+    ],
+    "tags": [
+      "Composition",
+      "Sound Design",
+      "Videogame",
+      "Demo",
+      "GameJam"
+    ],
+    "short_description": "I curated the Soundtrack and Sound-Design of Mockbeth, a Co-op 2D puzzle game we made for the GlobalGameJam 2026. Moreover We wont the 1st prize in the local competition at the International Comics School of Florence! ",
+    "audioFiles": [
+      {
+        "title": "MENU THEME",
+        "filename": "MENU.mp3"
+      },
+      {
+        "title": "ADVENTURE THEME",
+        "filename": "ADVENTURE.mp3"
+      },
+      {
+        "title": "GAMEPLAY THEME",
+        "filename": "GAMEPLAY.mp3"
+      },
+      {
+        "title": "SFX CROWD",
+        "filename": "SFX_CrowdScrem.mp3"
+      },
+      {
+        "title": "SFX DRAMA ORCHESTRA",
+        "filename": "SFX_DramaticOrchestra.mp3"
+      },
+      {
+        "title": "SFX MASK PUT ON",
+        "filename": "SFX_Mask_PutON.mp3"
+      },
+      {
+        "title": "SFX ROPE FALLING",
+        "filename": "SFX_RopeFalling.mp3"
+      },
+      {
+        "title": "SFX Tent OPEN",
+        "filename": "SFX_Tent_OPEN.mp3"
+      }
+    ]
+  },
   {
     "id": "dying-light",
     "category": "demo",

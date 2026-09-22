@@ -1,5 +1,39 @@
 [
   {
+  "id": "Kings Courier",
+  "category": "collab",
+  "folder": "projects/KingsCourier/",
+  "title": "Kings Courier - Orchestral RPG Production",
+  "showVideo": true,
+  "thumbnails": [
+    "projects/KingsCourier/Cover.png"
+  ],
+  "imageFiles": [
+  ],
+  "tags": [
+    "Composition",
+    "Videogame",
+    "Orchestral",
+    "Indie" 
+  ],
+  "short_description": "I was commisioned to work on the Soundtracks of the indie RPG Kings Courier, The overall Sound was inspired by the Might&Magic soundtracks.",
+  "audioFiles": [
+    {
+      "title": "Trailer Music",
+      "filename": "Trailer.mp3"
+    },
+    {
+      "title": "Castle City",
+      "filename": "CastleCity.mp3"
+    },
+    {
+      "title": "Epic Ambience",
+      "filename": "Swamp.mp3"
+    }
+  ]
+  },
+
+  {
     "id": "onigiri-sound-design-soundtrack",
     "category": "collab",
     "folder": "projects/onigiri/",
@@ -119,41 +153,6 @@
       }
     ]
   },
-
-    {
-    "id": "Kings Courier",
-    "category": "Commission",
-    "folder": "projects/KingsCourier/",
-    "title": "Kings Courier - Orchestral RPG Production",
-    "showVideo": true,
-    "thumbnails": [
-      "projects/KingsCourier/Cover.png"
-    ],
-    "imageFiles": [
-    ],
-    "tags": [
-      "Composition",
-      "Videogame",
-      "Orchestral",
-      "Indie" 
-    ],
-    "short_description": "I was commisioned to work on the Soundtracks of the indie RPG Kings Courier, The overall Sound was inspired by the Might&Magic soundtracks.",
-    "audioFiles": [
-      {
-        "title": "Trailer Music",
-        "filename": "Trailer.mp3"
-      },
-      {
-        "title": "Castle City",
-        "filename": "CastleCity.mp3"
-      },
-      {
-        "title": "Epic Ambience",
-        "filename": "Swamp.mp3"
-      }
-    ]
-  },
-
 
   {
     "id": "DJVsZombies",

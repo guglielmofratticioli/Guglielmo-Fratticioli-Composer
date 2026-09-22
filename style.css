@@ -1383,7 +1383,7 @@ p { font-weight: 300; }
     /* Optional: Middle letter outline style for mobile */
     .hero-bg-text span:nth-child(2) {
         -webkit-text-stroke: 1px var(--accent-red);
-        color: transparent; /* Makes the middle letter just an outline */
+        color: white; /* Makes the middle letter just an outline */
         opacity: 0.8; /* Slightly more visible for the red outline */
     }
 

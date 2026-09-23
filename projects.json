@@ -5,6 +5,7 @@
   "folder": "projects/KingsCourier/",
   "title": "Kings Courier - Orchestral RPG Production",
   "showVideo": true,
+  "recommended": true,
   "thumbnails": [
     "projects/KingsCourier/Cover.png"
   ],
@@ -38,6 +39,7 @@
     "category": "collab",
     "folder": "projects/onigiri/",
     "title": "Onigiri ",
+    "recommended": true,
     "showVideo": false,
     "thumbnails": [
       "projects/onigiri/thumbnail.jpg"

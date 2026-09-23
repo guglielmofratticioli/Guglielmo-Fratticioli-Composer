@@ -1412,4 +1412,196 @@ p { font-weight: 300; }
     }
 
 
+/* =========================================
+   COMPOSER REEL VIDEO CARD (HERO SECTION)
+   ========================================= */
+.hero-reel-wrapper {
+    grid-column: 1 / -1; 
+    margin-top: 3rem;
+    width: 100%;
+    /* Optional: Limits the max width so the video doesn't get gigantic on 4K monitors */
+    max-width: 1100px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-reel-card {
+    background: var(--text-main);
+    padding: 4px; /* Creates the tech border effect */
+    clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hero-reel-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(255, 42, 42, 0.25);
+}
+
+.reel-video-container {
+    position: relative;
+    background: #000;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Perfect YouTube video ratio */
+    clip-path: polygon(26px 0, 100% 0, 100% calc(100% - 26px), calc(100% - 26px) 100%, 0 100%, 0 26px);
+    overflow: hidden;
+}
+
+/* Ensure the Plyr container fills the space */
+.reel-video-container .plyr__video-embed, 
+.reel-video-container .plyr {
+    width: 100%;
+    height: 100%;
+}
+
+.reel-info-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; /* Moved to top */
+    padding: 2rem;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, transparent 100%);
+    z-index: 5;
+    color: white;
+    pointer-events: none; /* Crucial: Allows you to click the video controls THROUGH the text */
+    transition: opacity 0.4s ease;
+}
+
+/* Fade out the title when hovering to give full attention to the video player */
+.hero-reel-card:hover .reel-info-overlay {
+    opacity: 0;
+}
+
+.reel-info-overlay .sys-label {
+    color: var(--accent-red);
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.reel-info-overlay h2 {
+    margin: 0;
+    font-size: 2rem;
+    border-left: none;
+    padding-left: 0;
+}
+
+.reel-info-overlay p {
+    margin-top: 0.2rem;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* Mobile Fixes for the Embedded Reel */
+@media (max-width: 768px) {
+    .reel-info-overlay { padding: 1.5rem; }
+    .reel-info-overlay h2 { font-size: 1.5rem; }
+}
+
+
+/* =========================================
+   RECOMMENDED SECTION (COMPACT GRID)
+   ========================================= */
+.compact-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.compact-card {
+    display: flex;
+    flex-direction: row;
+    height: 140px;
+    background: var(--bg-surface);
+    border: 1px solid var(--tech-line);
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* Little red triangle in top right */
+.compact-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 15px; height: 15px;
+    background: var(--accent-red);
+    clip-path: polygon(100% 0, 100% 100%, 0 0);
+    transition: width 0.2s, height 0.2s;
+}
+
+.compact-card:hover {
+    border-color: var(--accent-red);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.compact-card:hover::after {
+    width: 25px; height: 25px;
+}
+
+.compact-card .card-thumbnail-container {
+    width: 35%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.compact-card .card-thumbnail-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.compact-card:hover .card-thumbnail-container img {
+    transform: scale(1.1);
+}
+
+.compact-card .card-content {
+    width: 65%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.compact-card .card-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Truncates long titles */
+}
+
+.compact-card .card-content p {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.5rem !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Truncates desc after 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.compact-card .card-tags {
+    margin-top: auto;
+}
+
+.compact-card .card-tags span {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+}
+
+/* --- Mobile Fixes for New Elements --- */
+@media (max-width: 768px) {
+    .reel-video-container { height: 220px; }
+    .reel-info-overlay h2 { font-size: 1.5rem; }
     
+    .compact-grid {
+        grid-template-columns: 1fr; /* 1 column on phones */
+    }
+}
+@media (max-width: 480px) {
+    .compact-card { height: 120px; }
+    .compact-card .card-thumbnail-container { width: 40%; }
+    .compact-card .card-content { width: 60%; padding: 0.8rem; }
+    .compact-card .card-content h3 { font-size: 1rem; }
+}

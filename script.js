@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
+    // 0. INITIALIZE HERO REEL VIDEO (PLYR)
+    // ==========================================
+    const heroReelElement = document.getElementById('hero-reel-player');
+    if (heroReelElement) {
+        new Plyr(heroReelElement);
+    }
+    
+    // ==========================================
     // 1. INITIALIZE SPLIDE (REELS GALLERY)
     // ==========================================
     const splideElement = document.querySelector('.splide');
@@ -30,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 3. PROJECT SYSTEM CONFIGURATION
     // ==========================================
+    const recommendedGrid = document.getElementById('project-grid-recommended'); // NEW RECOMMENDED GRID
     const demoGrid = document.getElementById('project-grid-demo');
     const collabGrid = document.getElementById('project-grid-collab');
     const commissionsGrid = document.getElementById('project-grid-commissions');
@@ -61,6 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             projectsData = data;
             
+            // --- NEW: Render Recommended (Compact) ---
+            // Filters by recommended flag. If JSON doesn't have it, falls back to top 4.
+            let recommendedProjects = projectsData.filter(p => p.recommended === true);
+            if (recommendedProjects.length === 0 && projectsData.length > 0) {
+                recommendedProjects = projectsData.slice(0, 4); // Fallback
+            }
+            renderCompactProjects(recommendedProjects, recommendedGrid);
+
             // Render specific categories
             renderProjects(projectsData.filter(p => p.category === 'demo'), demoGrid);
             renderProjects(projectsData.filter(p => p.category === 'collab'), collabGrid);
@@ -73,10 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("Error loading projects:", err);
             const msg = '<p style="text-align:center; color:red;">[SYSTEM_ERROR]: FAILED_TO_LOAD_DATA</p>';
             if (demoGrid) demoGrid.innerHTML = msg;
+            if (recommendedGrid) recommendedGrid.innerHTML = msg;
         });
 
 
-    // Helper: Render Grid
+    // Helper: Render Standard Grid
     function renderProjects(projects, gridElement) {
         if (!gridElement) return;
         gridElement.innerHTML = ''; // Clear existing content
@@ -120,6 +138,59 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 
             // Attach Click Event
+            card.addEventListener('click', () => openModal(project.id));
+            
+            // Append to Grid
+            gridElement.appendChild(card);
+        });
+    }
+
+    // ==========================================
+    // NEW: Helper to Render Compact Grid (Recommended)
+    // ==========================================
+    function renderCompactProjects(projects, gridElement) {
+        if (!gridElement) return;
+        gridElement.innerHTML = ''; // Clear existing content
+
+        if (projects.length === 0) {
+            gridElement.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:#888;">NO_DATA_AVAILABLE</p>';
+            return;
+        }
+
+        projects.forEach(project => {
+            // Create Card Element
+            const card = document.createElement('div');
+            card.className = 'compact-card';
+            card.dataset.id = project.id;
+
+            // Thumbnail Logic
+            const thumbUrl = (project.thumbnails && project.thumbnails[0]) 
+                ? project.thumbnails[0] 
+                : 'assets/placeholder.jpg';
+
+            // Generate Tags HTML (Limit to 2 tags for compact view)
+            let tagsHtml = '';
+            if (project.tags && project.tags.length > 0) {
+                tagsHtml = `<div class="card-tags">
+                    ${project.tags.slice(0, 2).map(tag => `<span>${tag}</span>`).join('')}
+                </div>`;
+            }
+
+            // Build Card HTML (Horizontal layout)
+            card.innerHTML = `
+                <div class="card-thumbnail-container">
+                    <img src="${thumbUrl}" alt="${project.title}" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <h3>${project.title}</h3>
+                    <p style="color: var(--text-muted);">
+                        ${project.short_description || ''}
+                    </p>
+                    ${tagsHtml}
+                </div>
+            `;
+
+            // Attach Click Event (Reuses your existing Modal system!)
             card.addEventListener('click', () => openModal(project.id));
             
             // Append to Grid
@@ -317,32 +388,32 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
-    // AUDIO TERMINAL LOGIC
-    // ==========================================
-    const trackItems = document.querySelectorAll('.track-item');
-    const scPlayer = document.getElementById('sc-player');
-    
-    // Base SoundCloud Embed URL options
-    // visual=true makes it the big album art player
-    // auto_play=true makes it start when clicked
-    const scBaseUrl = "https://w.soundcloud.com/player/?url=";
-    const scOptions = "&color=%23ff2a2a&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true";
+// AUDIO TERMINAL LOGIC
+// ==========================================
+const trackItems = document.querySelectorAll('.track-item');
+const scPlayer = document.getElementById('sc-player');
 
-    if (scPlayer && trackItems.length > 0) {
-        trackItems.forEach(item => {
-            item.addEventListener('click', function() {
-                // 1. Remove active class from all
-                trackItems.forEach(t => t.classList.remove('active'));
-                
-                // 2. Add active class to clicked
-                this.classList.add('active');
-                
-                // 3. Get the SoundCloud URL from data attribute
-                const trackUrl = this.getAttribute('data-url');
-                
-                // 4. Update iframe src
-                // encodeURIComponent is important for URL parameters
-                scPlayer.src = scBaseUrl + encodeURIComponent(trackUrl) + scOptions;
-            });
+// Base SoundCloud Embed URL options
+// visual=true makes it the big album art player
+// auto_play=true makes it start when clicked
+const scBaseUrl = "https://w.soundcloud.com/player/?url=";
+const scOptions = "&color=%23ff2a2a&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true";
+
+if (scPlayer && trackItems.length > 0) {
+    trackItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // 1. Remove active class from all
+            trackItems.forEach(t => t.classList.remove('active'));
+            
+            // 2. Add active class to clicked
+            this.classList.add('active');
+            
+            // 3. Get the SoundCloud URL from data attribute
+            const trackUrl = this.getAttribute('data-url');
+            
+            // 4. Update iframe src
+            // encodeURIComponent is important for URL parameters
+            scPlayer.src = scBaseUrl + encodeURIComponent(trackUrl) + scOptions;
         });
-    }
+    });
+}

@@ -40,15 +40,11 @@
     "folder": "projects/botanica/",
     "title": "Botanica Sound Design Concept",
     "recommended": true,
-    "showVideo": false,
+    "showVideo": true,
     "thumbnails": [
       "projects/botanica/thumbnail.jpg"
     ],
     "imageFiles": [
-      {
-        "filename": "thumbnail.png",
-        "alt": "Onigiri Project Thumbnail"
-      }
     ],
     "tags": [
       "Sound Design",

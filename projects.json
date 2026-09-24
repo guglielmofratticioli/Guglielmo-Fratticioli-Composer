@@ -34,6 +34,36 @@
   ]
   },
 
+    {
+    "id": "botanica-sound-design",
+    "category": "demo",
+    "folder": "projects/notanica/",
+    "title": "Botanica Sound Design Concept",
+    "recommended": true,
+    "showVideo": false,
+    "thumbnails": [
+      "projects/botanica/thumbnail.jpg"
+    ],
+    "imageFiles": [
+      {
+        "filename": "thumbnail.png",
+        "alt": "Onigiri Project Thumbnail"
+      }
+    ],
+    "tags": [
+      "Sound Design",
+      "Organic",
+      "Foley Recording",
+      "Visual Art"
+    ],
+    "short_description": "Organic Sound design concept",
+    "audioFiles":[], 
+     "externalLinks": [
+      {
+      }
+    ]
+  },
+  
   {
     "id": "onigiri-sound-design-soundtrack",
     "category": "collab",
